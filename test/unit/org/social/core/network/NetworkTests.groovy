@@ -11,7 +11,10 @@ import org.junit.*
 @TestFor(Network)
 class NetworkTests {
 
-    void testSomething() {
-       fail "Implement me"
+    void testConstructor() {
+
+       def type = new Network(id: "TWITTER")
+       assertTrue 'Validation should have passed', type.validate()
+       assertEquals 'TWITTER', type.id
     }
 }

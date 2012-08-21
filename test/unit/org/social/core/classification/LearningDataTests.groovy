@@ -15,7 +15,6 @@ class LearningDataTests {
 
        def learningData = new LearningData()
        assertFalse 'Validation should have failed.', learningData.validate()
-       assertFalse 'Validation should have failed.', learningData.validate()
 
        def classification = new Classification(id: 'reliable')
        learningData = new LearningData(classification: classification)
