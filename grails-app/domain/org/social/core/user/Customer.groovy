@@ -2,8 +2,11 @@ package org.social.core.user
 
 class Customer {
 
+    Date lastNetworkAccess
     Date dateCreated
     Date lastUpdated
+
+    static hasMany = [contact:Contact]
 
     def beforeInsert() {
         dateCreated = new Date()
@@ -13,5 +16,6 @@ class Customer {
     }
 
     static constraints = {
+        lastNetworkAccess (nullable: true)
     }
 }

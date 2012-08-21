@@ -21,6 +21,7 @@ class NetworkController {
 
     def save() {
         def networkInstance = new Network(params)
+        networkInstance.id = params.id
         if (!networkInstance.save(flush: true)) {
             render(view: "create", model: [networkInstance: networkInstance])
             return
@@ -30,7 +31,7 @@ class NetworkController {
         redirect(action: "show", id: networkInstance.id)
     }
 
-    def show(Long id) {
+    def show(String id) {
         def networkInstance = Network.get(id)
         if (!networkInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'network.label', default: 'Network'), id])
@@ -41,7 +42,7 @@ class NetworkController {
         [networkInstance: networkInstance]
     }
 
-    def edit(Long id) {
+    def edit(String id) {
         def networkInstance = Network.get(id)
         if (!networkInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'network.label', default: 'Network'), id])
@@ -52,7 +53,7 @@ class NetworkController {
         [networkInstance: networkInstance]
     }
 
-    def update(Long id, Long version) {
+    def update(String id, String version) {
         def networkInstance = Network.get(id)
         if (!networkInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'network.label', default: 'Network'), id])
@@ -81,7 +82,7 @@ class NetworkController {
         redirect(action: "show", id: networkInstance.id)
     }
 
-    def delete(Long id) {
+    def delete(String id) {
         def networkInstance = Network.get(id)
         if (!networkInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'network.label', default: 'Network'), id])

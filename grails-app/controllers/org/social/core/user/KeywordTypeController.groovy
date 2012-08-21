@@ -21,6 +21,7 @@ class KeywordTypeController {
 
     def save() {
         def keywordTypeInstance = new KeywordType(params)
+        keywordTypeInstance.id = params.id
         if (!keywordTypeInstance.save(flush: true)) {
             render(view: "create", model: [keywordTypeInstance: keywordTypeInstance])
             return
@@ -30,7 +31,7 @@ class KeywordTypeController {
         redirect(action: "show", id: keywordTypeInstance.id)
     }
 
-    def show(Long id) {
+    def show(String id) {
         def keywordTypeInstance = KeywordType.get(id)
         if (!keywordTypeInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'keywordType.label', default: 'KeywordType'), id])
@@ -41,7 +42,7 @@ class KeywordTypeController {
         [keywordTypeInstance: keywordTypeInstance]
     }
 
-    def edit(Long id) {
+    def edit(String id) {
         def keywordTypeInstance = KeywordType.get(id)
         if (!keywordTypeInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'keywordType.label', default: 'KeywordType'), id])
@@ -52,7 +53,7 @@ class KeywordTypeController {
         [keywordTypeInstance: keywordTypeInstance]
     }
 
-    def update(Long id, Long version) {
+    def update(String id, String version) {
         def keywordTypeInstance = KeywordType.get(id)
         if (!keywordTypeInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'keywordType.label', default: 'KeywordType'), id])
@@ -81,7 +82,7 @@ class KeywordTypeController {
         redirect(action: "show", id: keywordTypeInstance.id)
     }
 
-    def delete(Long id) {
+    def delete(String id) {
         def keywordTypeInstance = KeywordType.get(id)
         if (!keywordTypeInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'keywordType.label', default: 'KeywordType'), id])

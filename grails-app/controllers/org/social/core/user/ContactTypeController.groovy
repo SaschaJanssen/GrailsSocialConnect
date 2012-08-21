@@ -21,6 +21,7 @@ class ContactTypeController {
 
     def save() {
         def contactTypeInstance = new ContactType(params)
+        contactTypeInstance.id = params.id
         if (!contactTypeInstance.save(flush: true)) {
             render(view: "create", model: [contactTypeInstance: contactTypeInstance])
             return
@@ -30,7 +31,7 @@ class ContactTypeController {
         redirect(action: "show", id: contactTypeInstance.id)
     }
 
-    def show(Long id) {
+    def show(String id) {
         def contactTypeInstance = ContactType.get(id)
         if (!contactTypeInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'contactType.label', default: 'ContactType'), id])
@@ -41,7 +42,7 @@ class ContactTypeController {
         [contactTypeInstance: contactTypeInstance]
     }
 
-    def edit(Long id) {
+    def edit(String id) {
         def contactTypeInstance = ContactType.get(id)
         if (!contactTypeInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'contactType.label', default: 'ContactType'), id])
@@ -52,7 +53,7 @@ class ContactTypeController {
         [contactTypeInstance: contactTypeInstance]
     }
 
-    def update(Long id, Long version) {
+    def update(String id, String version) {
         def contactTypeInstance = ContactType.get(id)
         if (!contactTypeInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'contactType.label', default: 'ContactType'), id])
@@ -81,7 +82,7 @@ class ContactTypeController {
         redirect(action: "show", id: contactTypeInstance.id)
     }
 
-    def delete(Long id) {
+    def delete(String id) {
         def contactTypeInstance = ContactType.get(id)
         if (!contactTypeInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'contactType.label', default: 'ContactType'), id])
