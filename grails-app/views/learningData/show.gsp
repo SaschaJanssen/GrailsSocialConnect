@@ -32,15 +32,6 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${learningDataInstance?.classificationType}">
-				<li class="fieldcontain">
-					<span id="classificationType-label" class="property-label"><g:message code="learningData.classificationType.label" default="Classification Type" /></span>
-					
-						<span class="property-value" aria-labelledby="classificationType-label"><g:link controller="classificationType" action="show" id="${learningDataInstance?.classificationType?.id}">${learningDataInstance?.classificationType?.encodeAsHTML()}</g:link></span>
-					
-				</li>
-				</g:if>
-			
 				<g:if test="${learningDataInstance?.dateCreated}">
 				<li class="fieldcontain">
 					<span id="dateCreated-label" class="property-label"><g:message code="learningData.dateCreated.label" default="Date Created" /></span>

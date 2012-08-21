@@ -13,7 +13,7 @@ class LearningData {
         lastUpdated = new Date()
     }
 
-    static belongsTo = [classificationType:ClassificationType, classification:Classification]
+    static belongsTo = [classification:Classification]
 
     static constraints = {
     }

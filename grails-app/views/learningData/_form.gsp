@@ -10,14 +10,6 @@
 	<g:select id="classification" name="classification.id" from="${org.social.core.classification.Classification.list()}" optionKey="id" required="" value="${learningDataInstance?.classification?.id}" class="many-to-one"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: learningDataInstance, field: 'classificationType', 'error')} required">
-	<label for="classificationType">
-		<g:message code="learningData.classificationType.label" default="Classification Type" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:select id="classificationType" name="classificationType.id" from="${org.social.core.classification.ClassificationType.list()}" optionKey="id" required="" value="${learningDataInstance?.classificationType?.id}" class="many-to-one"/>
-</div>
-
 <div class="fieldcontain ${hasErrors(bean: learningDataInstance, field: 'learningData', 'error')} ">
 	<label for="learningData">
 		<g:message code="learningData.learningData.label" default="Learning Data" />

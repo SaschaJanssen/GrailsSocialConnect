@@ -26,8 +26,6 @@
 					
 						<th><g:message code="learningData.classification.label" default="Classification" /></th>
 					
-						<th><g:message code="learningData.classificationType.label" default="Classification Type" /></th>
-					
 						<g:sortableColumn property="dateCreated" title="${message(code: 'learningData.dateCreated.label', default: 'Date Created')}" />
 					
 						<g:sortableColumn property="lastUpdated" title="${message(code: 'learningData.lastUpdated.label', default: 'Last Updated')}" />
@@ -41,8 +39,6 @@
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
 						<td><g:link action="show" id="${learningDataInstance.id}">${fieldValue(bean: learningDataInstance, field: "classification")}</g:link></td>
-					
-						<td>${fieldValue(bean: learningDataInstance, field: "classificationType")}</td>
 					
 						<td><g:formatDate date="${learningDataInstance.dateCreated}" /></td>
 					

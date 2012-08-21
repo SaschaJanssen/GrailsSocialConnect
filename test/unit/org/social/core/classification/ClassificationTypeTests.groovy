@@ -11,7 +11,10 @@ import org.junit.*
 @TestFor(ClassificationType)
 class ClassificationTypeTests {
 
-    void testSomething() {
-       fail "Implement me"
+    void testConstructor() {
+       mockDomain(ClassificationType)
+       def type = new ClassificationType(id: "TYPE")
+       assertTrue 'Validation should have passed', type.validate()
+       assertEquals 'TYPE', type.id
     }
 }
