@@ -1,11 +1,11 @@
 <%@ page import="org.social.core.classification.ClassificationType" %>
 
-<div class="fieldcontain ${hasErrors(bean: classificationTypeInstance, field: 'id', 'error')} required">
+<div class="fieldcontain">
 	<label for="id">
 		<g:message code="classificationType.id.label" default="ID" />
-		<span class="required-indicator">*</span>
+
 	</label>
-	<g:textField name="id" value="${classificationTypeInstance?.id}"/>
+	<g:textField name="id" value="${classificationTypeInstance?.id}" readonly="readonly"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: classificationTypeInstance, field: 'description', 'error')} ">

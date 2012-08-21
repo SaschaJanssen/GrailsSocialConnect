@@ -21,7 +21,8 @@ class ClassificationController {
 
     def save() {
         def classificationInstance = new Classification(params)
-        if (!classificationInstance.save(flush: true)) {
+        classificationInstance.id = params.id
+        if (!classificationInstance.save(insert: true, flush: true)) {
             render(view: "create", model: [classificationInstance: classificationInstance])
             return
         }
@@ -30,7 +31,7 @@ class ClassificationController {
         redirect(action: "show", id: classificationInstance.id)
     }
 
-    def show(Long id) {
+    def show(String id) {
         def classificationInstance = Classification.get(id)
         if (!classificationInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'classification.label', default: 'Classification'), id])
@@ -41,7 +42,7 @@ class ClassificationController {
         [classificationInstance: classificationInstance]
     }
 
-    def edit(Long id) {
+    def edit(String id) {
         def classificationInstance = Classification.get(id)
         if (!classificationInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'classification.label', default: 'Classification'), id])
@@ -52,7 +53,7 @@ class ClassificationController {
         [classificationInstance: classificationInstance]
     }
 
-    def update(Long id, Long version) {
+    def update(String id, String version) {
         def classificationInstance = Classification.get(id)
         if (!classificationInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'classification.label', default: 'Classification'), id])
@@ -72,7 +73,7 @@ class ClassificationController {
 
         classificationInstance.properties = params
 
-        if (!classificationInstance.save(flush: true)) {
+        if (!classificationInstance.save(insert: true, flush: true)) {
             render(view: "edit", model: [classificationInstance: classificationInstance])
             return
         }
@@ -81,7 +82,7 @@ class ClassificationController {
         redirect(action: "show", id: classificationInstance.id)
     }
 
-    def delete(Long id) {
+    def delete(String id) {
         def classificationInstance = Classification.get(id)
         if (!classificationInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'classification.label', default: 'Classification'), id])
