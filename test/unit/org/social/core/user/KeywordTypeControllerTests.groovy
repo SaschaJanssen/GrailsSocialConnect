@@ -2,8 +2,9 @@ package org.social.core.user
 
 
 
-import org.junit.*
 import grails.test.mixin.*
+
+import org.junit.*
 
 @TestFor(KeywordTypeController)
 @Mock(KeywordType)
@@ -11,8 +12,6 @@ class KeywordTypeControllerTests {
 
     def populateValidParams(params) {
         assert params != null
-        // TODO: Populate valid properties like...
-        //params["name"] = 'someValidName'
     }
 
     void testIndex() {
@@ -35,13 +34,18 @@ class KeywordTypeControllerTests {
     }
 
     void testSave() {
-        controller.save()
 
-        assert model.keywordTypeInstance != null
+        // save
+        params.id = ''
+        controller.save()
+        controller.create()
+
         assert view == '/keywordType/create'
+        assert model.keywordTypeInstance != null
 
         response.reset()
 
+        params.id = '1'
         populateValidParams(params)
         controller.save()
 
@@ -52,82 +56,47 @@ class KeywordTypeControllerTests {
 
     void testShow() {
         controller.show()
-
         assert flash.message != null
         assert response.redirectedUrl == '/keywordType/list'
 
-        populateValidParams(params)
-        def keywordType = new KeywordType(params)
+        def type = new KeywordType()
+        type.id = 'HASH'
+        type.save()
 
-        assert keywordType.save() != null
-
-        params.id = keywordType.id
-
-        def model = controller.show()
-
-        assert model.keywordTypeInstance == keywordType
+        def model = controller.show('HASH')
+        assertEquals type, model.keywordTypeInstance
     }
 
     void testEdit() {
         controller.edit()
-
         assert flash.message != null
         assert response.redirectedUrl == '/keywordType/list'
 
-        populateValidParams(params)
-        def keywordType = new KeywordType(params)
-
+        def keywordType = new KeywordType()
+        keywordType.id = 'HASH'
         assert keywordType.save() != null
 
         params.id = keywordType.id
-
         def model = controller.edit()
-
         assert model.keywordTypeInstance == keywordType
     }
 
     void testUpdate() {
         controller.update()
-
         assert flash.message != null
         assert response.redirectedUrl == '/keywordType/list'
 
         response.reset()
 
-        populateValidParams(params)
         def keywordType = new KeywordType(params)
-
+        keywordType.id = 'HASH'
         assert keywordType.save() != null
 
-        // test invalid parameters in update
-        params.id = keywordType.id
-        //TODO: add invalid values to params object
+        params.id = 'HASH'
+        params.description = 'FOOBAA'
 
         controller.update()
-
-        assert view == "/keywordType/edit"
-        assert model.keywordTypeInstance != null
-
-        keywordType.clearErrors()
-
-        populateValidParams(params)
-        controller.update()
-
         assert response.redirectedUrl == "/keywordType/show/$keywordType.id"
-        assert flash.message != null
-
-        //test outdated version number
-        response.reset()
-        keywordType.clearErrors()
-
-        populateValidParams(params)
-        params.id = keywordType.id
-        params.version = -1
-        controller.update()
-
-        assert view == "/keywordType/edit"
-        assert model.keywordTypeInstance != null
-        assert model.keywordTypeInstance.errors.getFieldError('version')
         assert flash.message != null
     }
 
@@ -137,17 +106,13 @@ class KeywordTypeControllerTests {
         assert response.redirectedUrl == '/keywordType/list'
 
         response.reset()
-
-        populateValidParams(params)
         def keywordType = new KeywordType(params)
-
+        keywordType.id = 'HASH'
         assert keywordType.save() != null
         assert KeywordType.count() == 1
 
         params.id = keywordType.id
-
         controller.delete()
-
         assert KeywordType.count() == 0
         assert KeywordType.get(keywordType.id) == null
         assert response.redirectedUrl == '/keywordType/list'

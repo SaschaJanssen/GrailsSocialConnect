@@ -1,8 +1,7 @@
 package org.social.core.user
 
-
-
 import grails.test.mixin.*
+
 import org.junit.*
 
 /**
@@ -11,7 +10,9 @@ import org.junit.*
 @TestFor(KeywordType)
 class KeywordTypeTests {
 
-    void testSomething() {
-       fail "Implement me"
+    void testConstraint() {
+        def type = new KeywordType(id: 'HASH')
+        assertTrue 'Validation should have passed', type.validate()
+        assertEquals 'HASH', type.id
     }
 }

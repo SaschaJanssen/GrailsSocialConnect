@@ -38,7 +38,7 @@ class KeywordTypeController {
             redirect(action: "list")
             return
         }
-
+        
         [keywordTypeInstance: keywordTypeInstance]
     }
 
@@ -59,16 +59,6 @@ class KeywordTypeController {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'keywordType.label', default: 'KeywordType'), id])
             redirect(action: "list")
             return
-        }
-
-        if (version != null) {
-            if (keywordTypeInstance.version > version) {
-                keywordTypeInstance.errors.rejectValue("version", "default.optimistic.locking.failure",
-                          [message(code: 'keywordType.label', default: 'KeywordType')] as Object[],
-                          "Another user has updated this KeywordType while you were editing")
-                render(view: "edit", model: [keywordTypeInstance: keywordTypeInstance])
-                return
-            }
         }
 
         keywordTypeInstance.properties = params

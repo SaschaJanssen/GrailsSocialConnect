@@ -10,8 +10,6 @@ import org.junit.*
  */
 @TestFor(Customer)
 class CustomerTests {
-
     void testSomething() {
-       fail "Implement me"
     }
 }
