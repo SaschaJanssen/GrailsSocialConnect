@@ -2,8 +2,9 @@ package org.social.core.user
 
 
 
-import org.junit.*
 import grails.test.mixin.*
+
+import org.junit.*
 
 @TestFor(CustomerController)
 @Mock(Customer)
@@ -35,14 +36,6 @@ class CustomerControllerTests {
     }
 
     void testSave() {
-        controller.save()
-
-        assert model.customerInstance != null
-        assert view == '/customer/create'
-
-        response.reset()
-
-        populateValidParams(params)
         controller.save()
 
         assert response.redirectedUrl == '/customer/show/1'
@@ -94,23 +87,11 @@ class CustomerControllerTests {
 
         response.reset()
 
-        populateValidParams(params)
         def customer = new Customer(params)
-
         assert customer.save() != null
 
-        // test invalid parameters in update
         params.id = customer.id
-        //TODO: add invalid values to params object
-
-        controller.update()
-
-        assert view == "/customer/edit"
-        assert model.customerInstance != null
-
-        customer.clearErrors()
-
-        populateValidParams(params)
+        params.lastNetworkAccess = new Date()
         controller.update()
 
         assert response.redirectedUrl == "/customer/show/$customer.id"

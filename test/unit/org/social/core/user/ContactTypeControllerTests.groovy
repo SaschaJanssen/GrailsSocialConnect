@@ -2,17 +2,17 @@ package org.social.core.user
 
 
 
-import org.junit.*
 import grails.test.mixin.*
+
+import org.junit.*
 
 @TestFor(ContactTypeController)
 @Mock(ContactType)
 class ContactTypeControllerTests {
 
     def populateValidParams(params) {
+        params.id = 'PHONE'
         assert params != null
-        // TODO: Populate valid properties like...
-        //params["name"] = 'someValidName'
     }
 
     void testIndex() {
@@ -35,6 +35,7 @@ class ContactTypeControllerTests {
     }
 
     void testSave() {
+        params.id = ''
         controller.save()
 
         assert model.contactTypeInstance != null
@@ -45,7 +46,7 @@ class ContactTypeControllerTests {
         populateValidParams(params)
         controller.save()
 
-        assert response.redirectedUrl == '/contactType/show/1'
+        assert response.redirectedUrl == '/contactType/show/PHONE'
         assert controller.flash.message != null
         assert ContactType.count() == 1
     }
@@ -58,7 +59,7 @@ class ContactTypeControllerTests {
 
         populateValidParams(params)
         def contactType = new ContactType(params)
-
+        contactType.id = params.id
         assert contactType.save() != null
 
         params.id = contactType.id
@@ -76,7 +77,7 @@ class ContactTypeControllerTests {
 
         populateValidParams(params)
         def contactType = new ContactType(params)
-
+        contactType.id = params.id
         assert contactType.save() != null
 
         params.id = contactType.id
@@ -96,38 +97,13 @@ class ContactTypeControllerTests {
 
         populateValidParams(params)
         def contactType = new ContactType(params)
-
+        contactType.id = params.id
         assert contactType.save() != null
-
-        // test invalid parameters in update
-        params.id = contactType.id
-        //TODO: add invalid values to params object
-
-        controller.update()
-
-        assert view == "/contactType/edit"
-        assert model.contactTypeInstance != null
-
-        contactType.clearErrors()
 
         populateValidParams(params)
         controller.update()
 
         assert response.redirectedUrl == "/contactType/show/$contactType.id"
-        assert flash.message != null
-
-        //test outdated version number
-        response.reset()
-        contactType.clearErrors()
-
-        populateValidParams(params)
-        params.id = contactType.id
-        params.version = -1
-        controller.update()
-
-        assert view == "/contactType/edit"
-        assert model.contactTypeInstance != null
-        assert model.contactTypeInstance.errors.getFieldError('version')
         assert flash.message != null
     }
 
@@ -140,6 +116,7 @@ class ContactTypeControllerTests {
 
         populateValidParams(params)
         def contactType = new ContactType(params)
+        contactType.id = params.id
 
         assert contactType.save() != null
         assert ContactType.count() == 1

@@ -2,17 +2,22 @@ package org.social.core.user
 
 
 
-import org.junit.*
 import grails.test.mixin.*
 
+import org.junit.*
+
 @TestFor(ContactController)
-@Mock(Contact)
+@Mock([Contact, ContactType])
 class ContactControllerTests {
 
     def populateValidParams(params) {
+        def type = new ContactType()
+        type.id = 'PHNOE'
+        type.save()
+        params.contactType = type
+
+        params.infoString = '123456'
         assert params != null
-        // TODO: Populate valid properties like...
-        //params["name"] = 'someValidName'
     }
 
     void testIndex() {
@@ -101,7 +106,7 @@ class ContactControllerTests {
 
         // test invalid parameters in update
         params.id = contact.id
-        //TODO: add invalid values to params object
+        params.infoString = null
 
         controller.update()
 

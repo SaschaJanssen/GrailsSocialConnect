@@ -1,18 +1,32 @@
 package org.social.core.user
 
-
-
-import org.junit.*
 import grails.test.mixin.*
 
+import org.junit.*
+import org.social.core.network.Network
+
 @TestFor(KeywordController)
-@Mock(Keyword)
+@Mock([Keyword, org.social.core.network.Network, Customer, KeywordType])
 class KeywordControllerTests {
 
     def populateValidParams(params) {
+        def keywordType = new KeywordType()
+        keywordType.id = 'HASH'
+        keywordType.save()
+        params.keywordType = keywordType
+
+        def customer = new Customer()
+        customer.save()
+        params.customer = customer
+
+        def network = new Network()
+        network.id = 'TWITTER'
+        network.save()
+        params.network = network
+
+        params.keyword = 'KEYWORD'
+
         assert params != null
-        // TODO: Populate valid properties like...
-        //params["name"] = 'someValidName'
     }
 
     void testIndex() {
@@ -43,6 +57,7 @@ class KeywordControllerTests {
         response.reset()
 
         populateValidParams(params)
+
         controller.save()
 
         assert response.redirectedUrl == '/keyword/show/1'
@@ -101,7 +116,7 @@ class KeywordControllerTests {
 
         // test invalid parameters in update
         params.id = keyword.id
-        //TODO: add invalid values to params object
+        params.keyword = null
 
         controller.update()
 

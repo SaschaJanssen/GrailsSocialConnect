@@ -61,16 +61,6 @@ class ContactTypeController {
             return
         }
 
-        if (version != null) {
-            if (contactTypeInstance.version > version) {
-                contactTypeInstance.errors.rejectValue("version", "default.optimistic.locking.failure",
-                          [message(code: 'contactType.label', default: 'ContactType')] as Object[],
-                          "Another user has updated this ContactType while you were editing")
-                render(view: "edit", model: [contactTypeInstance: contactTypeInstance])
-                return
-            }
-        }
-
         contactTypeInstance.properties = params
 
         if (!contactTypeInstance.save(flush: true)) {
