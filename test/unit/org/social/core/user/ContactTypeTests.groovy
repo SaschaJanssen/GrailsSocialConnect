@@ -1,8 +1,9 @@
 package org.social.core.user
 
 
-
+import static junit.framework.Assert.*
 import grails.test.mixin.*
+
 import org.junit.*
 
 /**
@@ -11,6 +12,9 @@ import org.junit.*
 @TestFor(ContactType)
 class ContactTypeTests {
 
-    void testSomething() {
+    void testConstraint() {
+        def contactType = new ContactType()
+        contactType.id = 'PHONE'
+        assertTrue ('This test should have passed', contactType.validate())
     }
 }

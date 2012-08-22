@@ -1,8 +1,9 @@
 package org.social.core.user
 
 
-
+import static junit.framework.Assert.*
 import grails.test.mixin.*
+
 import org.junit.*
 
 /**
@@ -10,6 +11,8 @@ import org.junit.*
  */
 @TestFor(Customer)
 class CustomerTests {
-    void testSomething() {
+    void testConstraint() {
+        def customer = new Customer()
+        assertTrue ('This test should have passed', customer.validate())
     }
 }
