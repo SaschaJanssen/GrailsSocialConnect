@@ -1,5 +1,6 @@
 package org.social.core.user
 
+
 class Keyword {
 
     String keyword
@@ -16,5 +17,10 @@ class Keyword {
     }
 
     static constraints = {
+        keyword (unique: ['keywordType', 'customer', 'network'])
     }
+    
+    static mapping = {
+        version (false)
+    }    
 }

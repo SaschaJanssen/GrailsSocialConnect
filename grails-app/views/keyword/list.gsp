@@ -24,11 +24,11 @@
 				<thead>
 					<tr>
 					
+						<g:sortableColumn property="keyword" title="${message(code: 'keyword.keyword.label', default: 'Keyword')}" />
+					
 						<th><g:message code="keyword.customer.label" default="Customer" /></th>
 					
 						<g:sortableColumn property="dateCreated" title="${message(code: 'keyword.dateCreated.label', default: 'Date Created')}" />
-					
-						<g:sortableColumn property="keyword" title="${message(code: 'keyword.keyword.label', default: 'Keyword')}" />
 					
 						<th><g:message code="keyword.keywordType.label" default="Keyword Type" /></th>
 					
@@ -42,11 +42,11 @@
 				<g:each in="${keywordInstanceList}" status="i" var="keywordInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${keywordInstance.id}">${fieldValue(bean: keywordInstance, field: "customer")}</g:link></td>
+						<td><g:link action="show" id="${keywordInstance.id}">${fieldValue(bean: keywordInstance, field: "keyword")}</g:link></td>
+					
+						<td>${fieldValue(bean: keywordInstance, field: "customer")}</td>
 					
 						<td><g:formatDate date="${keywordInstance.dateCreated}" /></td>
-					
-						<td>${fieldValue(bean: keywordInstance, field: "keyword")}</td>
 					
 						<td>${fieldValue(bean: keywordInstance, field: "keywordType")}</td>
 					

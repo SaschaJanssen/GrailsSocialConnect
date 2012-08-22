@@ -12,22 +12,20 @@ import org.junit.*
 @TestFor(Keyword)
 class KeywordTests {
 
-    void testConstraintsFail() {
-       def networkMock = []
-       mockDomain(org.social.core.network.Network, networkMock)
+    void testConstraints() {
+        def networkMock = new org.social.core.network.Network()
 
-       def customerMock = []
-       mockDomain(Customer, customerMock)
+        def customerMock = new Customer()
 
-       def typeMock = []
-       mockDomain(KeywordType, typeMock)
+        def typeMock = new KeywordType()
 
-       def keyword = new Keyword()
-       assertFalse 'Validation should have failed.', keyword.validate()
+        def keyword = new Keyword()
+        assertFalse 'Validation should have failed.', keyword.validate()
 
-       keyword = new Keyword(keywordType: typeMock, customer: customerMock, network: networkMock)
-       assertFalse 'Validation should have failed.', keyword.validate()
-   }
+        keyword = new Keyword(keywordType: typeMock, customer: customerMock, network: networkMock)
+        assertFalse 'Validation should have failed.', keyword.validate()
 
-
+        keyword = new Keyword(keyword: 'FOO', keywordType: typeMock, customer: customerMock, network: networkMock)
+        assertTrue 'Validation should have passed.', keyword.validate()
+    }
 }

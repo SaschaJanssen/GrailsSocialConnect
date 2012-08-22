@@ -1,5 +1,7 @@
 package org.social.core.user
 
+
+
 import grails.test.mixin.*
 
 import org.junit.*
@@ -57,7 +59,6 @@ class KeywordControllerTests {
         response.reset()
 
         populateValidParams(params)
-
         controller.save()
 
         assert response.redirectedUrl == '/keyword/show/1'
@@ -129,20 +130,6 @@ class KeywordControllerTests {
         controller.update()
 
         assert response.redirectedUrl == "/keyword/show/$keyword.id"
-        assert flash.message != null
-
-        //test outdated version number
-        response.reset()
-        keyword.clearErrors()
-
-        populateValidParams(params)
-        params.id = keyword.id
-        params.version = -1
-        controller.update()
-
-        assert view == "/keyword/edit"
-        assert model.keywordInstance != null
-        assert model.keywordInstance.errors.getFieldError('version')
         assert flash.message != null
     }
 

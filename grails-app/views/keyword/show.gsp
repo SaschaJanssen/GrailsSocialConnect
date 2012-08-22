@@ -23,6 +23,15 @@
 			</g:if>
 			<ol class="property-list keyword">
 			
+				<g:if test="${keywordInstance?.keyword}">
+				<li class="fieldcontain">
+					<span id="keyword-label" class="property-label"><g:message code="keyword.keyword.label" default="Keyword" /></span>
+					
+						<span class="property-value" aria-labelledby="keyword-label"><g:fieldValue bean="${keywordInstance}" field="keyword"/></span>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${keywordInstance?.customer}">
 				<li class="fieldcontain">
 					<span id="customer-label" class="property-label"><g:message code="keyword.customer.label" default="Customer" /></span>
@@ -37,15 +46,6 @@
 					<span id="dateCreated-label" class="property-label"><g:message code="keyword.dateCreated.label" default="Date Created" /></span>
 					
 						<span class="property-value" aria-labelledby="dateCreated-label"><g:formatDate date="${keywordInstance?.dateCreated}" /></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${keywordInstance?.keyword}">
-				<li class="fieldcontain">
-					<span id="keyword-label" class="property-label"><g:message code="keyword.keyword.label" default="Keyword" /></span>
-					
-						<span class="property-value" aria-labelledby="keyword-label"><g:fieldValue bean="${keywordInstance}" field="keyword"/></span>
 					
 				</li>
 				</g:if>

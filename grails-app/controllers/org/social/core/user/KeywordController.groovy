@@ -60,16 +60,6 @@ class KeywordController {
             return
         }
 
-        if (version != null) {
-            if (keywordInstance.version > version) {
-                keywordInstance.errors.rejectValue("version", "default.optimistic.locking.failure",
-                          [message(code: 'keyword.label', default: 'Keyword')] as Object[],
-                          "Another user has updated this Keyword while you were editing")
-                render(view: "edit", model: [keywordInstance: keywordInstance])
-                return
-            }
-        }
-
         keywordInstance.properties = params
 
         if (!keywordInstance.save(flush: true)) {

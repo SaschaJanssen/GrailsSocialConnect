@@ -2,20 +2,20 @@
 
 
 
-<div class="fieldcontain ${hasErrors(bean: keywordInstance, field: 'customer', 'error')} required">
-	<label for="customer">
-		<g:message code="keyword.customer.label" default="Customer" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:select id="customer" name="customer.id" from="${org.social.core.user.Customer.list()}" optionKey="id" required="" value="${keywordInstance?.customer?.id}" class="many-to-one"/>
-</div>
-
 <div class="fieldcontain ${hasErrors(bean: keywordInstance, field: 'keyword', 'error')} ">
 	<label for="keyword">
 		<g:message code="keyword.keyword.label" default="Keyword" />
 		
 	</label>
 	<g:textField name="keyword" value="${keywordInstance?.keyword}"/>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: keywordInstance, field: 'customer', 'error')} required">
+	<label for="customer">
+		<g:message code="keyword.customer.label" default="Customer" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:select id="customer" name="customer.id" from="${org.social.core.user.Customer.list()}" optionKey="id" required="" value="${keywordInstance?.customer?.id}" class="many-to-one"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: keywordInstance, field: 'keywordType', 'error')} required">
