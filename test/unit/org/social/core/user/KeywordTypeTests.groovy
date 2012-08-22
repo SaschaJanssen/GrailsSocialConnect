@@ -10,7 +10,7 @@ class KeywordTypeTests {
 
     void testConstraint() {
         def type = new KeywordType(id: 'HASH')
-        assertTrue 'Validation should have passed', type.validate()
-        assertEquals 'HASH', type.id
+        assert type.validate()
+        assert 'HASH' == type.id
     }
 }

@@ -1,8 +1,9 @@
 package org.social.core.network
 
 
-
+import static junit.framework.Assert.*
 import grails.test.mixin.*
+
 import org.junit.*
 
 /**
@@ -13,8 +14,8 @@ class NetworkTests {
 
     void testConstructor() {
 
-       def type = new Network(id: "TWITTER")
-       assertTrue 'Validation should have passed', type.validate()
-       assertEquals 'TWITTER', type.id
+        def type = new Network(id: "TWITTER")
+        assertTrue 'Validation should have passed', type.validate()
+        assertEquals 'TWITTER', type.id
     }
 }

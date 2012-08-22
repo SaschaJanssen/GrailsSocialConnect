@@ -2,7 +2,9 @@ package org.social.core.network
 
 
 
+import static junit.framework.Assert.*
 import grails.test.mixin.*
+
 import org.junit.*
 
 /**
@@ -13,24 +15,24 @@ class MessageTests {
 
     void testConstructorFail() {
 
-       def networkMock = []
-       mockDomain(Network, networkMock)
+        def networkMock = []
+        mockDomain(Network, networkMock)
 
-       def customerMock = []
-       mockDomain(org.social.core.user.Customer, customerMock)
+        def customerMock = []
+        mockDomain(org.social.core.user.Customer, customerMock)
 
-       def reliabilityMock = []
-       mockDomain(org.social.core.classification.Classification, reliabilityMock)
+        def reliabilityMock = []
+        mockDomain(org.social.core.classification.Classification, reliabilityMock)
 
-       def sentimentMock = []
-       mockDomain(org.social.core.classification.Classification, sentimentMock)
+        def sentimentMock = []
+        mockDomain(org.social.core.classification.Classification, sentimentMock)
 
 
-       def message = new Message()
-       assertFalse 'Validation should have failed', message.validate()
+        def message = new Message()
+        assertFalse message.validate()
 
-       message = new Message(network: networkMock, customer: customerMock, reliability: reliabilityMock, sentiment: sentimentMock)
-       assertFalse 'Validation should have failed', message.validate()
+        message = new Message(network: networkMock, customer: customerMock, reliability: reliabilityMock, sentiment: sentimentMock)
+        assertFalse message.validate()
     }
 
     void testConstructorPass() {

@@ -1,8 +1,9 @@
 package org.social.core.user
 
 
-
+import static junit.framework.Assert.*
 import grails.test.mixin.*
+
 import org.junit.*
 
 /**

@@ -63,8 +63,11 @@ class KeywordTypeControllerTests {
         type.id = 'HASH'
         type.save()
 
-        def model = controller.show('HASH')
-        assertEquals type, model.keywordTypeInstance
+        params.id = type.id
+
+        def model = controller.show()
+
+        assert model.keywordTypeInstance == type
     }
 
     void testEdit() {

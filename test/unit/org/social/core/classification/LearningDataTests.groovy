@@ -1,8 +1,9 @@
 package org.social.core.classification
 
 
-
+import static junit.framework.Assert.*
 import grails.test.mixin.*
+
 import org.junit.*
 
 /**
@@ -13,12 +14,12 @@ class LearningDataTests {
 
     void testConstraintsFail() {
 
-       def learningData = new LearningData()
-       assertFalse 'Validation should have failed.', learningData.validate()
+        def learningData = new LearningData()
+        assertFalse 'Validation should have failed.', learningData.validate()
 
-       def classification = new Classification(id: 'reliable')
-       learningData = new LearningData(classification: classification)
-       assertFalse 'Validation should have failed.', learningData.validate()
+        def classification = new Classification(id: 'reliable')
+        learningData = new LearningData(classification: classification)
+        assertFalse 'Validation should have failed.', learningData.validate()
     }
 
     void testConstraintsPass() {

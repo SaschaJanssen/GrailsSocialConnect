@@ -1,7 +1,7 @@
 package org.social.core.classification
 
 
-
+import static junit.framework.Assert.*
 import grails.test.mixin.*
 
 import org.junit.*
