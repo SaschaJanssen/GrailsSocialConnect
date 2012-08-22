@@ -2,17 +2,39 @@ package org.social.core.network
 
 
 
-import org.junit.*
 import grails.test.mixin.*
 
+import org.junit.*
+
 @TestFor(MessageController)
-@Mock(Message)
+@Mock([Message, org.social.core.classification.Classification, org.social.core.user.Customer, Network])
 class MessageControllerTests {
 
     def populateValidParams(params) {
+        def network = new Network()
+        network.id = 'TWITTER'
+        network.save()
+
+        def customer = new org.social.core.user.Customer()
+        customer.save()
+
+        def reliability = new org.social.core.classification.Classification()
+        reliability.id = 'RELIABLE'
+        reliability.save()
+
+        def sentiment = new org.social.core.classification.Classification()
+        sentiment.id = 'SENT'
+        sentiment.save()
+
+        params.network = network
+        params.customer = customer
+        params.reliability = reliability
+        params.sentiment = sentiment
+        params.message = 'MESSAGE'
+        params.messageReceivedDate = new Date()
+        params.networkMessageDate = new Date()
+
         assert params != null
-        // TODO: Populate valid properties like...
-        //params["name"] = 'someValidName'
     }
 
     void testIndex() {
@@ -101,7 +123,7 @@ class MessageControllerTests {
 
         // test invalid parameters in update
         params.id = message.id
-        //TODO: add invalid values to params object
+        params.message = null
 
         controller.update()
 

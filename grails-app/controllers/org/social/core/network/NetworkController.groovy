@@ -61,16 +61,6 @@ class NetworkController {
             return
         }
 
-        if (version != null) {
-            if (networkInstance.version > version) {
-                networkInstance.errors.rejectValue("version", "default.optimistic.locking.failure",
-                          [message(code: 'network.label', default: 'Network')] as Object[],
-                          "Another user has updated this Network while you were editing")
-                render(view: "edit", model: [networkInstance: networkInstance])
-                return
-            }
-        }
-
         networkInstance.properties = params
 
         if (!networkInstance.save(flush: true)) {

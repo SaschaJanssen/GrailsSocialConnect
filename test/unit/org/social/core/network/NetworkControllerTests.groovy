@@ -2,17 +2,17 @@ package org.social.core.network
 
 
 
-import org.junit.*
 import grails.test.mixin.*
+
+import org.junit.*
 
 @TestFor(NetworkController)
 @Mock(Network)
 class NetworkControllerTests {
 
     def populateValidParams(params) {
+        params.id = 'TWITTER'
         assert params != null
-        // TODO: Populate valid properties like...
-        //params["name"] = 'someValidName'
     }
 
     void testIndex() {
@@ -35,6 +35,7 @@ class NetworkControllerTests {
     }
 
     void testSave() {
+        params.id = ''
         controller.save()
 
         assert model.networkInstance != null
@@ -45,7 +46,7 @@ class NetworkControllerTests {
         populateValidParams(params)
         controller.save()
 
-        assert response.redirectedUrl == '/network/show/1'
+        assert response.redirectedUrl == '/network/show/TWITTER'
         assert controller.flash.message != null
         assert Network.count() == 1
     }
@@ -58,7 +59,7 @@ class NetworkControllerTests {
 
         populateValidParams(params)
         def network = new Network(params)
-
+        network.id = params.id
         assert network.save() != null
 
         params.id = network.id
@@ -76,7 +77,7 @@ class NetworkControllerTests {
 
         populateValidParams(params)
         def network = new Network(params)
-
+        network.id = params.id
         assert network.save() != null
 
         params.id = network.id
@@ -96,38 +97,15 @@ class NetworkControllerTests {
 
         populateValidParams(params)
         def network = new Network(params)
-
+        network.id = params.id
         assert network.save() != null
 
-        // test invalid parameters in update
-        params.id = network.id
-        //TODO: add invalid values to params object
-
-        controller.update()
-
-        assert view == "/network/edit"
-        assert model.networkInstance != null
-
-        network.clearErrors()
 
         populateValidParams(params)
+        params.description = 'FOO BAA'
         controller.update()
 
         assert response.redirectedUrl == "/network/show/$network.id"
-        assert flash.message != null
-
-        //test outdated version number
-        response.reset()
-        network.clearErrors()
-
-        populateValidParams(params)
-        params.id = network.id
-        params.version = -1
-        controller.update()
-
-        assert view == "/network/edit"
-        assert model.networkInstance != null
-        assert model.networkInstance.errors.getFieldError('version')
         assert flash.message != null
     }
 
@@ -140,7 +118,7 @@ class NetworkControllerTests {
 
         populateValidParams(params)
         def network = new Network(params)
-
+        network.id = params.id
         assert network.save() != null
         assert Network.count() == 1
 
