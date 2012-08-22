@@ -3,6 +3,7 @@ package org.social.core.classification
 
 
 import grails.test.mixin.*
+
 import org.junit.*
 
 /**
@@ -12,9 +13,9 @@ import org.junit.*
 class ClassificationTypeTests {
 
     void testConstructor() {
-       mockDomain(ClassificationType)
-       def type = new ClassificationType(id: "TYPE")
-       assertTrue 'Validation should have passed', type.validate()
-       assertEquals 'TYPE', type.id
+        mockDomain(ClassificationType)
+        def type = new ClassificationType(id: "TYPE")
+        assertTrue 'Validation should have passed', type.validate()
+        assertEquals 'TYPE', type.id
     }
 }

@@ -2,17 +2,18 @@ package org.social.core.classification
 
 
 
-import org.junit.*
 import grails.test.mixin.*
+
+import org.junit.*
 
 @TestFor(ClassificationTypeController)
 @Mock(ClassificationType)
 class ClassificationTypeControllerTests {
 
     def populateValidParams(params) {
+        params.id = 'TYPE'
+
         assert params != null
-        // TODO: Populate valid properties like...
-        //params["name"] = 'someValidName'
     }
 
     void testIndex() {
@@ -35,6 +36,7 @@ class ClassificationTypeControllerTests {
     }
 
     void testSave() {
+        params.id = ''
         controller.save()
 
         assert model.classificationTypeInstance != null
@@ -45,7 +47,7 @@ class ClassificationTypeControllerTests {
         populateValidParams(params)
         controller.save()
 
-        assert response.redirectedUrl == '/classificationType/show/1'
+        assert response.redirectedUrl == '/classificationType/show/TYPE'
         assert controller.flash.message != null
         assert ClassificationType.count() == 1
     }
@@ -58,7 +60,7 @@ class ClassificationTypeControllerTests {
 
         populateValidParams(params)
         def classificationType = new ClassificationType(params)
-
+        classificationType.id = params.id
         assert classificationType.save() != null
 
         params.id = classificationType.id
@@ -76,6 +78,7 @@ class ClassificationTypeControllerTests {
 
         populateValidParams(params)
         def classificationType = new ClassificationType(params)
+        classificationType.id = params.id
 
         assert classificationType.save() != null
 
@@ -96,38 +99,14 @@ class ClassificationTypeControllerTests {
 
         populateValidParams(params)
         def classificationType = new ClassificationType(params)
+        classificationType.id = params.id
 
         assert classificationType.save() != null
-
-        // test invalid parameters in update
-        params.id = classificationType.id
-        //TODO: add invalid values to params object
-
-        controller.update()
-
-        assert view == "/classificationType/edit"
-        assert model.classificationTypeInstance != null
-
-        classificationType.clearErrors()
 
         populateValidParams(params)
         controller.update()
 
         assert response.redirectedUrl == "/classificationType/show/$classificationType.id"
-        assert flash.message != null
-
-        //test outdated version number
-        response.reset()
-        classificationType.clearErrors()
-
-        populateValidParams(params)
-        params.id = classificationType.id
-        params.version = -1
-        controller.update()
-
-        assert view == "/classificationType/edit"
-        assert model.classificationTypeInstance != null
-        assert model.classificationTypeInstance.errors.getFieldError('version')
         assert flash.message != null
     }
 
@@ -140,6 +119,7 @@ class ClassificationTypeControllerTests {
 
         populateValidParams(params)
         def classificationType = new ClassificationType(params)
+        classificationType.id = params.id
 
         assert classificationType.save() != null
         assert ClassificationType.count() == 1

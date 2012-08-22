@@ -2,17 +2,24 @@ package org.social.core.classification
 
 
 
-import org.junit.*
 import grails.test.mixin.*
 
+import org.junit.*
+
 @TestFor(LearningDataController)
-@Mock(LearningData)
+@Mock([LearningData, Classification])
 class LearningDataControllerTests {
 
     def populateValidParams(params) {
+
+        def classification = new org.social.core.classification.Classification()
+        classification.id = 'SENT'
+        classification.save()
+
+        params.classification = classification
+        params.learningData = 'FOO BAA'
+
         assert params != null
-        // TODO: Populate valid properties like...
-        //params["name"] = 'someValidName'
     }
 
     void testIndex() {
@@ -101,7 +108,7 @@ class LearningDataControllerTests {
 
         // test invalid parameters in update
         params.id = learningData.id
-        //TODO: add invalid values to params object
+        params.learningData = null
 
         controller.update()
 

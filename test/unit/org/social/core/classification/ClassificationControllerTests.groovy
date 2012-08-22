@@ -2,17 +2,23 @@ package org.social.core.classification
 
 
 
-import org.junit.*
 import grails.test.mixin.*
 
+import org.junit.*
+
 @TestFor(ClassificationController)
-@Mock(Classification)
+@Mock([Classification, ClassificationType])
 class ClassificationControllerTests {
 
     def populateValidParams(params) {
+        def type = new org.social.core.classification.ClassificationType()
+        type.id = 'SENTIMENT'
+        type.save()
+
+        params.classificationType = type
+        params.id = 'POSITIVE'
+
         assert params != null
-        // TODO: Populate valid properties like...
-        //params["name"] = 'someValidName'
     }
 
     void testIndex() {
@@ -35,6 +41,7 @@ class ClassificationControllerTests {
     }
 
     void testSave() {
+        params.id = ''
         controller.save()
 
         assert model.classificationInstance != null
@@ -45,7 +52,7 @@ class ClassificationControllerTests {
         populateValidParams(params)
         controller.save()
 
-        assert response.redirectedUrl == '/classification/show/1'
+        assert response.redirectedUrl == '/classification/show/POSITIVE'
         assert controller.flash.message != null
         assert Classification.count() == 1
     }
@@ -58,6 +65,7 @@ class ClassificationControllerTests {
 
         populateValidParams(params)
         def classification = new Classification(params)
+        classification.id = params.id
 
         assert classification.save() != null
 
@@ -76,6 +84,7 @@ class ClassificationControllerTests {
 
         populateValidParams(params)
         def classification = new Classification(params)
+        classification.id  = params.id
 
         assert classification.save() != null
 
@@ -96,38 +105,14 @@ class ClassificationControllerTests {
 
         populateValidParams(params)
         def classification = new Classification(params)
+        classification.id  = params.id
 
         assert classification.save() != null
-
-        // test invalid parameters in update
-        params.id = classification.id
-        //TODO: add invalid values to params object
-
-        controller.update()
-
-        assert view == "/classification/edit"
-        assert model.classificationInstance != null
-
-        classification.clearErrors()
 
         populateValidParams(params)
         controller.update()
 
         assert response.redirectedUrl == "/classification/show/$classification.id"
-        assert flash.message != null
-
-        //test outdated version number
-        response.reset()
-        classification.clearErrors()
-
-        populateValidParams(params)
-        params.id = classification.id
-        params.version = -1
-        controller.update()
-
-        assert view == "/classification/edit"
-        assert model.classificationInstance != null
-        assert model.classificationInstance.errors.getFieldError('version')
         assert flash.message != null
     }
 
@@ -140,6 +125,7 @@ class ClassificationControllerTests {
 
         populateValidParams(params)
         def classification = new Classification(params)
+        classification.id  = params.id
 
         assert classification.save() != null
         assert Classification.count() == 1

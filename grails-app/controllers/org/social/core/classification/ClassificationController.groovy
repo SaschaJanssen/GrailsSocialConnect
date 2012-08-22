@@ -61,16 +61,6 @@ class ClassificationController {
             return
         }
 
-        if (version != null) {
-            if (classificationInstance.version > version) {
-                classificationInstance.errors.rejectValue("version", "default.optimistic.locking.failure",
-                          [message(code: 'classification.label', default: 'Classification')] as Object[],
-                          "Another user has updated this Classification while you were editing")
-                render(view: "edit", model: [classificationInstance: classificationInstance])
-                return
-            }
-        }
-
         classificationInstance.properties = params
 
         if (!classificationInstance.save(insert: true, flush: true)) {
