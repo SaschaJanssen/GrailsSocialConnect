@@ -13,8 +13,8 @@ public class OpenTableQuery extends Query {
     public OpenTableQuery(CustomerNetworkKeywords customerNetworkKeywords) {
         super(customerNetworkKeywords);
         setEndpoint(customerNetworkKeywords.getPage());
-        searchUrl = UtilProperties.getPropertyValue("conf/openTable.properties", "searchUrl");
-        postFix = UtilProperties.getPropertyValue("conf/openTable.properties", "postfix");
+        searchUrl = UtilProperties.getPropertyValue("grails-app/conf/openTable.properties", "searchUrl");
+        postFix = UtilProperties.getPropertyValue("grails-app/conf/openTable.properties", "postfix");
     }
 
     @Override

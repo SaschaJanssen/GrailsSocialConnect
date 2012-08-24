@@ -13,7 +13,7 @@ class KrakenFactoryService {
     def serviceMethod() {
     }
 
-    public static SocialNetworkKraken getInstance(String network, Customer customer)
+    public SocialNetworkKraken getInstance(String network, Customer customer)
     throws IllegalArgumentException {
 
         if (Networks.FACEBOOK.getName().equals(network)) {

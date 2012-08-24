@@ -21,7 +21,7 @@ public class FacebookQuery extends Query {
         super(networkKeywords);
 
         setQuery(networkKeywords.getQueryForNetwork());
-        searchUrl = UtilProperties.getPropertyValue("conf/fb.properties", "searchUrl");
+        searchUrl = UtilProperties.getPropertyValue("grails-app/conf/fb.properties", "searchUrl");
     }
 
     private void setQuery(String query) {

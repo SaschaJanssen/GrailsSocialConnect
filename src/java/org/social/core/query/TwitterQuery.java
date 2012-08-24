@@ -26,7 +26,7 @@ public class TwitterQuery extends Query {
         setQuery(cnk.getQueryForNetwork());
         setHash(cnk.getHashForNetwork());
         setMentioned(cnk.getMentionedForNetwork());
-        searchUrl = UtilProperties.getPropertyValue("conf/twitter.properties", "searchUrl");
+        searchUrl = UtilProperties.getPropertyValue("grails-app/conf/twitter.properties", "searchUrl");
     }
 
     private void setQuery(String direct) {

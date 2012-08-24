@@ -3,6 +3,7 @@ package org.social.core.network
 import net.sf.json.JSONObject
 
 import org.slf4j.Logger
+import org.slf4j.LoggerFactory
 import org.social.core.constants.Networks
 import org.social.core.data.FilteredMessageList
 import org.social.core.network.connection.SocialNetworkConnection

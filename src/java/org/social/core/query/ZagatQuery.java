@@ -13,8 +13,8 @@ public class ZagatQuery extends Query {
     public ZagatQuery(CustomerNetworkKeywords customerNetworkKeywords) {
         super(customerNetworkKeywords);
         setEndpoint(customerNetworkKeywords.getPage());
-        searchUrl = UtilProperties.getPropertyValue("conf/zagat.properties", "searchUrl");
-        postFix = UtilProperties.getPropertyValue("conf/zagat.properties", "postfix");
+        searchUrl = UtilProperties.getPropertyValue("grails-app/conf/zagat.properties", "searchUrl");
+        postFix = UtilProperties.getPropertyValue("grails-app/conf/zagat.properties", "postfix");
     }
 
     @Override

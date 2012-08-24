@@ -45,7 +45,7 @@ class CustomerNetworkKeywords {
         Map<KeywordType, String> mappedKeywords = new HashMap<KeywordType, String>()
 
         keywordsForCustomer.each { keyword ->
-            String keywordType = keyword.keywordType
+            String keywordType = keyword.keywordType.id
 
             if (KeywordType.HASH.isKeywordType(keywordType)) {
                 mappedKeywords.put(KeywordType.HASH, keyword.getKeyword())

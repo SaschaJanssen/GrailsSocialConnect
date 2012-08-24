@@ -22,9 +22,7 @@ public abstract class SocialNetworkKraken {
     }
 
     protected void getCustomersKeywords(String networkName) {
-        Long customerId = customer.id
-
-        List<Keyword> keywords = keywordDao.getMappedKeywordByCustomerAndNetwork(customerId, networkName)
+        def keywords = Keyword.findAllByCustomerAndNetwork(customer, Network.get(networkName))
         customerNetworkKeywords = new CustomerNetworkKeywords(keywords)
     }
 

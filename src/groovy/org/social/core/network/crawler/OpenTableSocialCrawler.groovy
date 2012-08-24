@@ -48,6 +48,6 @@ class OpenTableSocialCrawler extends SocialCrawler {
 
     @Override
     def String getPropertyFileName() {
-        return "conf/openTable.properties"
+        return "grails-app/conf/openTable.properties"
     }
 }

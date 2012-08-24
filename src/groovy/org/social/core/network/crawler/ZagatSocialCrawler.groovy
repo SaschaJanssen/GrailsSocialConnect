@@ -1,55 +1,55 @@
-package org.social.core.network.crawler;
+package org.social.core.network.crawler
 
-import org.jsoup.nodes.Element;
-import org.social.core.constants.Networks;
+import org.jsoup.nodes.Element
+import org.social.core.constants.Networks
 
 public class ZagatSocialCrawler extends SocialCrawler {
 
     public ZagatSocialCrawler(BaseCrawler crawler, String baseUrl, String endpoint) {
-        super(crawler, baseUrl, endpoint);
+        super(crawler, baseUrl, endpoint)
     }
 
     @Override
     protected String extractNetworkUserRatingData(Element ratingElement) {
-        return ratingElement.text();
+        return ratingElement.text()
     }
 
     @Override
     protected String getLanguageFromHeadMetaData(Element headerElements) {
-        return headerElements.parent().attr("lang");
+        return headerElements.parent().attr("lang")
     }
 
     @Override
     public String getNextPageFromPagination(Element body) {
-        String nextPage = null;
+        String nextPage = null
 
-        Element nextPageLink = body.select(paginationControlsCssClassName).first();
+        Element nextPageLink = body.select(paginationControlsCssClassName).first()
         if (nextPageLink != null) {
-            nextPage = nextPageLink.attr("href");
+            nextPage = nextPageLink.attr("href")
         }
-        return nextPage;
+        return nextPage
     }
 
     @Override
     protected String getNetworkName() {
-        return Networks.ZAGAT.name();
+        return Networks.ZAGAT.name()
     }
 
     @Override
     protected String getUserIdFromUserInfo(Element userInfo) {
-        String href = userInfo.child(0).attr("href");
-        String[] splited = href.split("/");
+        String href = userInfo.child(0).attr("href")
+        String[] splited = href.split("/")
 
-        return splited[2];
+        return splited[2]
     }
 
     @Override
     protected String getUserNameFromUserInfo(Element userInfo) {
-        return userInfo.text();
+        return userInfo.text()
     }
 
     @Override
     protected String getPropertyFileName() {
-        return "conf/zagat.properties";
+        return "grails-app/conf/zagat.properties"
     }
 }

@@ -5,6 +5,7 @@ import java.util.concurrent.Executors
 import java.util.concurrent.TimeUnit
 
 import org.social.core.data.FilteredMessageList
+import org.social.core.network.KrakenFactoryService
 import org.social.core.network.SocialNetworkKraken
 import org.social.core.user.Customer
 import org.social.core.user.Keyword
@@ -13,21 +14,24 @@ class ConsumerService {
 
     static transactional = false
 
-    def krakenFactoryService
-
     private ExecutorService executor
     private FilteredMessageList results
 
-    public SocialDataConsumer() {
+    public ConsumerService() {
         executor = Executors.newCachedThreadPool()
         results = new FilteredMessageList()
     }
 
     public FilteredMessageList consumeData(Customer customer) {
-        def userNetworks = Keyword.executeQuery("select distinct k.network from Keyword k where k.customer= :id", [id: customer.id])
+        if (log.isDebugEnabled()) {
+            log.debug "Consume Data for customer with id: " + customer.id
+        }
 
-        for (String network : userNetworks) {
-            SocialNetworkKraken socialNetworkCon = krakenFactoryService.getInstance(network, customer)
+        def userNetworks = Keyword.executeQuery("select distinct k.network from Keyword k where k.customer= ?", [customer])
+
+        def krakenFactory = new KrakenFactoryService()
+        userNetworks.each() { network -> 
+            SocialNetworkKraken socialNetworkCon = krakenFactory.getInstance(network.id, customer)
 
             Thread networkThread = new Thread(new NetworkConsumeThread(socialNetworkCon))
             executor.execute(networkThread)
