@@ -11,12 +11,14 @@ import org.social.core.util.UtilProperties
 
 class SocialService {
 
+    static transactional = true
+
     private boolean storeLastNetworkAccessToDb
 
     public void start() {
         loadProperties()
 
-        // learn()
+        learn()
 
         def customers = Customer.list()
         for (Customer customer : customers) {
@@ -37,12 +39,15 @@ class SocialService {
     }
 
     private void learn() {
-        List<LearningData> learningData = LearningData.list()
+        List<LearningData> learningData = LearningData.list(fetch: [classification: "eager"])
         Classifier<String, String> classifier = BayesClassifier.getInstance()
         classifier.reset()
-        for (LearningData data : learningData) {
+
+        learningData.each() { data ->
             List<String> t = UtilLucene.ngramString(data.getLearningData())
-            classifier.learn(data.classification, t)
+            def classifi = data.classification
+
+            classifier.learn(classifi.id, t)
         }
     }
 
