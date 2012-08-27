@@ -180,7 +180,7 @@ abstract class SocialCrawler {
             String platformUserRating = getNetworkUserRating(reviewData)
             returnMessage.setNetworkUserRating(platformUserRating)
 
-            returnMessage.reliability = Classification.get(Classification.RELIABLE.getName())
+            returnMessage.setReliability(Classification.RELIABLE.getName())
 
             resultList.add(returnMessage)
         }

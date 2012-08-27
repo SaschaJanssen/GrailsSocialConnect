@@ -39,12 +39,13 @@ public class SentimentAnalyser {
             if (log.isDebugEnabled()) {
                 log.debug("Message: " + msgData.getMessage() + " classified as: " + classification)
             }
+
             if (Classification.POSITIVE.isClassification(classification)) {
-                msgData.setSentimentId(Classification.POSITIVE.getName())
+                msgData.setSentiment(Classification.POSITIVE.getName())
             } else if (Classification.NEGATIVE.isClassification(classification)) {
-                msgData.setSentimentId(Classification.NEGATIVE.getName())
+                msgData.setSentiment(Classification.NEGATIVE.getName())
             } else {
-                msgData.setSentimentId(Classification.NEUTRAL.getName())
+                msgData.setSentiment(Classification.NEUTRAL.getName())
             }
         }
         return reliableMessageList

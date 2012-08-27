@@ -64,8 +64,8 @@ public class TwitterKraken extends SocialNetworkKraken {
         JSONArray resultArray = json.getJSONArray("results")
 
         for (Object object : resultArray) {
-            Message messageData = new Message(Networks.TWITTER.getName())
-            messageData.network = Network.get(Networks.QYPE.getName())
+            Message messageData = new Message()
+            messageData.network = Network.get(Networks.TWITTER.getName())
 
             messageData.customer = customer
 

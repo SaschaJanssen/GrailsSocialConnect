@@ -23,7 +23,7 @@ class WordlistFilter {
             log.debug("Initialize wordlist filter - loading data")
         }
 
-        InputStream wordlistInputStream = ClassLoader.getSystemResourceAsStream("wordlists/FoodEng")
+        InputStream wordlistInputStream = new FileInputStream("grails-app/conf/wordlists/FoodEng")
         Set<String> foodwordlist = writeStreamInStringSet(wordlistInputStream)
 
         return foodwordlist

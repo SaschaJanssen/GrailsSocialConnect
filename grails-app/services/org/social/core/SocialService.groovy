@@ -5,7 +5,9 @@ import org.social.core.consumer.ConsumerService
 import org.social.core.data.FilteredMessageList
 import org.social.core.filter.classifier.bayes.BayesClassifier
 import org.social.core.filter.classifier.bayes.Classifier
+import org.social.core.network.Message
 import org.social.core.user.Customer
+import org.social.core.util.UtilDateTime
 import org.social.core.util.UtilLucene
 import org.social.core.util.UtilProperties
 
@@ -21,21 +23,33 @@ class SocialService {
         learn()
 
         def customers = Customer.list()
-        for (Customer customer : customers) {
+        customers.each() {  customer  ->
             def consumerService = new ConsumerService()
             FilteredMessageList filteredMessageDataList = consumerService.consumeData(customer)
 
-            // TODO save messages in DB --> messageDao.storeMessages(filteredMessageDataList);
+            storeFilteredListsInDb(filteredMessageDataList)
+
 
             if (storeLastNetworkAccessToDb) {
-                // TODO update user lastNetworkAccess in DB --> customerDao.updateCustomerNetworkAccess(customer, UtilDateTime.nowTimestamp());
+                customer.lastNetworkAccess = UtilDateTime.nowTimestamp()
+                customer.save(flush: true)
             }
         }
 
         if (log.isDebugEnabled()) {
             log.debug("Finished social connect run successfully.")
         }
+    }
 
+    private storeFilteredListsInDb(FilteredMessageList filteredMessageDataList) {
+        filteredMessageDataList.getNegativeList().each() { message -> writeToDb(message) }
+        filteredMessageDataList.getPositiveList().each() { message -> writeToDb(message) }
+    }
+
+    private writeToDb(Message message) {
+        if(!message.save(flush: true)) {
+            message.errors.each { log.error(it) }
+        }
     }
 
     private void learn() {
@@ -68,5 +82,4 @@ class SocialService {
         storeLastNetworkAccessToDb = UtilProperties.getPropertyValueAsBoolean("grails-app/conf/social.properties",
                         "write.user.last.network.access.to.db", true)
     }
-
 }
