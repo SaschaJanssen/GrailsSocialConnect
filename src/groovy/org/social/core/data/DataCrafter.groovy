@@ -2,7 +2,7 @@ package org.social.core.data
 
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
-import org.social.core.constants.Classification
+import org.social.core.constants.ClassificationConst
 import org.social.core.filter.SentimentAnalyser
 import org.social.core.filter.TwitterMentionedFilter
 import org.social.core.filter.WordlistFilter
@@ -62,12 +62,12 @@ public class DataCrafter {
     }
 
     private void addToNegativeList(Message negativeMessage) {
-        negativeMessage.setReliability(Classification.NOT_RELIABLE.getName())
+        negativeMessage.setReliability(ClassificationConst.NOT_RELIABLE.getName())
         negativeList.add(negativeMessage)
     }
 
     private void addToPositiveList(Message positiveMessage) {
-        positiveMessage.setReliability(Classification.RELIABLE.getName())
+        positiveMessage.setReliability(ClassificationConst.RELIABLE.getName())
         positiveList.add(positiveMessage)
     }
 

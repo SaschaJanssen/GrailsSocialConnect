@@ -4,7 +4,7 @@ import java.sql.Timestamp
 
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
-import org.social.core.constants.Networks
+import org.social.core.constants.NetworkConst
 import org.social.core.data.FilteredMessageList
 import org.social.core.exceptions.ItemNotFoundException
 import org.social.core.network.crawler.BaseCrawler
@@ -24,7 +24,7 @@ public class YelpKraken extends SocialNetworkKraken {
         this.customer = customer
         this.crawler = crawler
 
-        getCustomersKeywords(Networks.YELP.getName())
+        getCustomersKeywords(NetworkConst.YELP.getName())
     }
 
     @Override

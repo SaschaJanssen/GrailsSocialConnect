@@ -1,6 +1,6 @@
 package org.social.core.constants;
 
-public enum Networks {
+public enum NetworkConst {
     FACEBOOK, TWITTER, YELP, QYPE, OPENTABLE, TRIPADVISOR, ZAGAT, FOURSQUARE;
 
     public String getName() {

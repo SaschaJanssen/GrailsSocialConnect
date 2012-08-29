@@ -2,7 +2,8 @@ package org.social.core.filter
 
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
-import org.social.core.constants.Classification
+import org.social.core.classification.Classification
+import org.social.core.constants.ClassificationConst
 import org.social.core.filter.classifier.bayes.BayesClassifier
 import org.social.core.filter.classifier.bayes.Classifier
 import org.social.core.network.Message
@@ -40,13 +41,16 @@ public class SentimentAnalyser {
                 log.debug("Message: " + msgData.getMessage() + " classified as: " + classification)
             }
 
-            if (Classification.POSITIVE.isClassification(classification)) {
-                msgData.setSentiment(Classification.POSITIVE.getName())
-            } else if (Classification.NEGATIVE.isClassification(classification)) {
-                msgData.setSentiment(Classification.NEGATIVE.getName())
+
+            def classificationType = new Classification()
+            if (ClassificationConst.POSITIVE.isClassification(classification)) {
+                classificationType.id = ClassificationConst.POSITIVE.getName()
+            } else if (ClassificationConst.NEGATIVE.isClassification(classification)) {
+                classificationType.id = ClassificationConst.NEGATIVE.getName()
             } else {
-                msgData.setSentiment(Classification.NEUTRAL.getName())
+                classificationType.id = ClassificationConst.NEUTRAL.getName()
             }
+            msgData.setSentiment(classificationType)
         }
         return reliableMessageList
     }

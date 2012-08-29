@@ -1,7 +1,7 @@
 package org.social.core.network.crawler
 
 import org.jsoup.nodes.Element
-import org.social.core.constants.Networks
+import org.social.core.constants.NetworkConst
 
 class OpenTableSocialCrawler extends SocialCrawler {
 
@@ -33,7 +33,7 @@ class OpenTableSocialCrawler extends SocialCrawler {
 
     @Override
     def String getNetworkName() {
-        return Networks.OPENTABLE.name()
+        return NetworkConst.OPENTABLE.name()
     }
 
     @Override

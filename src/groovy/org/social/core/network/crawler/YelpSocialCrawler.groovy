@@ -2,7 +2,7 @@ package org.social.core.network.crawler
 
 import org.jsoup.nodes.Element
 import org.jsoup.select.Elements
-import org.social.core.constants.Networks
+import org.social.core.constants.NetworkConst
 import org.social.core.exceptions.ItemNotFoundException
 
 public class YelpSocialCrawler extends SocialCrawler {
@@ -53,7 +53,7 @@ public class YelpSocialCrawler extends SocialCrawler {
 
     @Override
     protected String getNetworkName() {
-        return Networks.YELP.name()
+        return NetworkConst.YELP.name()
     }
 
     @Override

@@ -1,6 +1,6 @@
 package org.social.core.constants;
 
-public enum KeywordType {
+public enum KeywordTypeConst {
     QUERY, HASH, MENTIONED, PAGE;
 
     public String getName() {

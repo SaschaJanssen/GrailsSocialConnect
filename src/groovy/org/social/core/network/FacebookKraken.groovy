@@ -4,7 +4,7 @@ import net.sf.json.JSONObject
 
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
-import org.social.core.constants.Networks
+import org.social.core.constants.NetworkConst
 import org.social.core.data.FilteredMessageList
 import org.social.core.network.connection.SocialNetworkConnection
 import org.social.core.query.FacebookQuery
@@ -20,7 +20,7 @@ class FacebookKraken extends SocialNetworkKraken {
     public FacebookKraken(Customer customer, SocialNetworkConnection fbConnection) {
         super(customer)
         connection = fbConnection
-        getCustomersKeywords(Networks.FACEBOOK.getName())
+        getCustomersKeywords(NetworkConst.FACEBOOK.getName())
     }
 
     @Override
@@ -59,8 +59,8 @@ class FacebookKraken extends SocialNetworkKraken {
                 // object could be ignored if no message attribute is set.
                 continue
             }
-            Message messageData = new Message(Networks.FACEBOOK.getName())
-            messageData.network = Network.get(Networks.FACEBOOK.getName())
+            Message messageData = new Message()
+            messageData.network = Network.get(NetworkConst.FACEBOOK.getName())
 
             messageData.customer = customer
 

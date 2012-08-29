@@ -7,9 +7,10 @@ import org.jsoup.nodes.Element
 import org.jsoup.select.Elements
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
-import org.social.core.constants.Classification
+import org.social.core.constants.ClassificationConst
 import org.social.core.exceptions.ItemNotFoundException
 import org.social.core.network.Message
+import org.social.core.network.Network
 import org.social.core.user.Customer
 import org.social.core.util.UtilDateTime
 import org.social.core.util.UtilProperties
@@ -87,7 +88,7 @@ abstract class SocialCrawler {
             }
 
             List<Message> extractedMessages = extractReviewDataFromHtml(reviewContainer, document.head(),
-                            customer.id)
+                            customer)
 
             extractedMessages = filterMessageByDate(extractedMessages, customer.lastNetworkAccess)
 
@@ -141,7 +142,7 @@ abstract class SocialCrawler {
 
     public abstract String getNextPageFromPagination(Element currentPaginationElement) throws ItemNotFoundException
 
-    public List<Message> extractReviewDataFromHtml(Elements reviewContainer, Element headerElements, Long customerId)
+    public List<Message> extractReviewDataFromHtml(Elements reviewContainer, Element headerElements, Customer customer)
     throws ItemNotFoundException {
         List<Message> resultList = new ArrayList<Message>()
 
@@ -149,7 +150,8 @@ abstract class SocialCrawler {
         Elements pageReviewData = getReviewData(reviewContainer)
 
         for (int i = 0; i < pageReviewData.size(); i++) {
-            Message returnMessage = new Message(network: getNetworkName())
+            Message returnMessage = new Message()
+            returnMessage.network = new Network(id: getNetworkName())
 
             Element reviewData = pageReviewData.get(i)
 
@@ -162,7 +164,7 @@ abstract class SocialCrawler {
             String networkUserId = getUserIdFromUserInfo(userInfo)
             returnMessage.setNetworkUserId(networkUserId)
 
-            returnMessage.customer = Customer.get(customerId)
+            returnMessage.customer = customer
 
             String message = getReviewTextFromComment(reviewData)
             returnMessage.setMessage(message)
@@ -180,7 +182,7 @@ abstract class SocialCrawler {
             String platformUserRating = getNetworkUserRating(reviewData)
             returnMessage.setNetworkUserRating(platformUserRating)
 
-            returnMessage.setReliability(Classification.RELIABLE.getName())
+            returnMessage.setReliability(ClassificationConst.RELIABLE.getName())
 
             resultList.add(returnMessage)
         }

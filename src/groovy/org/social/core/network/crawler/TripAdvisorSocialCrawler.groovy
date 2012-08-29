@@ -6,7 +6,7 @@ import java.util.regex.Pattern
 import org.apache.commons.lang.StringUtils
 import org.jsoup.nodes.Element
 import org.jsoup.select.Elements
-import org.social.core.constants.Networks
+import org.social.core.constants.NetworkConst
 import org.social.core.exceptions.ItemNotFoundException
 
 public class TripAdvisorSocialCrawler extends SocialCrawler {
@@ -98,7 +98,7 @@ public class TripAdvisorSocialCrawler extends SocialCrawler {
 
     @Override
     protected String getNetworkName() {
-        return Networks.TRIPADVISOR.name()
+        return NetworkConst.TRIPADVISOR.name()
     }
 
     @Override

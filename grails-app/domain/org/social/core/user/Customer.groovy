@@ -15,7 +15,5 @@ class Customer {
         lastUpdated = new Date()
     }
 
-    static constraints = {
-        lastNetworkAccess (nullable: true)
-    }
+    static constraints = { lastNetworkAccess (nullable: true) }
 }

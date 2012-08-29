@@ -7,8 +7,9 @@ import net.sf.json.JSONObject
 
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
-import org.social.core.constants.Classification
-import org.social.core.constants.Networks
+import org.social.core.classification.Classification
+import org.social.core.constants.ClassificationConst
+import org.social.core.constants.NetworkConst
 import org.social.core.data.FilteredMessageList
 import org.social.core.network.connection.SocialNetworkConnection
 import org.social.core.query.QypeQuery
@@ -23,7 +24,7 @@ public class QypeKraken extends SocialNetworkKraken {
     public QypeKraken(Customer customer, SocialNetworkConnection fbConnection) {
         super(customer)
         connection = fbConnection
-        getCustomersKeywords(Networks.QYPE.getName())
+        getCustomersKeywords(NetworkConst.QYPE.getName())
     }
 
     @Override
@@ -61,7 +62,7 @@ public class QypeKraken extends SocialNetworkKraken {
 
         for (JSONObject object : searchResult) {
             Message messageData = new Message()
-            messageData.network = Network.get(Networks.QYPE.getName())
+            messageData.network = Network.get(NetworkConst.QYPE.getName())
 
             messageData.customer = customer
 
@@ -87,7 +88,7 @@ public class QypeKraken extends SocialNetworkKraken {
 
             messageData.setLanguage(object.getString("language"))
 
-            messageData.reliability = Classification.get(Classification.RELIABLE.getName())
+            messageData.reliability = Classification.get(ClassificationConst.RELIABLE.getName())
             messageData.setNetworkUserRating(object.getString("rating"))
             results.add(messageData)
         }

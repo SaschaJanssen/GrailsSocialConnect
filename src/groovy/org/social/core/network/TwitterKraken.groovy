@@ -5,7 +5,7 @@ import net.sf.json.JSONObject
 
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
-import org.social.core.constants.Networks
+import org.social.core.constants.NetworkConst
 import org.social.core.data.FilteredMessageList
 import org.social.core.network.connection.SocialNetworkConnection
 import org.social.core.query.TwitterQuery
@@ -23,7 +23,7 @@ public class TwitterKraken extends SocialNetworkKraken {
         connection = twitterConnection
         this.customer = customer
 
-        getCustomersKeywords(Networks.TWITTER.getName())
+        getCustomersKeywords(NetworkConst.TWITTER.getName())
     }
 
     @Override
@@ -65,7 +65,7 @@ public class TwitterKraken extends SocialNetworkKraken {
 
         for (Object object : resultArray) {
             Message messageData = new Message()
-            messageData.network = Network.get(Networks.TWITTER.getName())
+            messageData.network = Network.get(NetworkConst.TWITTER.getName())
 
             messageData.customer = customer
 

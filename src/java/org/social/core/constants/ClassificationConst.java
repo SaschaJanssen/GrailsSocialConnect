@@ -1,6 +1,6 @@
 package org.social.core.constants;
 
-public enum Classification {
+public enum ClassificationConst {
     RELIABLE, NOT_RELIABLE, NOT_CLASSIFIED, POSITIVE, NEGATIVE, NEUTRAL;
 
     public String getName() {

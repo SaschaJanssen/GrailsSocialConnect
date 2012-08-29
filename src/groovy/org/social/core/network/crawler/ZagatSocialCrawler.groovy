@@ -1,7 +1,7 @@
 package org.social.core.network.crawler
 
 import org.jsoup.nodes.Element
-import org.social.core.constants.Networks
+import org.social.core.constants.NetworkConst
 
 public class ZagatSocialCrawler extends SocialCrawler {
 
@@ -32,7 +32,7 @@ public class ZagatSocialCrawler extends SocialCrawler {
 
     @Override
     protected String getNetworkName() {
-        return Networks.ZAGAT.name()
+        return NetworkConst.ZAGAT.getName()
     }
 
     @Override

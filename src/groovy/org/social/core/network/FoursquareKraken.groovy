@@ -4,8 +4,8 @@ import net.sf.json.JSONObject
 
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
-import org.social.core.constants.Classification
-import org.social.core.constants.Networks
+import org.social.core.constants.ClassificationConst
+import org.social.core.constants.NetworkConst
 import org.social.core.data.FilteredMessageList
 import org.social.core.network.connection.SocialNetworkConnection
 import org.social.core.query.FoursquareQuery
@@ -21,7 +21,7 @@ public class FoursquareKraken extends SocialNetworkKraken {
     public FoursquareKraken(Customer customer, SocialNetworkConnection fbConnection) {
         super(customer)
         connection = fbConnection
-        getCustomersKeywords(Networks.FOURSQUARE.getName())
+        getCustomersKeywords(NetworkConst.FOURSQUARE.getName())
     }
 
     @Override
@@ -42,8 +42,8 @@ public class FoursquareKraken extends SocialNetworkKraken {
 
     private Query buildQueryFromKeywords() {
         Query query = new FoursquareQuery(super.customerNetworkKeywords)
-        if (customer.getLastNetworkdAccess() != null) {
-            query.setSince(customer.getLastNetworkdAccess().toString())
+        if (customer.getLastNetworkAccess() != null) {
+            query.setSince(customer.getLastNetworkAccess().toString())
         }
         return query
     }
@@ -53,13 +53,13 @@ public class FoursquareKraken extends SocialNetworkKraken {
         List<Message> results = new ArrayList<Message>()
 
         for (JSONObject object : searchResult) {
-            Message messageData = new Message(Networks.FOURSQUARE.getName())
-            messageData.network = Network.get(Networks.FOURSQUARE.getName())
+            Message messageData = new Message()
+            messageData.network = Network.get(NetworkConst.FOURSQUARE.getName())
 
-            messageData.setCustomerId(super.customer.getCustomerId())
+            messageData.customer = this.customer
 
             JSONObject user = object.getJSONObject("user")
-            messageData.setNetworkUser(user.getString("firstName"))
+            messageData.setNetworkUserName(user.getString("firstName"))
             messageData.setNetworkUserId(user.getString("id"))
 
             String messageDate = object.getString("createdAt")
@@ -68,7 +68,7 @@ public class FoursquareKraken extends SocialNetworkKraken {
             messageData.setMessage(object.getString("text"))
             messageData.setMessageReceivedDate(UtilDateTime.nowTimestamp())
 
-            messageData.setReliabilityId(Classification.RELIABLE.getName())
+            messageData.setReliability(ClassificationConst.RELIABLE.getName())
             messageData.setNetworkUserRating("n/a")
             results.add(messageData)
         }

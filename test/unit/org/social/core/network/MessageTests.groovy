@@ -6,27 +6,25 @@ import static junit.framework.Assert.*
 import grails.test.mixin.*
 
 import org.junit.*
+import org.social.core.classification.Classification
+import org.social.core.user.Customer
 
 /**
  * See the API for {@link grails.test.mixin.domain.DomainClassUnitTestMixin} for usage instructions
  */
 @TestFor(Message)
+@Mock([Network, Classification, Customer])
 class MessageTests {
 
     void testConstructorFail() {
 
-        def networkMock = []
-        mockDomain(Network, networkMock)
+        def networkMock = new Network()
 
-        def customerMock = []
-        mockDomain(org.social.core.user.Customer, customerMock)
+        def customerMock = new Customer()
 
-        def reliabilityMock = []
-        mockDomain(org.social.core.classification.Classification, reliabilityMock)
+        def reliabilityMock = new Classification()
 
-        def sentimentMock = []
-        mockDomain(org.social.core.classification.Classification, sentimentMock)
-
+        def sentimentMock = new Classification()
 
         def message = new Message()
         assertFalse message.validate()
@@ -36,22 +34,17 @@ class MessageTests {
     }
 
     void testConstructorPass() {
+        def networkMock = new Network()
 
-        def networkMock = []
-        mockDomain(Network, networkMock)
+        def customerMock = new Customer()
 
-        def customerMock = []
-        mockDomain(org.social.core.user.Customer, customerMock)
+        def reliabilityMock = new Classification()
 
-        def reliabilityMock = []
-        mockDomain(org.social.core.classification.Classification, reliabilityMock)
+        def sentimentMock = new Classification()
 
-        def sentimentMock = []
-        mockDomain(org.social.core.classification.Classification, sentimentMock)
+        def message = new Message(message: 'FOO BAA', network: networkMock, customer: customerMock, reliability: reliabilityMock, sentiment: sentimentMock, messageReceivedDate: new Date(), networkMessageDate: new Date())
 
-
-        def message = new Message(message: 'FOO BAA', network: networkMock, customer: customerMock, reliability: reliabilityMock, sentiment: sentimentMock)
-        assertFalse 'Validation should have failed', message.validate()
+        assertTrue 'Validation should have passed', message.validate()
         assertEquals 'FOO BAA', message.message
     }
 }
