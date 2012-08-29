@@ -2,6 +2,7 @@ package org.social.core.network;
 
 import java.util.List;
 
+import org.social.core.constants.NetworkConst;
 import org.social.core.data.CustomerNetworkKeywords;
 import org.social.core.data.DataCrafter;
 import org.social.core.data.FilteredMessageList;
@@ -24,8 +25,8 @@ public abstract class SocialNetworkKraken {
         return customerNetworkKeywords;
     }
 
-    protected void getCustomersKeywords(String networkName) {
-        List<Keyword> keywords = Keyword.findAllByCustomerAndNetwork(customer, networkName);
+    protected void getCustomersKeywords(NetworkConst network) {
+        List<Keyword> keywords = Keyword.findAllByCustomerAndNetwork(customer, network);
         customerNetworkKeywords = new CustomerNetworkKeywords(keywords);
     }
 

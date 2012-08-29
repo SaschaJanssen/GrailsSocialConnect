@@ -9,16 +9,14 @@ import org.jsoup.nodes.Element
 import org.jsoup.select.Elements
 import org.junit.Before
 import org.junit.Test
-import org.social.core.constants.NetworkConst
 import org.social.core.network.crawler.OpenTableSocialCrawler
 import org.social.core.network.crawler.SocialCrawler
 import org.social.core.network.crawler.TripAdvisorSocialCrawler
 import org.social.grails.network.Message
-import org.social.grails.network.Network
 import org.social.grails.user.Customer
 
 @TestFor(OpenTableSocialCrawler)
-@Mock([Customer, Network])
+@Mock(Customer)
 public class TripAdvisorSocialCrawlerTest {
 
     def SocialCrawler jsoupCrawler
@@ -28,10 +26,6 @@ public class TripAdvisorSocialCrawlerTest {
     public void setUp() throws Exception {
         customer = new Customer()
         customer.save()
-
-        def network = new Network()
-        network.id = NetworkConst.TRIPADVISOR.getName()
-        network.save()
 
         // http://www.tripadvisor.de/Restaurant_Review-g60763-d1846484-Reviews-Vapiano-New_York_City_New_York.html#REVIEWS
         jsoupCrawler = new TripAdvisorSocialCrawler(new MockBaseCrawler(), "test/resources/",
@@ -81,7 +75,7 @@ public class TripAdvisorSocialCrawlerTest {
         assertEquals("73kamla", result.get(0).getNetworkUserName())
         assertEquals("n/a", result.get(0).getNetworkUserId())
         assertEquals("en", result.get(0).getLanguage())
-        assertEquals("TRIPADVISOR", result.get(0).network.id)
+        assertEquals("TRIPADVISOR", result.get(0).network.name())
         assertEquals(1, result.get(0).customer.id)
         assertEquals("4", result.get(0).getNetworkUserRating())
     }

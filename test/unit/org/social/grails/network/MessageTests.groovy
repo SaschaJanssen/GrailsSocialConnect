@@ -7,18 +7,19 @@ import grails.test.mixin.*
 
 import org.junit.*
 import org.social.core.constants.ClassificationConst
+import org.social.core.constants.NetworkConst
 import org.social.grails.user.Customer
 
 /**
  * See the API for {@link grails.test.mixin.domain.DomainClassUnitTestMixin} for usage instructions
  */
 @TestFor(Message)
-@Mock([Network, Customer])
+@Mock(Customer)
 class MessageTests {
 
     void testConstructorFail() {
 
-        def networkMock = new Network()
+        def networkMock = NetworkConst.TWITTER
 
         def customerMock = new Customer()
 
@@ -34,7 +35,7 @@ class MessageTests {
     }
 
     void testConstructorPass() {
-        def networkMock = new Network()
+        def networkMock = NetworkConst.TWITTER
 
         def customerMock = new Customer()
 

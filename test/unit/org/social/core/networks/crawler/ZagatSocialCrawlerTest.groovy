@@ -9,15 +9,13 @@ import org.jsoup.nodes.Element
 import org.jsoup.select.Elements
 import org.junit.Before
 import org.junit.Test
-import org.social.core.constants.NetworkConst
 import org.social.core.network.crawler.SocialCrawler
 import org.social.core.network.crawler.ZagatSocialCrawler
 import org.social.grails.network.Message
-import org.social.grails.network.Network
 import org.social.grails.user.Customer
 
 @TestFor(ZagatSocialCrawler)
-@Mock([Customer, Network])
+@Mock(Customer)
 public class ZagatSocialCrawlerTest {
 
     def SocialCrawler jsoupCrawler
@@ -27,10 +25,6 @@ public class ZagatSocialCrawlerTest {
     public void setUp() throws Exception {
         customer = new Customer()
         customer.save()
-
-        def network = new Network()
-        network.id = NetworkConst.ZAGAT.getName()
-        network.save()
 
         // http://www.zagat.com/r/n/five-guys-queens-3/reviews
         jsoupCrawler = new ZagatSocialCrawler(new MockBaseCrawler(), "test/resources/",
@@ -82,7 +76,7 @@ public class ZagatSocialCrawlerTest {
         assertEquals("Ray Y", result.get(0).getNetworkUserName())
         assertEquals("4355100", result.get(0).getNetworkUserId())
         assertEquals("en", result.get(0).getLanguage())
-        assertEquals("ZAGAT", result.get(0).network.id)
+        assertEquals("ZAGAT", result.get(0).network.name())
         assertEquals(1, result.get(0).customer.id)
         assertEquals("n/a", result.get(0).getNetworkUserRating())
     }

@@ -5,17 +5,17 @@ import static junit.framework.Assert.*
 import grails.test.mixin.*
 
 import org.junit.*
-import org.social.grails.network.Network
+import org.social.core.constants.NetworkConst
 
 /**
  * See the API for {@link grails.test.mixin.domain.DomainClassUnitTestMixin} for usage instructions
  */
 @TestFor(Keyword)
-@Mock([Network, Customer, KeywordType])
+@Mock([Customer, KeywordType])
 class KeywordTests {
 
     void testConstraints() {
-        def networkMock = new Network()
+        def networkMock = NetworkConst.TWITTER
 
         def customerMock = new Customer()
 

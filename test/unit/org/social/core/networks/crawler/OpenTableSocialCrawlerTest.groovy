@@ -9,15 +9,13 @@ import org.jsoup.nodes.Element
 import org.jsoup.select.Elements
 import org.junit.Before
 import org.junit.Test
-import org.social.core.constants.NetworkConst
 import org.social.core.network.crawler.OpenTableSocialCrawler
 import org.social.core.network.crawler.SocialCrawler
 import org.social.grails.network.Message
-import org.social.grails.network.Network
 import org.social.grails.user.Customer
 
 @TestFor(OpenTableSocialCrawler)
-@Mock([Customer, Network])
+@Mock(Customer)
 public class OpenTableSocialCrawlerTest {
 
     def SocialCrawler jsoupCrawler
@@ -27,10 +25,6 @@ public class OpenTableSocialCrawlerTest {
     public void setUp() throws Exception {
         customer = new Customer()
         customer.save(validate: false)
-
-        def network = new Network()
-        network.id = NetworkConst.OPENTABLE.getName()
-        network.save(validate: false)
 
         jsoupCrawler = new OpenTableSocialCrawler(new MockBaseCrawler(), "test/resources/",
                         "OpenTableWolfgangsTest_WithoutPagination.html")
@@ -80,7 +74,7 @@ public class OpenTableSocialCrawlerTest {
         assertEquals("n/a", result.get(0).getNetworkUserName())
         assertEquals("n/a", result.get(0).getNetworkUserId())
         assertEquals("en-US", result.get(0).getLanguage())
-        assertEquals("OPENTABLE", result.get(0).network.id)
+        assertEquals("OPENTABLE", result.get(0).network.name())
         assertEquals(1, result.get(0).customer.id)
         // assertEquals("4.0", result.get(0).getNetworkUserRating());
     }

@@ -27,7 +27,7 @@ public class OpenTableKraken extends SocialNetworkKraken {
         this.customer = customer;
         this.crawler = crawler;
 
-        getCustomersKeywords(NetworkConst.OPENTABLE.getName());
+        getCustomersKeywords(NetworkConst.OPENTABLE);
     }
 
     @Override

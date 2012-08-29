@@ -32,8 +32,8 @@ public class OpenTableSocialCrawler extends SocialCrawler {
     }
 
     @Override
-    protected String getNetworkName() {
-        return NetworkConst.OPENTABLE.name();
+    protected NetworkConst getNetworkName() {
+        return NetworkConst.OPENTABLE;
     }
 
     @Override

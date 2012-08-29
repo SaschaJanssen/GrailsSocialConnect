@@ -13,13 +13,12 @@ import org.social.core.network.FacebookKraken
 import org.social.core.network.SocialNetworkKraken
 import org.social.core.network.connection.SocialNetworkConnection
 import org.social.grails.network.Message
-import org.social.grails.network.Network
 import org.social.grails.user.Customer
 import org.social.grails.user.Keyword
 import org.social.grails.user.KeywordType
 
 @TestFor(FacebookKraken)
-@Mock([Message, KeywordType, Keyword, Network, Customer])
+@Mock([Message, KeywordType, Keyword, Customer])
 public class FacebookKrakenTest {
 
     def Customer customer
@@ -32,15 +31,12 @@ public class FacebookKrakenTest {
 
         Keyword.metaClass.static.findAllByCustomerAndNetwork = {customer, networkName -> 
             
-            def network = new Network()
-            network.id = NetworkConst.FACEBOOK.getName()
-    
             def type = new KeywordType()
             type.id = KeywordTypeConst.QUERY.getName()
     
             def keyword = new Keyword()
             keyword.customer = customer
-            keyword.network = network
+            keyword.network = NetworkConst.FACEBOOK
             keyword.keywordType = type
             keyword.keyword = "Vapiano"
             

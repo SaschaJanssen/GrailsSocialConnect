@@ -7,19 +7,17 @@ import grails.test.mixin.*
 import org.junit.Before
 import org.junit.Test
 import org.social.core.constants.KeywordTypeConst
-import org.social.core.constants.NetworkConst
 import org.social.core.data.FilteredMessageList
 import org.social.core.network.OpenTableKraken
 import org.social.core.network.SocialNetworkKraken
 import org.social.core.network.crawler.BaseCrawler
 import org.social.grails.network.Message
-import org.social.grails.network.Network
 import org.social.grails.user.Customer
 import org.social.grails.user.Keyword
 import org.social.grails.user.KeywordType
 
 @TestFor(OpenTableKraken)
-@Mock([Message, KeywordType, Keyword, Network, Customer])
+@Mock([Message, KeywordType, Keyword, Customer])
 public class OpenTableKrakenTest {
 
     def Customer customer;
@@ -30,11 +28,8 @@ public class OpenTableKrakenTest {
         customer = new Customer()
         customer.save()
         
-        Keyword.metaClass.static.findAllByCustomerAndNetwork = {customer, networkName -> 
+        Keyword.metaClass.static.findAllByCustomerAndNetwork = {customer, network -> 
             
-            def network = new Network()
-            network.id = NetworkConst.OPENTABLE.getName()
-    
             def type = new KeywordType()
             type.id = KeywordTypeConst.QUERY.getName()
     

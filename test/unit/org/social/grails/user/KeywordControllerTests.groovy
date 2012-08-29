@@ -5,10 +5,10 @@ package org.social.grails.user
 import grails.test.mixin.*
 
 import org.junit.*
-import org.social.grails.network.Network
+import org.social.core.constants.NetworkConst
 
 @TestFor(KeywordController)
-@Mock([Keyword, org.social.grails.network.Network, Customer, KeywordType])
+@Mock([Keyword, Customer, KeywordType])
 class KeywordControllerTests {
 
     def populateValidParams(params) {
@@ -21,9 +21,7 @@ class KeywordControllerTests {
         customer.save()
         params.customer = customer
 
-        def network = new Network()
-        network.id = 'TWITTER'
-        network.save()
+        def network = NetworkConst.TWITTER
         params.network = network
 
         params.keyword = 'KEYWORD'

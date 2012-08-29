@@ -27,7 +27,7 @@ public class TripAdvisorKraken extends SocialNetworkKraken {
         this.customer = customer;
         this.crawler = crawler;
 
-        getCustomersKeywords(NetworkConst.TRIPADVISOR.getName());
+        getCustomersKeywords(NetworkConst.TRIPADVISOR);
     }
 
     @Override

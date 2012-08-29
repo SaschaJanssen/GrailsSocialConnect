@@ -31,8 +31,8 @@ public class ZagatSocialCrawler extends SocialCrawler {
     }
 
     @Override
-    protected String getNetworkName() {
-        return NetworkConst.ZAGAT.getName();
+    protected NetworkConst getNetworkName() {
+        return NetworkConst.ZAGAT;
     }
 
     @Override

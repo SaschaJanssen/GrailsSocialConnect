@@ -27,7 +27,7 @@ public class ZagatKraken extends SocialNetworkKraken {
         this.customer = customer;
         this.crawler = crawler;
 
-        getCustomersKeywords(NetworkConst.ZAGAT.getName());
+        getCustomersKeywords(NetworkConst.ZAGAT);
     }
 
     @Override

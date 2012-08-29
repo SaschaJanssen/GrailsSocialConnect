@@ -13,13 +13,12 @@ import org.social.core.network.SocialNetworkKraken
 import org.social.core.network.YelpKraken
 import org.social.core.network.crawler.BaseCrawler
 import org.social.grails.network.Message
-import org.social.grails.network.Network
 import org.social.grails.user.Customer
 import org.social.grails.user.Keyword
 import org.social.grails.user.KeywordType
 
 @TestFor(YelpKraken)
-@Mock([Message, KeywordType, Keyword, Network, Customer])
+@Mock([Message, KeywordType, Keyword, Customer])
 public class YelpKrakenTest {
 
     private Customer customer;
@@ -32,15 +31,12 @@ public class YelpKrakenTest {
         
         Keyword.metaClass.static.findAllByCustomerAndNetwork = {customer, networkName -> 
             
-            def network = new Network()
-            network.id = NetworkConst.YELP.getName()
-    
             def type = new KeywordType()
             type.id = KeywordTypeConst.QUERY.getName()
     
             def keyword = new Keyword()
             keyword.customer = customer
-            keyword.network = network
+            keyword.network = NetworkConst.YELP
             keyword.keywordType = type
             keyword.keyword = "Vapiano"
             

@@ -14,7 +14,6 @@ import org.social.core.network.connection.SocialNetworkConnection;
 import org.social.core.query.TwitterQuery;
 import org.social.core.util.UtilDateTime;
 import org.social.grails.network.Message;
-import org.social.grails.network.Network;
 import org.social.grails.user.Customer;
 
 public class TwitterKraken extends SocialNetworkKraken {
@@ -28,7 +27,7 @@ public class TwitterKraken extends SocialNetworkKraken {
         connection = twitterConnection;
         this.customer = customer;
 
-        getCustomersKeywords(NetworkConst.TWITTER.getName());
+        getCustomersKeywords(NetworkConst.TWITTER);
     }
 
     @Override
@@ -71,9 +70,7 @@ public class TwitterKraken extends SocialNetworkKraken {
         for (Object object : resultArray) {
             Message messageData = new Message();
 
-            Network net = new Network();
-            net.setId(NetworkConst.TWITTER.getName());
-            messageData.setNetwork(net);
+            messageData.setNetwork(NetworkConst.TWITTER);
 
             messageData.setCustomer(super.customer);
 

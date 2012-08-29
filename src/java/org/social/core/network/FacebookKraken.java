@@ -13,7 +13,6 @@ import org.social.core.network.connection.SocialNetworkConnection;
 import org.social.core.query.FacebookQuery;
 import org.social.core.util.UtilDateTime;
 import org.social.grails.network.Message;
-import org.social.grails.network.Network;
 import org.social.grails.user.Customer;
 
 public class FacebookKraken extends SocialNetworkKraken {
@@ -25,7 +24,7 @@ public class FacebookKraken extends SocialNetworkKraken {
     public FacebookKraken(Customer customer, SocialNetworkConnection fbConnection) {
         super(customer);
         connection = fbConnection;
-        getCustomersKeywords(NetworkConst.FACEBOOK.getName());
+        getCustomersKeywords(NetworkConst.FACEBOOK);
     }
 
     @Override
@@ -66,9 +65,7 @@ public class FacebookKraken extends SocialNetworkKraken {
             }
             Message messageData = new Message();
 
-            Network net = new Network();
-            net.setId(NetworkConst.FACEBOOK.getName());
-            messageData.setNetwork(net);
+            messageData.setNetwork(NetworkConst.FACEBOOK);
 
             messageData.setCustomer(customer);
 

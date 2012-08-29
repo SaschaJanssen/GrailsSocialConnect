@@ -13,13 +13,12 @@ import org.social.core.network.FoursquareKraken
 import org.social.core.network.SocialNetworkKraken
 import org.social.core.network.connection.SocialNetworkConnection
 import org.social.grails.network.Message
-import org.social.grails.network.Network
 import org.social.grails.user.Customer
 import org.social.grails.user.Keyword
 import org.social.grails.user.KeywordType
 
 @TestFor(FoursquareKraken)
-@Mock([Message, KeywordType, Keyword, Network, Customer])
+@Mock([Message, KeywordType, Keyword, Customer])
 public class FoursquareKrakenTest {
 
     def Customer customer;
@@ -32,15 +31,12 @@ public class FoursquareKrakenTest {
         
         Keyword.metaClass.static.findAllByCustomerAndNetwork = {customer, networkName -> 
             
-            def network = new Network()
-            network.id = NetworkConst.FOURSQUARE.getName()
-    
             def type = new KeywordType()
             type.id = KeywordTypeConst.QUERY.getName()
     
             def keyword = new Keyword()
             keyword.customer = customer
-            keyword.network = network
+            keyword.network = NetworkConst.FOURSQUARE
             keyword.keywordType = type
             keyword.keyword = "Vapiano"
             

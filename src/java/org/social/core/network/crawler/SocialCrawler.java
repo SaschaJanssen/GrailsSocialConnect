@@ -12,12 +12,12 @@ import org.jsoup.select.Elements;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.social.core.constants.ClassificationConst;
+import org.social.core.constants.NetworkConst;
 import org.social.core.exceptions.ItemNotFoundException;
 import org.social.core.util.UtilDateTime;
 import org.social.core.util.UtilProperties;
 import org.social.core.util.UtilValidate;
 import org.social.grails.network.Message;
-import org.social.grails.network.Network;
 import org.social.grails.user.Customer;
 
 public abstract class SocialCrawler {
@@ -155,9 +155,7 @@ public abstract class SocialCrawler {
         for (int i = 0; i < pageReviewData.size(); i++) {
             Message returnMessage = new Message();
 
-            Network net = new Network();
-            net.setId(getNetworkName());
-            returnMessage.setNetwork(net);
+            returnMessage.setNetwork(getNetworkName());
 
             Element reviewData = pageReviewData.get(i);
 
@@ -195,7 +193,7 @@ public abstract class SocialCrawler {
         return resultList;
     }
 
-    protected abstract String getNetworkName();
+    protected abstract NetworkConst getNetworkName();
 
     private String getNetworkUserRating(Element reviewData) throws ItemNotFoundException {
         String userRating = "n/a";

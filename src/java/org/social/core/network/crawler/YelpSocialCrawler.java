@@ -52,8 +52,8 @@ public class YelpSocialCrawler extends SocialCrawler {
     }
 
     @Override
-    protected String getNetworkName() {
-        return NetworkConst.YELP.name();
+    protected NetworkConst getNetworkName() {
+        return NetworkConst.YELP;
     }
 
     @Override

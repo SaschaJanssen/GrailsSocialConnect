@@ -27,7 +27,7 @@ public class YelpKraken extends SocialNetworkKraken {
         this.customer = customer;
         this.crawler = crawler;
 
-        getCustomersKeywords(NetworkConst.YELP.getName());
+        getCustomersKeywords(NetworkConst.YELP);
     }
 
     @Override

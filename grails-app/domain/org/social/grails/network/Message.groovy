@@ -20,8 +20,9 @@ class Message {
 
     org.social.core.constants.ClassificationConst.Reliability reliability
     org.social.core.constants.ClassificationConst.Sentiment sentiment
+    org.social.core.constants.NetworkConst network
 
-    static belongsTo = [network:Network, customer:org.social.grails.user.Customer]
+    static belongsTo = [customer:org.social.grails.user.Customer]
 
     def beforeValidate() {
         if (this.sentiment == null) {
@@ -38,10 +39,6 @@ class Message {
 
     def setCustomer(Customer customer) {
         this.customer = customer
-    }
-
-    def setNetwork(Network network) {
-        this.network = network
     }
 
     static constraints = {

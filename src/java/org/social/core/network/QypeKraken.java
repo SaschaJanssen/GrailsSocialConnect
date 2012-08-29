@@ -16,7 +16,6 @@ import org.social.core.network.connection.SocialNetworkConnection;
 import org.social.core.query.QypeQuery;
 import org.social.core.util.UtilDateTime;
 import org.social.grails.network.Message;
-import org.social.grails.network.Network;
 import org.social.grails.user.Customer;
 
 public class QypeKraken extends SocialNetworkKraken {
@@ -27,7 +26,7 @@ public class QypeKraken extends SocialNetworkKraken {
     public QypeKraken(Customer customer, SocialNetworkConnection fbConnection) {
         super(customer);
         connection = fbConnection;
-        getCustomersKeywords(NetworkConst.QYPE.getName());
+        getCustomersKeywords(NetworkConst.QYPE);
     }
 
     @Override
@@ -66,9 +65,7 @@ public class QypeKraken extends SocialNetworkKraken {
         for (JSONObject object : searchResult) {
             Message messageData = new Message();
 
-            Network net = new Network();
-            net.setId(NetworkConst.QYPE.getName());
-            messageData.setNetwork(net);
+            messageData.setNetwork(NetworkConst.QYPE);
 
             messageData.setCustomer(super.customer);
 

@@ -15,7 +15,6 @@ import org.social.core.query.FoursquareQuery;
 import org.social.core.query.Query;
 import org.social.core.util.UtilDateTime;
 import org.social.grails.network.Message;
-import org.social.grails.network.Network;
 import org.social.grails.user.Customer;
 
 public class FoursquareKraken extends SocialNetworkKraken {
@@ -26,7 +25,7 @@ public class FoursquareKraken extends SocialNetworkKraken {
     public FoursquareKraken(Customer customer, SocialNetworkConnection fbConnection) {
         super(customer);
         connection = fbConnection;
-        getCustomersKeywords(NetworkConst.FOURSQUARE.getName());
+        getCustomersKeywords(NetworkConst.FOURSQUARE);
     }
 
     @Override
@@ -60,9 +59,7 @@ public class FoursquareKraken extends SocialNetworkKraken {
         for (JSONObject object : searchResult) {
             Message messageData = new Message();
 
-            Network net = new Network();
-            net.setId(NetworkConst.FOURSQUARE.getName());
-            messageData.setNetwork(net);
+            messageData.setNetwork(NetworkConst.FOURSQUARE);
 
             messageData.setCustomer(this.customer);
 

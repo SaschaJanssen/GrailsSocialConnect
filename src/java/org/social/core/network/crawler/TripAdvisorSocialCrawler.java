@@ -96,8 +96,8 @@ public class TripAdvisorSocialCrawler extends SocialCrawler {
     }
 
     @Override
-    protected String getNetworkName() {
-        return NetworkConst.TRIPADVISOR.name();
+    protected NetworkConst getNetworkName() {
+        return NetworkConst.TRIPADVISOR;
     }
 
     @Override

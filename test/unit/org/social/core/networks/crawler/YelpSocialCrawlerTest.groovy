@@ -9,16 +9,14 @@ import org.jsoup.nodes.Element
 import org.jsoup.select.Elements
 import org.junit.Before
 import org.junit.Test
-import org.social.core.constants.NetworkConst
 import org.social.core.exceptions.ItemNotFoundException
 import org.social.core.network.crawler.SocialCrawler
 import org.social.core.network.crawler.YelpSocialCrawler
 import org.social.grails.network.Message
-import org.social.grails.network.Network
 import org.social.grails.user.Customer
 
 @TestFor(YelpSocialCrawler)
-@Mock([Customer, Network])
+@Mock(Customer)
 public class YelpSocialCrawlerTest {
 
     def SocialCrawler yelpCrawler = null
@@ -28,10 +26,6 @@ public class YelpSocialCrawlerTest {
     public void setUp() throws Exception {
         customer = new Customer()
         customer.save()
-
-        def network = new Network()
-        network.id = NetworkConst.YELP.getName()
-        network.save()
 
         yelpCrawler = new YelpSocialCrawler(new MockBaseCrawler(), "test/resources/",
                         "YelpVapianoTest_WithoutPagination.html")
@@ -84,7 +78,7 @@ public class YelpSocialCrawlerTest {
         assertEquals("Dorie L.", result.get(0).getNetworkUserName())
         assertEquals("H9QzuPZn_wWlx0NYStSO6Q", result.get(0).getNetworkUserId())
         assertEquals("en", result.get(0).getLanguage())
-        assertEquals("YELP", result.get(0).network.id)
+        assertEquals("YELP", result.get(0).network.name())
         assertEquals(1, result.get(0).customer.id)
         assertEquals("4.0", result.get(0).getNetworkUserRating())
     }
