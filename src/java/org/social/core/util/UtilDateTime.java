@@ -175,24 +175,24 @@ public class UtilDateTime {
         return calendar;
     }
 
-    public static String connvertTimestampToTwitterTime(Timestamp timestamp) {
-        if (timestamp == null) {
+    public static String connvertDateToTwitterTime(Date date) {
+        if (date == null) {
             return "";
         }
-        String[] splitedTs = timestamp.toString().split(" ");
+        String[] splitedTs = date.toString().split(" ");
         return splitedTs[0];
     }
 
-    public static String connvertTimestampToFacebookTime(Timestamp timestamp) {
-        if (timestamp == null) {
+    public static String connvertDateToFacebookTime(Date date) {
+        if (date == null) {
             return "";
         }
-        Long unixTimestamp = timestamp.getTime() / 1000L;
+        Long unixTimestamp = date.getTime() / 1000L;
         return unixTimestamp.toString();
     }
 
-    public static boolean isMessageDateBeforeLastNetworkAccess(Timestamp messageNetworkTs, Timestamp lastNetworkAccess) {
-        return (messageNetworkTs != null && lastNetworkAccess != null && lastNetworkAccess.after(messageNetworkTs));
+    public static boolean isMessageDateBeforeLastNetworkAccess(Date messageNetworkDate, Date lastNetworkAccess) {
+        return (messageNetworkDate != null && lastNetworkAccess != null && lastNetworkAccess.after(messageNetworkDate));
     }
 
     public static Timestamp stirngToTimestamp(String tsString) {

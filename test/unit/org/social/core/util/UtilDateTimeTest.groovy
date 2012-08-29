@@ -96,7 +96,7 @@ public class UtilDateTimeTest {
     }
 
     @Test
-    public void testConvertTimestampToTwitterTime() throws Exception {
+    public void testConvertDateToTwitterTime() throws Exception {
         Calendar calendar = Calendar.getInstance()
 
         calendar.set(2012, 07 - 1, 10, 12, 54, 06)
@@ -104,12 +104,12 @@ public class UtilDateTimeTest {
 
         Timestamp timestamp = new Timestamp(calendar.getTimeInMillis())
 
-        String ts = UtilDateTime.connvertTimestampToTwitterTime(timestamp)
+        String ts = UtilDateTime.connvertDateToTwitterTime(timestamp)
         assertEquals("2012-07-10", ts)
     }
 
     @Test
-    public void testConvertTimestampToFbTime() throws Exception {
+    public void testConvertDateToFbTime() throws Exception {
         Calendar calendar = Calendar.getInstance()
 
         calendar.set(2012, 07 - 1, 10, 12, 54, 06)
@@ -117,7 +117,7 @@ public class UtilDateTimeTest {
 
         Timestamp timestamp = new Timestamp(calendar.getTimeInMillis())
 
-        String ts = UtilDateTime.connvertTimestampToFacebookTime(timestamp)
+        String ts = UtilDateTime.connvertDateToFacebookTime(timestamp)
 
         Long unixTs = timestamp.getTime() / 1000L
         assertEquals(unixTs.toString(), ts)

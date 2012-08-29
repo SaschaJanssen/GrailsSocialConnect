@@ -1,5 +1,7 @@
 package org.social.core.user
 
+import org.social.core.network.Network
+
 class Keyword {
 
     String keyword
@@ -17,6 +19,13 @@ class Keyword {
     }
     def beforeUpdate() {
         lastUpdated = new Date()
+    }
+    
+    public static List<Keyword> findAllByCustomerAndNetwork(Customer customer, String networkName) {
+        Network network = new Network();
+        network.id = networkName
+        
+        return Keyword.findAllByCustomerAndNetwork(customer, network)
     }
 
     static constraints = {

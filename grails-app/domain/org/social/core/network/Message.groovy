@@ -1,6 +1,7 @@
 package org.social.core.network
 
 import org.social.core.classification.Classification
+import org.social.core.user.Customer
 
 class Message {
 
@@ -36,17 +37,28 @@ class Message {
     def setReliability(Classification reliability) {
         this.reliability = reliability
     }
+
     def setReliability(String reliability) {
         def reliabl = new Classification()
         reliabl.id = reliability
 
         this.reliability = reliabl
     }
+
     def setSentiment(Classification sentiment) {
         this.sentiment = sentiment
     }
+
     def setSentiment(String sentiment) {
         this.sentiment = Classification.get(sentiment)
+    }
+
+    def setCustomer(Customer customer) {
+        this.customer = customer
+    }
+
+    def setNetwork(Network network) {
+        this.network = network
     }
 
     static constraints = {
@@ -55,7 +67,5 @@ class Message {
         language (nullable: true, size: 0..5)
         geoLocation (nullable: true, size: 0..20)
         networkUserRating (nullable: true, size: 0..10)
-    }
-
-    static mapping = { message (type: 'text') }
+    }    static mapping = { message (type: 'text') }
 }

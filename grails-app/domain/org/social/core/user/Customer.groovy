@@ -1,5 +1,6 @@
 package org.social.core.user
 
+
 class Customer {
 
     Date lastNetworkAccess
@@ -11,8 +12,13 @@ class Customer {
     def beforeInsert() {
         dateCreated = new Date()
     }
+
     def beforeUpdate() {
         lastUpdated = new Date()
+    }
+
+    def getCustomerId() {
+        return this.id
     }
 
     static constraints = { lastNetworkAccess (nullable: true) }

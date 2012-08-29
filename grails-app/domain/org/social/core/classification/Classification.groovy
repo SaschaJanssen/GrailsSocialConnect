@@ -7,6 +7,10 @@ class Classification {
     Date dateCreated
     Date lastUpdated
 
+    def setId(String id) {
+        this.id = id
+    }
+
     def beforeInsert() {
         dateCreated = new Date()
     }
