@@ -65,12 +65,12 @@ public class DataCrafter {
     }
 
     private void addToNegativeList(Message negativeMessage) {
-        negativeMessage.setReliability(ClassificationConst.NOT_RELIABLE.getName());
+        negativeMessage.setReliability(ClassificationConst.Reliability.NOT_RELIABLE);
         negativeList.add(negativeMessage);
     }
 
     private void addToPositiveList(Message positiveMessage) {
-        positiveMessage.setReliability(ClassificationConst.RELIABLE.getName());
+        positiveMessage.setReliability(ClassificationConst.Reliability.RELIABLE);
         positiveList.add(positiveMessage);
     }
 

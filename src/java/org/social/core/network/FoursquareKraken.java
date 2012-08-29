@@ -76,7 +76,7 @@ public class FoursquareKraken extends SocialNetworkKraken {
             messageData.setMessage(object.getString("text"));
             messageData.setMessageReceivedDate(UtilDateTime.nowTimestamp());
 
-            messageData.setReliability(ClassificationConst.RELIABLE.getName());
+            messageData.setReliability(ClassificationConst.Reliability.RELIABLE);
             messageData.setNetworkUserRating("n/a");
             results.add(messageData);
         }

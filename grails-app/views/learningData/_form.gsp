@@ -7,7 +7,7 @@
 		<g:message code="learningData.classification.label" default="Classification" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="classification" name="classification.id" from="${org.social.grails.classification.Classification.list()}" optionKey="id" required="" value="${learningDataInstance?.classification?.id}" class="many-to-one"/>
+	<g:select name="classification" from="${org.social.core.constants.ClassificationConst$Sentiment?.values()}" keys="${org.social.core.constants.ClassificationConst$Sentiment.values()*.name()}" required="" value="${learningDataInstance?.classification?.name()}"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: learningDataInstance, field: 'learningData', 'error')} ">

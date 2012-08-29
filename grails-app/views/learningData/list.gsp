@@ -24,7 +24,7 @@
 				<thead>
 					<tr>
 					
-						<th><g:message code="learningData.classification.label" default="Classification" /></th>
+						<g:sortableColumn property="classification" title="${message(code: 'learningData.classification.label', default: 'Classification')}" />
 					
 						<g:sortableColumn property="dateCreated" title="${message(code: 'learningData.dateCreated.label', default: 'Date Created')}" />
 					

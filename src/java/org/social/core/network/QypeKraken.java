@@ -15,7 +15,6 @@ import org.social.core.data.FilteredMessageList;
 import org.social.core.network.connection.SocialNetworkConnection;
 import org.social.core.query.QypeQuery;
 import org.social.core.util.UtilDateTime;
-import org.social.grails.classification.Classification;
 import org.social.grails.network.Message;
 import org.social.grails.network.Network;
 import org.social.grails.user.Customer;
@@ -95,9 +94,7 @@ public class QypeKraken extends SocialNetworkKraken {
 
             messageData.setLanguage(object.getString("language"));
 
-            Classification classification = new Classification();
-            classification.setId(ClassificationConst.RELIABLE.getName());
-            messageData.setReliability(classification);
+            messageData.setReliability(ClassificationConst.Reliability.RELIABLE);
             messageData.setNetworkUserRating(object.getString("rating"));
             results.add(messageData);
         }

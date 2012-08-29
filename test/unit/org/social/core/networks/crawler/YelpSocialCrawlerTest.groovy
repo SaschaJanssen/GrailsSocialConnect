@@ -13,13 +13,12 @@ import org.social.core.constants.NetworkConst
 import org.social.core.exceptions.ItemNotFoundException
 import org.social.core.network.crawler.SocialCrawler
 import org.social.core.network.crawler.YelpSocialCrawler
-import org.social.grails.classification.Classification
 import org.social.grails.network.Message
 import org.social.grails.network.Network
 import org.social.grails.user.Customer
 
 @TestFor(YelpSocialCrawler)
-@Mock([Customer, Network, Classification])
+@Mock([Customer, Network])
 public class YelpSocialCrawlerTest {
 
     def SocialCrawler yelpCrawler = null

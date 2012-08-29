@@ -1,6 +1,6 @@
 package org.social.grails.network
 
-import org.social.grails.classification.Classification
+import org.social.core.constants.ClassificationConst
 import org.social.grails.user.Customer
 
 class Message {
@@ -18,12 +18,14 @@ class Message {
     Date dateCreated
     Date lastUpdated
 
-    static belongsTo = [network:Network, customer:org.social.grails.user.Customer, reliability:org.social.grails.classification.Classification, sentiment:org.social.grails.classification.Classification]
+    org.social.core.constants.ClassificationConst.Reliability reliability
+    org.social.core.constants.ClassificationConst.Sentiment sentiment
+
+    static belongsTo = [network:Network, customer:org.social.grails.user.Customer]
 
     def beforeValidate() {
         if (this.sentiment == null) {
-            def classificationId = org.social.core.constants.ClassificationConst.NOT_CLASSIFIED.getName()
-            setSentiment(Classification.get(classificationId))
+            sentiment = ClassificationConst.Sentiment.NOT_CLASSIFIED
         }
     }
 
@@ -32,25 +34,6 @@ class Message {
     }
     def beforeUpdate() {
         lastUpdated = new Date()
-    }
-
-    def setReliability(Classification reliability) {
-        this.reliability = reliability
-    }
-
-    def setReliability(String reliability) {
-        def reliabl = new Classification()
-        reliabl.id = reliability
-
-        this.reliability = reliabl
-    }
-
-    def setSentiment(Classification sentiment) {
-        this.sentiment = sentiment
-    }
-
-    def setSentiment(String sentiment) {
-        this.sentiment = Classification.get(sentiment)
     }
 
     def setCustomer(Customer customer) {

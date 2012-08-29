@@ -1,8 +1,12 @@
 package org.social.grails.classification
 
+import org.social.core.constants.ClassificationConst
+
 class LearningData {
 
     String learningData
+    ClassificationConst.Sentiment classification
+
     Date dateCreated
     Date lastUpdated
 
@@ -13,12 +17,8 @@ class LearningData {
         lastUpdated = new Date()
     }
 
-    static belongsTo = [classification:Classification]
-
     static constraints = {
     }
 
-    static mapping = {
-        learningData (type: 'text')
-    }
+    static mapping = { learningData (type: 'text') }
 }

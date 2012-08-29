@@ -5,9 +5,10 @@ package org.social.grails.network
 import grails.test.mixin.*
 
 import org.junit.*
+import org.social.core.constants.ClassificationConst
 
 @TestFor(MessageController)
-@Mock([Message, org.social.grails.classification.Classification, org.social.grails.user.Customer, Network])
+@Mock([Message, org.social.grails.user.Customer, Network])
 class MessageControllerTests {
 
     def populateValidParams(params) {
@@ -18,13 +19,9 @@ class MessageControllerTests {
         def customer = new org.social.grails.user.Customer()
         customer.save()
 
-        def reliability = new org.social.grails.classification.Classification()
-        reliability.id = 'RELIABLE'
-        reliability.save()
+        def reliability = ClassificationConst.Reliability.RELIABLE
 
-        def sentiment = new org.social.grails.classification.Classification()
-        sentiment.id = 'SENT'
-        sentiment.save()
+        def sentiment = ClassificationConst.Sentiment.POSITIVE
 
         params.network = network
         params.customer = customer

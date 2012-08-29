@@ -5,14 +5,13 @@ import grails.test.mixin.*
 
 import org.junit.Test
 import org.social.core.constants.KeywordTypeConst
-import org.social.grails.classification.Classification
 import org.social.grails.network.Message
 import org.social.grails.user.Customer
 import org.social.grails.user.Keyword
 import org.social.grails.user.KeywordType
 
 @TestFor(DataCrafter)
-@Mock([Keyword, Customer, Message, KeywordType, Classification])
+@Mock([Keyword, Customer, Message, KeywordType])
 public class DataCrafterTest {
 
     @Test

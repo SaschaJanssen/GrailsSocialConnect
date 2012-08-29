@@ -8,7 +8,6 @@ import org.social.core.constants.ClassificationConst;
 import org.social.core.filter.classifier.bayes.BayesClassifier;
 import org.social.core.filter.classifier.bayes.Classifier;
 import org.social.core.util.UtilLucene;
-import org.social.grails.classification.Classification;
 import org.social.grails.network.Message;
 
 public class SentimentAnalyser {
@@ -43,15 +42,15 @@ public class SentimentAnalyser {
                 log.debug("Message: " + msgData.getMessage() + " classified as: " + classification);
             }
 
-            Classification classificationType = new Classification();
-            if (ClassificationConst.POSITIVE.isClassification(classification)) {
-                classificationType.setId(ClassificationConst.POSITIVE.getName());
-            } else if (ClassificationConst.NEGATIVE.isClassification(classification)) {
-                classificationType.setId(ClassificationConst.NEGATIVE.getName());
+            if (ClassificationConst.Sentiment.POSITIVE.isSameAs(classification)) {
+                msgData.setSentiment(ClassificationConst.Sentiment.POSITIVE);
+
+            } else if (ClassificationConst.Sentiment.NEGATIVE.isSameAs(classification)) {
+                msgData.setSentiment(ClassificationConst.Sentiment.NEGATIVE);
+
             } else {
-                classificationType.setId(ClassificationConst.NEUTRAL.getName());
+                msgData.setSentiment(ClassificationConst.Sentiment.NEUTRAL);
             }
-            msgData.setSentiment(classificationType);
         }
         return reliableMessageList;
     }

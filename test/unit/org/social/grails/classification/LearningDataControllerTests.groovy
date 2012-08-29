@@ -5,18 +5,14 @@ package org.social.grails.classification
 import grails.test.mixin.*
 
 import org.junit.*
+import org.social.core.constants.ClassificationConst
 
 @TestFor(LearningDataController)
-@Mock([LearningData, Classification])
+@Mock([LearningData])
 class LearningDataControllerTests {
 
     def populateValidParams(params) {
-
-        def classification = new org.social.grails.classification.Classification()
-        classification.id = 'SENT'
-        classification.save()
-
-        params.classification = classification
+        params.classification = ClassificationConst.Sentiment.NEGATIVE
         params.learningData = 'FOO BAA'
 
         assert params != null

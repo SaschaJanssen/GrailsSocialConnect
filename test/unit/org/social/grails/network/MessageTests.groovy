@@ -6,14 +6,14 @@ import static junit.framework.Assert.*
 import grails.test.mixin.*
 
 import org.junit.*
-import org.social.grails.classification.Classification
+import org.social.core.constants.ClassificationConst
 import org.social.grails.user.Customer
 
 /**
  * See the API for {@link grails.test.mixin.domain.DomainClassUnitTestMixin} for usage instructions
  */
 @TestFor(Message)
-@Mock([Network, Classification, Customer])
+@Mock([Network, Customer])
 class MessageTests {
 
     void testConstructorFail() {
@@ -22,9 +22,9 @@ class MessageTests {
 
         def customerMock = new Customer()
 
-        def reliabilityMock = new Classification()
+        def reliabilityMock = ClassificationConst.Reliability.RELIABLE
 
-        def sentimentMock = new Classification()
+        def sentimentMock = ClassificationConst.Sentiment.NEGATIVE
 
         def message = new Message()
         assertFalse message.validate()
@@ -38,9 +38,9 @@ class MessageTests {
 
         def customerMock = new Customer()
 
-        def reliabilityMock = new Classification()
+        def reliabilityMock = ClassificationConst.Reliability.RELIABLE
 
-        def sentimentMock = new Classification()
+        def sentimentMock = ClassificationConst.Sentiment.POSITIVE
 
         def message = new Message(message: 'FOO BAA', network: networkMock, customer: customerMock, reliability: reliabilityMock, sentiment: sentimentMock, messageReceivedDate: new Date(), networkMessageDate: new Date())
 

@@ -1,13 +1,18 @@
 package org.social.core.constants;
 
 public enum ClassificationConst {
-    RELIABLE, NOT_RELIABLE, NOT_CLASSIFIED, POSITIVE, NEGATIVE, NEUTRAL;
 
-    public String getName() {
-        return name();
-    }
+    SENTIMENT, RELIABILITY;
 
-    public boolean isClassification(String networkName) {
-        return name().equals(networkName);
-    }
+    public enum Sentiment {
+        NOT_CLASSIFIED, POSITIVE, NEGATIVE, NEUTRAL;
+
+        public boolean isSameAs(String classification) {
+            return this.name().equals(classification);
+        }
+    };
+
+    public enum Reliability {
+        NOT_CLASSIFIED, RELIABLE, NOT_RELIABLE;
+    };
 }

@@ -27,7 +27,7 @@
 				<li class="fieldcontain">
 					<span id="classification-label" class="property-label"><g:message code="learningData.classification.label" default="Classification" /></span>
 					
-						<span class="property-value" aria-labelledby="classification-label"><g:link controller="classification" action="show" id="${learningDataInstance?.classification?.id}">${learningDataInstance?.classification?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="classification-label"><g:fieldValue bean="${learningDataInstance}" field="classification"/></span>
 					
 				</li>
 				</g:if>

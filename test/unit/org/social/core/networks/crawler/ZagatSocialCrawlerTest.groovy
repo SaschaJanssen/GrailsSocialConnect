@@ -12,13 +12,12 @@ import org.junit.Test
 import org.social.core.constants.NetworkConst
 import org.social.core.network.crawler.SocialCrawler
 import org.social.core.network.crawler.ZagatSocialCrawler
-import org.social.grails.classification.Classification
 import org.social.grails.network.Message
 import org.social.grails.network.Network
 import org.social.grails.user.Customer
 
 @TestFor(ZagatSocialCrawler)
-@Mock([Customer, Network, Classification])
+@Mock([Customer, Network])
 public class ZagatSocialCrawlerTest {
 
     def SocialCrawler jsoupCrawler

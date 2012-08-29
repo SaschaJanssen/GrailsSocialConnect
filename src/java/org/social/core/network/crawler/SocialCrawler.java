@@ -188,7 +188,7 @@ public abstract class SocialCrawler {
             String platformUserRating = getNetworkUserRating(reviewData);
             returnMessage.setNetworkUserRating(platformUserRating);
 
-            returnMessage.setReliability(ClassificationConst.RELIABLE.getName());
+            returnMessage.setReliability(ClassificationConst.Reliability.RELIABLE);
 
             resultList.add(returnMessage);
         }

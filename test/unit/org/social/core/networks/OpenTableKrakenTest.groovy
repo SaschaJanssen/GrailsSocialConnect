@@ -12,7 +12,6 @@ import org.social.core.data.FilteredMessageList
 import org.social.core.network.OpenTableKraken
 import org.social.core.network.SocialNetworkKraken
 import org.social.core.network.crawler.BaseCrawler
-import org.social.grails.classification.Classification
 import org.social.grails.network.Message
 import org.social.grails.network.Network
 import org.social.grails.user.Customer
@@ -20,7 +19,7 @@ import org.social.grails.user.Keyword
 import org.social.grails.user.KeywordType
 
 @TestFor(OpenTableKraken)
-@Mock([Message, KeywordType, Keyword, Network, Customer, Classification])
+@Mock([Message, KeywordType, Keyword, Network, Customer])
 public class OpenTableKrakenTest {
 
     def Customer customer;

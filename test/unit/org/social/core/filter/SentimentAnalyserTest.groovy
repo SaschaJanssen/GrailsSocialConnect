@@ -13,11 +13,10 @@ import org.social.core.filter.classifier.bayes.BayesClassifier
 import org.social.core.filter.classifier.bayes.Classifier
 import org.social.core.util.UtilLucene
 import org.social.core.util.UtilValidate
-import org.social.grails.classification.Classification
 import org.social.grails.network.Message
 
 @TestFor(SentimentAnalyser)
-@Mock([Message, Classification])
+@Mock([Message])
 public class SentimentAnalyserTest {
 
     private Logger logger = LoggerFactory.getLogger(getClass())
@@ -53,23 +52,6 @@ public class SentimentAnalyserTest {
         }
 
         analyser = SentimentAnalyser.getInstance()
-
-        // fill in memory classification mock
-        def classification = new Classification()
-        classification.id = ClassificationConst.POSITIVE.getName()
-        classification.save(validate: false)
-
-        classification = new Classification()
-        classification.id = ClassificationConst.NOT_CLASSIFIED.getName()
-        classification.save(validate: false)
-
-        classification = new Classification()
-        classification.id = ClassificationConst.NEUTRAL.getName()
-        classification.save(validate: false)
-
-        classification = new Classification()
-        classification.id = ClassificationConst.NEGATIVE.getName()
-        classification.save(validate: false)
     }
 
     @Test
@@ -81,7 +63,7 @@ public class SentimentAnalyserTest {
         fm.add(m)
 
         List<Message> fml = analyser.sentiment(fm)
-        assertEquals(ClassificationConst.POSITIVE.getName(), fml.get(0).sentiment.id)
+        assertEquals(ClassificationConst.Sentiment.POSITIVE, fml.get(0).sentiment)
     }
 
     @Test
@@ -116,7 +98,7 @@ public class SentimentAnalyserTest {
         analyser.sentiment(fm)
 
         for (Message msg : fm) {
-            assertFalse(ClassificationConst.NOT_CLASSIFIED.isClassification(msg.sentiment.id))
+            assertFalse(ClassificationConst.Sentiment.NOT_CLASSIFIED.isSameAs(msg.sentiment.name()))
         }
     }
 }
