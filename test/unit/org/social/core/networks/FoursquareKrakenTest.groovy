@@ -64,7 +64,7 @@ public class FoursquareKrakenTest {
         assertEquals(1, results.countPositivMessages());
         assertEquals(0, results.countNegativeMessages());
 
-        Message msg = results.getPositivList().get(0);
+        Message msg = results.getPositiveList().get(0);
 
         assertEquals("Mikey", msg.getNetworkUserName());
         assertEquals("33226339", msg.getNetworkUserId());

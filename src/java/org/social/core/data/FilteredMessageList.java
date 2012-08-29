@@ -17,7 +17,7 @@ public class FilteredMessageList {
 
     public void addAll(FilteredMessageList filteredMessageList) {
         negativeList.addAll(filteredMessageList.getNegativeList());
-        addAllToPositiveList(filteredMessageList.getPositivList());
+        addAllToPositiveList(filteredMessageList.getPositiveList());
     }
 
     public void addAllToPositiveList(List<Message> messages) {
@@ -32,7 +32,7 @@ public class FilteredMessageList {
         return negativeList;
     }
 
-    public List<Message> getPositivList() {
+    public List<Message> getPositiveList() {
         return positiveList;
     }
 
