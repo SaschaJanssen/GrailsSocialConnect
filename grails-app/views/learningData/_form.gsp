@@ -1,4 +1,4 @@
-<%@ page import="org.social.core.classification.LearningData" %>
+<%@ page import="org.social.grails.classification.LearningData" %>
 
 
 
@@ -7,7 +7,7 @@
 		<g:message code="learningData.classification.label" default="Classification" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="classification" name="classification.id" from="${org.social.core.classification.Classification.list()}" optionKey="id" required="" value="${learningDataInstance?.classification?.id}" class="many-to-one"/>
+	<g:select id="classification" name="classification.id" from="${org.social.grails.classification.Classification.list()}" optionKey="id" required="" value="${learningDataInstance?.classification?.id}" class="many-to-one"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: learningDataInstance, field: 'learningData', 'error')} ">

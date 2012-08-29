@@ -1,4 +1,4 @@
-<%@ page import="org.social.core.user.Customer" %>
+<%@ page import="org.social.grails.user.Customer" %>
 
 
 
@@ -15,6 +15,6 @@
 		<g:message code="customer.contact.label" default="Contact" />
 		
 	</label>
-	<g:select name="contact" from="${org.social.core.user.Contact.list()}" multiple="multiple" optionKey="id" size="5" value="${customerInstance?.contact*.id}" class="many-to-many"/>
+	<g:select name="contact" from="${org.social.grails.user.Contact.list()}" multiple="multiple" optionKey="id" size="5" value="${customerInstance?.contact*.id}" class="many-to-many"/>
 </div>
 

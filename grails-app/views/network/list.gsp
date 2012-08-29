@@ -1,5 +1,5 @@
 
-<%@ page import="org.social.core.network.Network" %>
+<%@ page import="org.social.grails.network.Network" %>
 <!doctype html>
 <html>
 	<head>

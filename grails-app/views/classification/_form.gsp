@@ -1,4 +1,4 @@
-<%@ page import="org.social.core.classification.Classification" %>
+<%@ page import="org.social.grails.classification.Classification" %>
 
 
 
@@ -23,6 +23,6 @@
 		<g:message code="classification.classificationType.label" default="Classification Type" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="classificationType" name="classificationType.id" from="${org.social.core.classification.ClassificationType.list()}" optionKey="id" optionValue="id" required="" value="${classificationInstance?.classificationType?.id}" class="many-to-one"/>
+	<g:select id="classificationType" name="classificationType.id" from="${org.social.grails.classification.ClassificationType.list()}" optionKey="id" optionValue="id" required="" value="${classificationInstance?.classificationType?.id}" class="many-to-one"/>
 </div>
 

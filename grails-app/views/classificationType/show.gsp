@@ -1,5 +1,5 @@
 
-<%@ page import="org.social.core.classification.ClassificationType" %>
+<%@ page import="org.social.grails.classification.ClassificationType" %>
 <!doctype html>
 <html>
 	<head>

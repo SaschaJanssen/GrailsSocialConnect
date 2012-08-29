@@ -1,4 +1,4 @@
-<%@ page import="org.social.core.classification.Classification" %>
+<%@ page import="org.social.grails.classification.Classification" %>
 <!doctype html>
 <html>
 	<head>

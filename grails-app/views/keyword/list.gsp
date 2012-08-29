@@ -1,5 +1,5 @@
 
-<%@ page import="org.social.core.user.Keyword" %>
+<%@ page import="org.social.grails.user.Keyword" %>
 <!doctype html>
 <html>
 	<head>

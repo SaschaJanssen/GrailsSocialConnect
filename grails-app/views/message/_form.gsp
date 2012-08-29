@@ -1,4 +1,4 @@
-<%@ page import="org.social.core.network.Message" %>
+<%@ page import="org.social.grails.network.Message" %>
 
 
 
@@ -47,7 +47,7 @@
 		<g:message code="message.customer.label" default="Customer" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="customer" name="customer.id" from="${org.social.core.user.Customer.list()}" optionKey="id" required="" value="${messageInstance?.customer?.id}" class="many-to-one"/>
+	<g:select id="customer" name="customer.id" from="${org.social.grails.user.Customer.list()}" optionKey="id" required="" value="${messageInstance?.customer?.id}" class="many-to-one"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: messageInstance, field: 'message', 'error')} ">
@@ -71,7 +71,7 @@
 		<g:message code="message.network.label" default="Network" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="network" name="network.id" from="${org.social.core.network.Network.list()}" optionKey="id" required="" value="${messageInstance?.network?.id}" class="many-to-one"/>
+	<g:select id="network" name="network.id" from="${org.social.grails.network.Network.list()}" optionKey="id" required="" value="${messageInstance?.network?.id}" class="many-to-one"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: messageInstance, field: 'networkMessageDate', 'error')} required">
@@ -87,7 +87,7 @@
 		<g:message code="message.reliability.label" default="Reliability" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="reliability" name="reliability.id" from="${org.social.core.classification.Classification.list()}" optionKey="id" required="" value="${messageInstance?.reliability?.id}" class="many-to-one"/>
+	<g:select id="reliability" name="reliability.id" from="${org.social.grails.classification.Classification.list()}" optionKey="id" required="" value="${messageInstance?.reliability?.id}" class="many-to-one"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: messageInstance, field: 'sentiment', 'error')} required">
@@ -95,6 +95,6 @@
 		<g:message code="message.sentiment.label" default="Sentiment" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="sentiment" name="sentiment.id" from="${org.social.core.classification.Classification.list()}" optionKey="id" required="" value="${messageInstance?.sentiment?.id}" class="many-to-one"/>
+	<g:select id="sentiment" name="sentiment.id" from="${org.social.grails.classification.Classification.list()}" optionKey="id" required="" value="${messageInstance?.sentiment?.id}" class="many-to-one"/>
 </div>
 

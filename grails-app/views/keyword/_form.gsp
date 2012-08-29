@@ -1,4 +1,4 @@
-<%@ page import="org.social.core.user.Keyword" %>
+<%@ page import="org.social.grails.user.Keyword" %>
 
 
 
@@ -15,7 +15,7 @@
 		<g:message code="keyword.customer.label" default="Customer" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="customer" name="customer.id" from="${org.social.core.user.Customer.list()}" optionKey="id" required="" value="${keywordInstance?.customer?.id}" class="many-to-one"/>
+	<g:select id="customer" name="customer.id" from="${org.social.grails.user.Customer.list()}" optionKey="id" required="" value="${keywordInstance?.customer?.id}" class="many-to-one"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: keywordInstance, field: 'keywordType', 'error')} required">
@@ -23,7 +23,7 @@
 		<g:message code="keyword.keywordType.label" default="Keyword Type" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="keywordType" name="keywordType.id" from="${org.social.core.user.KeywordType.list()}" optionKey="id" required="" value="${keywordInstance?.keywordType?.id}" class="many-to-one"/>
+	<g:select id="keywordType" name="keywordType.id" from="${org.social.grails.user.KeywordType.list()}" optionKey="id" required="" value="${keywordInstance?.keywordType?.id}" class="many-to-one"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: keywordInstance, field: 'network', 'error')} required">
@@ -31,6 +31,6 @@
 		<g:message code="keyword.network.label" default="Network" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="network" name="network.id" from="${org.social.core.network.Network.list()}" optionKey="id" required="" value="${keywordInstance?.network?.id}" class="many-to-one"/>
+	<g:select id="network" name="network.id" from="${org.social.grails.network.Network.list()}" optionKey="id" required="" value="${keywordInstance?.network?.id}" class="many-to-one"/>
 </div>
 

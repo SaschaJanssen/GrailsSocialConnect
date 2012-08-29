@@ -1,4 +1,4 @@
-<%@ page import="org.social.core.user.KeywordType" %>
+<%@ page import="org.social.grails.user.KeywordType" %>
 
 <div class="fieldcontain">
 	<label for="id">

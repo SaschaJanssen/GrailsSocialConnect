@@ -1,4 +1,4 @@
-<%@ page import="org.social.core.user.Contact" %>
+<%@ page import="org.social.grails.user.Contact" %>
 <!doctype html>
 <html>
 	<head>
