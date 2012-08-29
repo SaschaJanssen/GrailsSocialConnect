@@ -7,9 +7,9 @@ import org.junit.Before
 import org.junit.Test
 import org.social.core.constants.KeywordTypeConst
 import org.social.core.data.CustomerNetworkKeywords
-import org.social.core.user.Customer
-import org.social.core.user.Keyword
-import org.social.core.user.KeywordType
+import org.social.grails.user.Customer
+import org.social.grails.user.Keyword
+import org.social.grails.user.KeywordType
 
 @TestFor(FoursquareQuery)
 @Mock([Customer, Keyword, KeywordType])

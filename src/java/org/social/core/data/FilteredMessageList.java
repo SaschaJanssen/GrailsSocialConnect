@@ -3,7 +3,7 @@ package org.social.core.data;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
-import org.social.core.network.Message;
+import org.social.grails.network.Message;
 
 public class FilteredMessageList {
 

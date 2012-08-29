@@ -9,14 +9,16 @@ import net.sf.json.JSONObject;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.social.core.classification.Classification;
 import org.social.core.constants.ClassificationConst;
 import org.social.core.constants.NetworkConst;
 import org.social.core.data.FilteredMessageList;
 import org.social.core.network.connection.SocialNetworkConnection;
 import org.social.core.query.QypeQuery;
-import org.social.core.user.Customer;
 import org.social.core.util.UtilDateTime;
+import org.social.grails.classification.Classification;
+import org.social.grails.network.Message;
+import org.social.grails.network.Network;
+import org.social.grails.user.Customer;
 
 public class QypeKraken extends SocialNetworkKraken {
 

@@ -4,12 +4,12 @@ import static org.junit.Assert.assertEquals
 import grails.test.mixin.*
 
 import org.junit.Test
-import org.social.core.classification.Classification
 import org.social.core.constants.KeywordTypeConst
-import org.social.core.network.Message
-import org.social.core.user.Customer
-import org.social.core.user.Keyword
-import org.social.core.user.KeywordType
+import org.social.grails.classification.Classification
+import org.social.grails.network.Message
+import org.social.grails.user.Customer
+import org.social.grails.user.Keyword
+import org.social.grails.user.KeywordType
 
 @TestFor(DataCrafter)
 @Mock([Keyword, Customer, Message, KeywordType, Classification])

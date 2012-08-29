@@ -13,12 +13,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.social.core.constants.ClassificationConst;
 import org.social.core.exceptions.ItemNotFoundException;
-import org.social.core.network.Message;
-import org.social.core.network.Network;
-import org.social.core.user.Customer;
 import org.social.core.util.UtilDateTime;
 import org.social.core.util.UtilProperties;
 import org.social.core.util.UtilValidate;
+import org.social.grails.network.Message;
+import org.social.grails.network.Network;
+import org.social.grails.user.Customer;
 
 public abstract class SocialCrawler {
 

@@ -12,8 +12,10 @@ import org.social.core.constants.NetworkConst;
 import org.social.core.data.FilteredMessageList;
 import org.social.core.network.connection.SocialNetworkConnection;
 import org.social.core.query.TwitterQuery;
-import org.social.core.user.Customer;
 import org.social.core.util.UtilDateTime;
+import org.social.grails.network.Message;
+import org.social.grails.network.Network;
+import org.social.grails.user.Customer;
 
 public class TwitterKraken extends SocialNetworkKraken {
 

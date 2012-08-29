@@ -11,10 +11,12 @@ import org.social.core.constants.NetworkConst;
 import org.social.core.data.FilteredMessageList;
 import org.social.core.network.connection.SocialNetworkConnection;
 import org.social.core.query.FacebookQuery;
-import org.social.core.user.Customer;
 import org.social.core.util.UtilDateTime;
+import org.social.grails.network.Message;
+import org.social.grails.network.Network;
+import org.social.grails.user.Customer;
 
-class FacebookKraken extends SocialNetworkKraken {
+public class FacebookKraken extends SocialNetworkKraken {
 
     private Logger log = LoggerFactory.getLogger(this.getClass());
 

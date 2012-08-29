@@ -5,8 +5,9 @@ import java.util.List;
 import org.social.core.data.CustomerNetworkKeywords;
 import org.social.core.data.DataCrafter;
 import org.social.core.data.FilteredMessageList;
-import org.social.core.user.Customer;
-import org.social.core.user.Keyword;
+import org.social.grails.network.Message;
+import org.social.grails.user.Customer;
+import org.social.grails.user.Keyword;
 
 public abstract class SocialNetworkKraken {
 

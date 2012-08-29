@@ -4,12 +4,12 @@ import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.social.core.classification.Classification;
 import org.social.core.constants.ClassificationConst;
 import org.social.core.filter.classifier.bayes.BayesClassifier;
 import org.social.core.filter.classifier.bayes.Classifier;
-import org.social.core.network.Message;
 import org.social.core.util.UtilLucene;
+import org.social.grails.classification.Classification;
+import org.social.grails.network.Message;
 
 public class SentimentAnalyser {
 

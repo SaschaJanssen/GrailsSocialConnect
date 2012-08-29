@@ -5,9 +5,9 @@ import grails.test.mixin.*
 
 import org.junit.Before
 import org.junit.Test
-import org.social.core.user.Customer
-import org.social.core.user.Keyword
-import org.social.core.user.KeywordType
+import org.social.grails.user.Customer
+import org.social.grails.user.Keyword
+import org.social.grails.user.KeywordType
 
 @TestFor(CustomerNetworkKeywords)
 @Mock([Keyword, Customer, KeywordType])

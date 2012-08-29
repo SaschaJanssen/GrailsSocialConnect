@@ -9,7 +9,7 @@ import org.social.core.constants.ClassificationConst;
 import org.social.core.filter.SentimentAnalyser;
 import org.social.core.filter.TwitterMentionedFilter;
 import org.social.core.filter.WordlistFilter;
-import org.social.core.network.Message;
+import org.social.grails.network.Message;
 
 public class DataCrafter {
 
