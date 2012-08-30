@@ -24,35 +24,34 @@
 				<thead>
 					<tr>
 					
-						<g:sortableColumn property="networkUserId" title="${message(code: 'message.networkUserId.label', default: 'Network User Id')}" />
+						<g:sortableColumn property="id" title="${message(code: 'message.id.label', default: 'Message Id')}" />
 					
-						<g:sortableColumn property="networkUserName" title="${message(code: 'message.networkUserName.label', default: 'Network User Name')}" />
+						<g:sortableColumn property="network" title="${message(code: 'message.network.label', default: 'Network')}" />
 					
-						<g:sortableColumn property="language" title="${message(code: 'message.language.label', default: 'Language')}" />
-					
-						<g:sortableColumn property="geoLocation" title="${message(code: 'message.geoLocation.label', default: 'Geo Location')}" />
-					
-						<g:sortableColumn property="networkUserRating" title="${message(code: 'message.networkUserRating.label', default: 'Network User Rating')}" />
-					
-						<th><g:message code="message.customer.label" default="Customer" /></th>
-					
+						<g:sortableColumn property="customer" title="${message(code: 'message.customer.label', default: 'Customer')}" />
+						
+						<g:sortableColumn property="reliability" title="${message(code: 'message.reliability.label', default: 'Reliability')}" />
+						
+						<g:sortableColumn property="sentiment" title="${message(code: 'message.sentiment.label', default: 'Sentiment')}" />
+						
+						<g:sortableColumn property="networkMessageDate" title="${message(code: 'message.networkMessageDate.label', default: 'Network Message Date')}" />
 					</tr>
 				</thead>
 				<tbody>
 				<g:each in="${messageInstanceList}" status="i" var="messageInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${messageInstance.id}">${fieldValue(bean: messageInstance, field: "networkUserId")}</g:link></td>
+						<td><g:link action="show" id="${messageInstance.id}">${fieldValue(bean: messageInstance, field: "id")}</g:link></td>
 					
-						<td>${fieldValue(bean: messageInstance, field: "networkUserName")}</td>
+						<td>${fieldValue(bean: messageInstance, field: "network")}</td>
 					
-						<td>${fieldValue(bean: messageInstance, field: "language")}</td>
+						<td>${fieldValue(bean: messageInstance, field: "customer.id")}</td>
 					
-						<td>${fieldValue(bean: messageInstance, field: "geoLocation")}</td>
-					
-						<td>${fieldValue(bean: messageInstance, field: "networkUserRating")}</td>
-					
-						<td>${fieldValue(bean: messageInstance, field: "customer")}</td>
+						<td>${fieldValue(bean: messageInstance, field: "reliability")}</td>
+						
+						<td>${fieldValue(bean: messageInstance, field: "sentiment")}</td>
+						
+						<td>${fieldValue(bean: messageInstance, field: "networkMessageDate")}</td>
 					
 					</tr>
 				</g:each>

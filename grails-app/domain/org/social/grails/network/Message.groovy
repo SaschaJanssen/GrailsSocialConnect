@@ -45,7 +45,7 @@ class Message {
         networkUserId (nullable: true, size: 0..128)
         networkUserName (nullable: true, size: 0..80)
         language (nullable: true, size: 0..5)
-        geoLocation (nullable: true, size: 0..20)
+        geoLocation (nullable: true, size: 0..50)
         networkUserRating (nullable: true, size: 0..10)
     }    static mapping = { message (type: 'text') }
 }
