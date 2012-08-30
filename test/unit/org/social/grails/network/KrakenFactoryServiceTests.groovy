@@ -19,13 +19,12 @@ import org.social.core.network.YelpKraken
 import org.social.core.network.ZagatKraken
 import org.social.grails.user.Customer
 import org.social.grails.user.Keyword
-import org.social.grails.user.KeywordType
 
 /**
  * See the API for {@link grails.test.mixin.services.ServiceUnitTestMixin} for usage instructions
  */
 @TestFor(KrakenFactoryService)
-@Mock([Customer, Keyword, KeywordType])
+@Mock([Customer, Keyword])
 class KrakenFactoryServiceTests {
     def krakenFactoryService = new KrakenFactoryService()
 
@@ -33,13 +32,10 @@ class KrakenFactoryServiceTests {
     public void setUp() {
         Keyword.metaClass.static.findAllByCustomerAndNetwork = {customer, networkName ->
             
-            def type = new KeywordType()
-            type.id = KeywordTypeConst.QUERY.getName()
-    
             def keyword = new Keyword()
             keyword.customer = customer
             keyword.network = NetworkConst.FOURSQUARE
-            keyword.keywordType = type
+            keyword.keywordType = KeywordTypeConst.QUERY
             keyword.keyword = "Vapiano"
             
             [keyword]

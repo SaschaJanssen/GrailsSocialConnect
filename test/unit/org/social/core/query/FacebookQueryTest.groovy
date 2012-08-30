@@ -9,10 +9,9 @@ import org.social.core.constants.KeywordTypeConst
 import org.social.core.data.CustomerNetworkKeywords
 import org.social.grails.user.Customer
 import org.social.grails.user.Keyword
-import org.social.grails.user.KeywordType
 
 @TestFor(FacebookQuery)
-@Mock([Customer, Keyword, KeywordType])
+@Mock([Customer, Keyword])
 public class FacebookQueryTest {
 
     def CustomerNetworkKeywords cnk
@@ -22,13 +21,10 @@ public class FacebookQueryTest {
         def customer = new Customer()
         customer.save()
 
-        def type = new KeywordType()
-        type.id = KeywordTypeConst.QUERY.getName()
-
         List<Keyword> keywordListForNetwork = new ArrayList<Keyword>()
         Keyword keywords = new Keyword()
         keywords.customer = customer
-        keywords.keywordType = type
+        keywords.keywordType = KeywordTypeConst.QUERY
         keywords.setKeyword("Test")
         keywordListForNetwork.add(keywords)
 

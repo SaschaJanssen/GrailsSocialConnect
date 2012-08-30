@@ -7,7 +7,7 @@ public enum KeywordTypeConst {
         return name();
     }
 
-    public boolean isKeywordType(String keywordType) {
-        return getName().equals(keywordType);
+    public boolean isKeywordType(KeywordTypeConst keywordType) {
+        return getName().equals(keywordType.name());
     }
 }

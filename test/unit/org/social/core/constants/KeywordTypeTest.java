@@ -30,12 +30,12 @@ public class KeywordTypeTest {
 
     @Test
     public void testIsKeywordType() throws Exception {
-        assertTrue(KeywordTypeConst.QUERY.isKeywordType("QUERY"));
-        assertTrue(KeywordTypeConst.HASH.isKeywordType("HASH"));
-        assertTrue(KeywordTypeConst.MENTIONED.isKeywordType("MENTIONED"));
-        assertTrue(KeywordTypeConst.PAGE.isKeywordType("PAGE"));
+        assertTrue(KeywordTypeConst.QUERY.isKeywordType(KeywordTypeConst.QUERY));
+        assertTrue(KeywordTypeConst.HASH.isKeywordType(KeywordTypeConst.HASH));
+        assertTrue(KeywordTypeConst.MENTIONED.isKeywordType(KeywordTypeConst.MENTIONED));
+        assertTrue(KeywordTypeConst.PAGE.isKeywordType(KeywordTypeConst.PAGE));
 
-        assertFalse(KeywordTypeConst.MENTIONED.isKeywordType("HASH"));
+        assertFalse(KeywordTypeConst.MENTIONED.isKeywordType(KeywordTypeConst.HASH));
     }
 
 }

@@ -54,7 +54,7 @@
 				<li class="fieldcontain">
 					<span id="keywordType-label" class="property-label"><g:message code="keyword.keywordType.label" default="Keyword Type" /></span>
 					
-						<span class="property-value" aria-labelledby="keywordType-label"><g:link controller="keywordType" action="show" id="${keywordInstance?.keywordType?.id}">${keywordInstance?.keywordType?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="keywordType-label"><g:fieldValue bean="${keywordInstance}" field="keywordType"/></span>
 					
 				</li>
 				</g:if>
@@ -72,7 +72,7 @@
 				<li class="fieldcontain">
 					<span id="network-label" class="property-label"><g:message code="keyword.network.label" default="Network" /></span>
 					
-						<span class="property-value" aria-labelledby="network-label"><g:link controller="network" action="show" id="${keywordInstance?.network?.id}">${keywordInstance?.network?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="network-label"><g:fieldValue bean="${keywordInstance}" field="network"/></span>
 					
 				</li>
 				</g:if>

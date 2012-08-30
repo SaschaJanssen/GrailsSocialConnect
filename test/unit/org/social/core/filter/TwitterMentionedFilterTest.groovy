@@ -10,11 +10,10 @@ import org.social.core.constants.KeywordTypeConst
 import org.social.core.data.CustomerNetworkKeywords
 import org.social.grails.user.Customer
 import org.social.grails.user.Keyword
-import org.social.grails.user.KeywordType
 
 
 @TestFor(TwitterMentionedFilter)
-@Mock([Keyword, Customer, KeywordType])
+@Mock([Keyword, Customer])
 public class TwitterMentionedFilterTest {
 
     TwitterMentionedFilter mentionedFilter
@@ -23,24 +22,20 @@ public class TwitterMentionedFilterTest {
     public void setUp() throws Exception {
 
         Customer customer = new Customer()
-        KeywordType type = new KeywordType()
 
         List<Keyword> keywordListForNetwork = new ArrayList<Keyword>()
         Keyword keywords = new Keyword()
 
         keywords.setCustomer(customer)
 
-        type.id= KeywordTypeConst.HASH
-        keywords.setKeywordType(type)
+        keywords.setKeywordType(KeywordTypeConst.HASH)
         keywords.setKeyword("#Vapiano")
         keywordListForNetwork.add(keywords)
 
         keywords = new Keyword()
         keywords.setCustomer(customer)
 
-        type = new KeywordType()
-        type.id = KeywordTypeConst.MENTIONED
-        keywords.setKeywordType(type)
+        keywords.setKeywordType(KeywordTypeConst.MENTIONED)
         keywords.setKeyword("@Vapiano")
         keywordListForNetwork.add(keywords)
 
@@ -98,14 +93,12 @@ public class TwitterMentionedFilterTest {
     public void testEndsWithHash() throws Exception {
 
         Customer customer = new Customer()
-        KeywordType type = new KeywordType()
 
         List<Keyword> keywordListForNetwork = new ArrayList<Keyword>()
         Keyword keywords = new Keyword()
         keywords.setCustomer(customer)
 
-        type.id = KeywordTypeConst.HASH
-        keywords.setKeywordType(type)
+        keywords.setKeywordType(KeywordTypeConst.HASH)
         keywords.setKeyword("#Pizza")
         keywordListForNetwork.add(keywords)
 
@@ -121,14 +114,12 @@ public class TwitterMentionedFilterTest {
     public void testStartsWithHash() throws Exception {
 
         Customer customer = new Customer()
-        KeywordType type = new KeywordType()
 
         List<Keyword> keywordListForNetwork = new ArrayList<Keyword>()
         Keyword keywords = new Keyword()
         keywords.setCustomer(customer)
 
-        type.id = KeywordTypeConst.HASH
-        keywords.setKeywordType(type)
+        keywords.setKeywordType(KeywordTypeConst.HASH)
         keywords.setKeyword("#Pizza")
         keywordListForNetwork.add(keywords)
 

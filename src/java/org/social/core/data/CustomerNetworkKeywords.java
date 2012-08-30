@@ -50,7 +50,7 @@ public class CustomerNetworkKeywords {
 
         for (Keyword keyword : keywordsForCustomer) {
 
-            String keywordType = keyword.getKeywordTypeId();
+            KeywordTypeConst keywordType = keyword.getKeywordType();
 
             if (KeywordTypeConst.HASH.isKeywordType(keywordType)) {
                 mappedKeywords.put(KeywordTypeConst.HASH, keyword.getKeyword());

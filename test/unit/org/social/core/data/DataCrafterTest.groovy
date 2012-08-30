@@ -8,10 +8,9 @@ import org.social.core.constants.KeywordTypeConst
 import org.social.grails.network.Message
 import org.social.grails.user.Customer
 import org.social.grails.user.Keyword
-import org.social.grails.user.KeywordType
 
 @TestFor(DataCrafter)
-@Mock([Keyword, Customer, Message, KeywordType])
+@Mock([Keyword, Customer, Message])
 public class DataCrafterTest {
 
     @Test
@@ -19,32 +18,26 @@ public class DataCrafterTest {
         DataCrafter crafter = new DataCrafter(setUpDemoData_One())
 
         Customer customer = new Customer()
-        KeywordType type = new KeywordType()
 
         List<Keyword> keywordListForNetwork = new ArrayList<Keyword>()
         Keyword keywords = new Keyword()
         keywords.setCustomer(customer)
 
-        type.id = KeywordTypeConst.HASH
-        keywords.setKeywordType(type)
+        keywords.setKeywordType(KeywordTypeConst.HASH)
         keywords.setKeyword("#WOLFGANGSSTEAKH")
         keywordListForNetwork.add(keywords)
 
         keywords = new Keyword()
         keywords.setCustomer(customer)
 
-        type = new KeywordType()
-        type.id = KeywordTypeConst.QUERY
-        keywords.setKeywordType(type)
+        keywords.setKeywordType(KeywordTypeConst.QUERY)
         keywords.setKeyword("Wolfgangs")
         keywordListForNetwork.add(keywords)
 
         keywords = new Keyword()
         keywords.setCustomer(customer)
 
-        type = new KeywordType()
-        type.id = KeywordTypeConst.MENTIONED
-        keywords.setKeywordType(type)
+        keywords.setKeywordType(KeywordTypeConst.MENTIONED)
         keywords.setKeyword("@WOLFGANGSSTEAKH")
         keywordListForNetwork.add(keywords)
 
@@ -61,32 +54,26 @@ public class DataCrafterTest {
         DataCrafter crafter = new DataCrafter(setUpDemoData_Two())
 
         Customer customer = new Customer()
-        KeywordType type = new KeywordType()
 
         List<Keyword> keywordListForNetwork = new ArrayList<Keyword>()
         Keyword keywords = new Keyword()
         keywords.setCustomer(customer)
 
-        type.id = KeywordTypeConst.HASH
-        keywords.setKeywordType(type)
+        keywords.setKeywordType(KeywordTypeConst.HASH)
         keywords.setKeyword("#Vapiano")
         keywordListForNetwork.add(keywords)
 
         keywords = new Keyword()
         keywords.setCustomer(customer)
 
-        type = new KeywordType()
-        type.id = KeywordTypeConst.QUERY
-        keywords.setKeywordType(type)
+        keywords.setKeywordType(KeywordTypeConst.QUERY)
         keywords.setKeyword("Vapiano")
         keywordListForNetwork.add(keywords)
 
         keywords = new Keyword()
         keywords.setCustomer(customer)
 
-        type = new KeywordType()
-        type.id = KeywordTypeConst.MENTIONED
-        keywords.setKeywordType(type)
+        keywords.setKeywordType(KeywordTypeConst.MENTIONED)
         keywords.setKeyword("@Vapiano")
         keywordListForNetwork.add(keywords)
 

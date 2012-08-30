@@ -1,25 +1,24 @@
 package org.social.grails.user
 
+import org.social.core.constants.KeywordTypeConst
 import org.social.core.constants.NetworkConst
 
 
 class Keyword {
 
     String keyword
-    org.social.core.constants.NetworkConst network
+    KeywordTypeConst keywordType
+    NetworkConst network
     
     Date dateCreated
     Date lastUpdated
-
-    static belongsTo = [keywordType:KeywordType, customer:Customer]
     
-    def String getKeywordTypeId() {
-        return this.keywordType.id
-    }
+    static belongsTo = [customer:Customer]
 
     def beforeInsert() {
         dateCreated = new Date()
     }
+    
     def beforeUpdate() {
         lastUpdated = new Date()
     }

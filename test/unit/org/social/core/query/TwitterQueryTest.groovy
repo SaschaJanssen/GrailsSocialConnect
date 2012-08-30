@@ -8,10 +8,9 @@ import org.social.core.constants.KeywordTypeConst
 import org.social.core.data.CustomerNetworkKeywords
 import org.social.grails.user.Customer
 import org.social.grails.user.Keyword
-import org.social.grails.user.KeywordType
 
 @TestFor(TwitterQuery)
-@Mock([Customer, Keyword, KeywordType])
+@Mock([Customer, Keyword])
 public class TwitterQueryTest {
 
     CustomerNetworkKeywords cnk
@@ -21,30 +20,23 @@ public class TwitterQueryTest {
         def customer = new Customer()
         customer.save()
 
-        def type = new KeywordType()
-        type.id = KeywordTypeConst.QUERY.getName()
-
         List<Keyword> keywordListForNetwork = new ArrayList<Keyword>()
         Keyword keywords = new Keyword()
         keywords.customer = customer
-        keywords.keywordType = type
+        keywords.keywordType = KeywordTypeConst.QUERY
         keywords.setKeyword("Test")
         keywordListForNetwork.add(keywords)
 
         keywords = new Keyword()
-        type = new KeywordType()
-        type.id = KeywordTypeConst.HASH.getName()
         keywords.customer = customer
-        keywords.keywordType = type
+        keywords.keywordType = KeywordTypeConst.HASH
 
         keywords.setKeyword("#Test")
         keywordListForNetwork.add(keywords)
 
         keywords = new Keyword()
-        type = new KeywordType()
-        type.id = KeywordTypeConst.MENTIONED.getName()
         keywords.customer = customer
-        keywords.keywordType = type
+        keywords.keywordType = KeywordTypeConst.MENTIONED
         keywords.setKeyword("@Test")
         keywordListForNetwork.add(keywords)
 

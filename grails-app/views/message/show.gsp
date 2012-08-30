@@ -117,7 +117,7 @@
 				<li class="fieldcontain">
 					<span id="network-label" class="property-label"><g:message code="message.network.label" default="Network" /></span>
 					
-						<span class="property-value" aria-labelledby="network-label"><g:link controller="network" action="show" id="${messageInstance?.network?.id}">${messageInstance?.network?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="network-label"><g:fieldValue bean="${messageInstance}" field="network"/></span>
 					
 				</li>
 				</g:if>
@@ -135,7 +135,7 @@
 				<li class="fieldcontain">
 					<span id="reliability-label" class="property-label"><g:message code="message.reliability.label" default="Reliability" /></span>
 					
-						<span class="property-value" aria-labelledby="reliability-label"><g:link controller="classification" action="show" id="${messageInstance?.reliability?.id}">${messageInstance?.reliability?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="reliability-label"><g:fieldValue bean="${messageInstance}" field="reliability"/></span>
 					
 				</li>
 				</g:if>
@@ -144,7 +144,7 @@
 				<li class="fieldcontain">
 					<span id="sentiment-label" class="property-label"><g:message code="message.sentiment.label" default="Sentiment" /></span>
 					
-						<span class="property-value" aria-labelledby="sentiment-label"><g:link controller="classification" action="show" id="${messageInstance?.sentiment?.id}">${messageInstance?.sentiment?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="sentiment-label"><g:fieldValue bean="${messageInstance}" field="sentiment"/></span>
 					
 				</li>
 				</g:if>

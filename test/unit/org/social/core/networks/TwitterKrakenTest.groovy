@@ -15,10 +15,9 @@ import org.social.core.network.connection.SocialNetworkConnection
 import org.social.grails.network.Message
 import org.social.grails.user.Customer
 import org.social.grails.user.Keyword
-import org.social.grails.user.KeywordType
 
 @TestFor(TwitterKraken)
-@Mock([Message, KeywordType, Keyword, Customer])
+@Mock([Message, Keyword, Customer])
 public class TwitterKrakenTest {
 
     private Customer customer;
@@ -31,13 +30,10 @@ public class TwitterKrakenTest {
 
         Keyword.metaClass.static.findAllByCustomerAndNetwork = {customer, networkName -> 
             
-            def type = new KeywordType()
-            type.id = KeywordTypeConst.QUERY.getName()
-    
             def keyword = new Keyword()
             keyword.customer = customer
             keyword.network = NetworkConst.TWITTER
-            keyword.keywordType = type
+            keyword.keywordType = KeywordTypeConst.QUERY
             keyword.keyword = "Vapiano"
             
             [keyword]

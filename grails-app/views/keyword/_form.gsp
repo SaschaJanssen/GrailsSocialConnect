@@ -23,7 +23,7 @@
 		<g:message code="keyword.keywordType.label" default="Keyword Type" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="keywordType" name="keywordType.id" from="${org.social.grails.user.KeywordType.list()}" optionKey="id" required="" value="${keywordInstance?.keywordType?.id}" class="many-to-one"/>
+	<g:select name="keywordType" from="${org.social.core.constants.KeywordTypeConst?.values()}" keys="${org.social.core.constants.KeywordTypeConst.values()*.name()}" required="" value="${keywordInstance?.keywordType?.name()}"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: keywordInstance, field: 'network', 'error')} required">
@@ -31,6 +31,6 @@
 		<g:message code="keyword.network.label" default="Network" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="network" name="network.id" from="${org.social.grails.network.Network.list()}" optionKey="id" required="" value="${keywordInstance?.network?.id}" class="many-to-one"/>
+	<g:select name="network" from="${org.social.core.constants.NetworkConst?.values()}" keys="${org.social.core.constants.NetworkConst.values()*.name()}" required="" value="${keywordInstance?.network?.name()}"/>
 </div>
 

@@ -9,10 +9,9 @@ import org.social.core.constants.KeywordTypeConst
 import org.social.core.data.CustomerNetworkKeywords
 import org.social.grails.user.Customer
 import org.social.grails.user.Keyword
-import org.social.grails.user.KeywordType
 
 @TestFor(QypeQuery)
-@Mock([Customer, Keyword, KeywordType])
+@Mock([Customer, Keyword])
 public class QypeQueryTest {
 
     CustomerNetworkKeywords cnk
@@ -22,13 +21,10 @@ public class QypeQueryTest {
         def customer = new Customer()
         customer.save()
 
-        def type = new KeywordType()
-        type.id = KeywordTypeConst.PAGE.getName()
-
         List<Keyword> keywordListForNetwork = new ArrayList<Keyword>()
         def keywords = new Keyword()
         keywords.customer = customer
-        keywords.keywordType = type
+        keywords.keywordType = KeywordTypeConst.PAGE
         keywords.setKeyword("139975")
         keywordListForNetwork.add(keywords)
 

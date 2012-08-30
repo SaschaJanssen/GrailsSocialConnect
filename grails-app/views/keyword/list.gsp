@@ -30,11 +30,11 @@
 					
 						<g:sortableColumn property="dateCreated" title="${message(code: 'keyword.dateCreated.label', default: 'Date Created')}" />
 					
-						<th><g:message code="keyword.keywordType.label" default="Keyword Type" /></th>
+						<g:sortableColumn property="keywordType" title="${message(code: 'keyword.keywordType.label', default: 'Keyword Type')}" />
 					
 						<g:sortableColumn property="lastUpdated" title="${message(code: 'keyword.lastUpdated.label', default: 'Last Updated')}" />
 					
-						<th><g:message code="keyword.network.label" default="Network" /></th>
+						<g:sortableColumn property="network" title="${message(code: 'keyword.network.label', default: 'Network')}" />
 					
 					</tr>
 				</thead>

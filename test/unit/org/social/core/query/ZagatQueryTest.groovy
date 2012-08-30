@@ -10,10 +10,9 @@ import org.social.core.constants.KeywordTypeConst
 import org.social.core.data.CustomerNetworkKeywords
 import org.social.grails.user.Customer
 import org.social.grails.user.Keyword
-import org.social.grails.user.KeywordType
 
 @TestFor(ZagatQuery)
-@Mock([Customer, Keyword, KeywordType])
+@Mock([Customer, Keyword])
 public class ZagatQueryTest {
 
     CustomerNetworkKeywords cnk
@@ -23,13 +22,10 @@ public class ZagatQueryTest {
         def customer = new Customer()
         customer.save()
 
-        def type = new KeywordType()
-        type.id = KeywordTypeConst.PAGE.getName()
-
         List<Keyword> keywordListForNetwork = new ArrayList<Keyword>()
         Keyword keywords = new Keyword()
         keywords.customer = customer
-        keywords.keywordType = type
+        keywords.keywordType = KeywordTypeConst.PAGE
         keywords.setKeyword("/r/n/five-guys-queens-3")
         keywordListForNetwork.add(keywords)
 

@@ -14,10 +14,9 @@ import org.social.core.network.crawler.BaseCrawler
 import org.social.grails.network.Message
 import org.social.grails.user.Customer
 import org.social.grails.user.Keyword
-import org.social.grails.user.KeywordType
 
 @TestFor(OpenTableKraken)
-@Mock([Message, KeywordType, Keyword, Customer])
+@Mock([Message, Keyword, Customer])
 public class OpenTableKrakenTest {
 
     def Customer customer;
@@ -30,13 +29,10 @@ public class OpenTableKrakenTest {
         
         Keyword.metaClass.static.findAllByCustomerAndNetwork = {customer, network -> 
             
-            def type = new KeywordType()
-            type.id = KeywordTypeConst.QUERY.getName()
-    
             def keyword = new Keyword()
             keyword.customer = customer
             keyword.network = network
-            keyword.keywordType = type
+            keyword.keywordType = KeywordTypeConst.QUERY
             keyword.keyword = "Vapiano"
             
             [keyword]

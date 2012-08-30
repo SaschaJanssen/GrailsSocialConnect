@@ -9,10 +9,9 @@ import org.social.core.constants.KeywordTypeConst
 import org.social.core.data.CustomerNetworkKeywords
 import org.social.grails.user.Customer
 import org.social.grails.user.Keyword
-import org.social.grails.user.KeywordType
 
 @TestFor(FoursquareQuery)
-@Mock([Customer, Keyword, KeywordType])
+@Mock([Customer, Keyword])
 public class FoursquareQueryTest {
 
     CustomerNetworkKeywords cnk
@@ -22,13 +21,10 @@ public class FoursquareQueryTest {
         def customer = new Customer()
         customer.save()
 
-        def type = new KeywordType()
-        type.id = KeywordTypeConst.PAGE.getName()
-
         List<Keyword> keywordListForNetwork = new ArrayList<Keyword>()
         def keywords = new Keyword()
         keywords.customer = customer
-        keywords.keywordType = type
+        keywords.keywordType = KeywordTypeConst.PAGE
         keywords.setKeyword("4b68590cf964a52012732be3")
         keywordListForNetwork.add(keywords)
 
