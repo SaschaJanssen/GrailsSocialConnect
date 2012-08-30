@@ -23,6 +23,7 @@
 			<table>
 				<thead>
 					<tr>
+						<g:sortableColumn property="id" title="${message(code: 'contactType.id.label', default: 'Contact type ID')}" />
 					
 						<g:sortableColumn property="description" title="${message(code: 'contactType.description.label', default: 'Description')}" />
 					
@@ -35,8 +36,9 @@
 				<tbody>
 				<g:each in="${contactTypeInstanceList}" status="i" var="contactTypeInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
+						<td><g:link action="show" id="${contactTypeInstance.id}">${fieldValue(bean: contactTypeInstance, field: "id")}</g:link></td>
 					
-						<td><g:link action="show" id="${contactTypeInstance.id}">${fieldValue(bean: contactTypeInstance, field: "description")}</g:link></td>
+						<td>${fieldValue(bean: contactTypeInstance, field: "description")}</td>
 					
 						<td><g:formatDate date="${contactTypeInstance.dateCreated}" /></td>
 					

@@ -86,7 +86,7 @@ log4j = {
         
     }
     
-    debug  'org.codehaus.groovy.grails.web.servlet',        // controllers
+    warn  'org.codehaus.groovy.grails.web.servlet',        // controllers
            'org.codehaus.groovy.grails.web.pages',          // GSP
            'org.codehaus.groovy.grails.web.sitemesh',       // layouts
            'org.codehaus.groovy.grails.web.mapping.filter', // URL mapping
@@ -96,11 +96,11 @@ log4j = {
            'org.codehaus.groovy.grails.orm.hibernate',      // hibernate integration
            'org.springframework',
            'org.hibernate',
-           'net.sf.ehcache.hibernate'
+           'net.sf.ehcache.hibernate',
+           'grails.app'
     
-   debug  'org.social',
-          'grails.test',
-          'grails.app'
+   debug  'org.social.*'
+          
    root = {
             debug 'myFileAppender', 'myStdoutAppender', 'myDailyAppender'
             // warn 'myStdoutAppender', 'myFileAppender', 'myDailyAppender'

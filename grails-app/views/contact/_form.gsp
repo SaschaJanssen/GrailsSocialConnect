@@ -7,7 +7,7 @@
 		<g:message code="contact.contactType.label" default="Contact Type" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="contactType" name="contactType.id" from="${org.social.grails.user.ContactType.list()}" optionKey="id" required="" value="${contactInstance?.contactType?.id}" class="many-to-one"/>
+	<g:select id="contactType" name="contactType.id" from="${org.social.grails.user.ContactType.list()}" optionKey="id" optionValue="id" required="" value="${contactInstance?.contactType?.id}" class="many-to-one"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: contactInstance, field: 'infoString', 'error')} ">

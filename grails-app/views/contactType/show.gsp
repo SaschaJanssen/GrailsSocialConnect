@@ -23,6 +23,13 @@
 			</g:if>
 			<ol class="property-list contactType">
 			
+				<li class="fieldcontain">
+					<span id="id-label" class="property-label"><g:message code="contactType.id.label" default="Contact Type ID" /></span>
+					
+						<span class="property-value" aria-labelledby="id-label"><g:fieldValue bean="${contactTypeInstance}" field="id"/></span>
+					
+				</li>
+				
 				<g:if test="${contactTypeInstance?.description}">
 				<li class="fieldcontain">
 					<span id="description-label" class="property-label"><g:message code="contactType.description.label" default="Description" /></span>

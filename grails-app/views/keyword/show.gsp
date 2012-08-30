@@ -36,7 +36,7 @@
 				<li class="fieldcontain">
 					<span id="customer-label" class="property-label"><g:message code="keyword.customer.label" default="Customer" /></span>
 					
-						<span class="property-value" aria-labelledby="customer-label"><g:link controller="customer" action="show" id="${keywordInstance?.customer?.id}">${keywordInstance?.customer?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="customer-label"><g:link controller="customer" action="show" id="${keywordInstance?.customer?.id}">${keywordInstance?.customer?.id.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>

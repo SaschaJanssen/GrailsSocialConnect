@@ -23,6 +23,7 @@
 			<table>
 				<thead>
 					<tr>
+						<g:sortableColumn property="id" title="${message(code: 'customer.id.label', default: 'Customer ID')}" />
 					
 						<g:sortableColumn property="lastNetworkAccess" title="${message(code: 'customer.lastNetworkAccess.label', default: 'Last Network Access')}" />
 					
@@ -35,8 +36,9 @@
 				<tbody>
 				<g:each in="${customerInstanceList}" status="i" var="customerInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
+						<td><g:link action="show" id="${customerInstance.id}">${fieldValue(bean: customerInstance, field: "id")}</g:link></td>
 					
-						<td><g:link action="show" id="${customerInstance.id}">${fieldValue(bean: customerInstance, field: "lastNetworkAccess")}</g:link></td>
+						<td>${fieldValue(bean: customerInstance, field: "lastNetworkAccess")}</td>
 					
 						<td><g:formatDate date="${customerInstance.dateCreated}" /></td>
 					

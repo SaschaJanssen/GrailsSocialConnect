@@ -23,6 +23,13 @@
 			</g:if>
 			<ol class="property-list customer">
 			
+				<li class="fieldcontain">
+					<span id="id-label" class="property-label"><g:message code="customer.id.label" default="Customer ID" /></span>
+					
+						<span class="property-value" aria-labelledby="id-label"><g:fieldValue bean="${customerInstance}" field="id"/></span>
+					
+				</li>
+				
 				<g:if test="${customerInstance?.lastNetworkAccess}">
 				<li class="fieldcontain">
 					<span id="lastNetworkAccess-label" class="property-label"><g:message code="customer.lastNetworkAccess.label" default="Last Network Access" /></span>

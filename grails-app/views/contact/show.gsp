@@ -27,7 +27,7 @@
 				<li class="fieldcontain">
 					<span id="contactType-label" class="property-label"><g:message code="contact.contactType.label" default="Contact Type" /></span>
 					
-						<span class="property-value" aria-labelledby="contactType-label"><g:link controller="contactType" action="show" id="${contactInstance?.contactType?.id}">${contactInstance?.contactType?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="contactType-label"><g:link controller="contactType" action="show" id="${contactInstance?.contactType?.id}">${contactInstance?.contactType?.id.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>

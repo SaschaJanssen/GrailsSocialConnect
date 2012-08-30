@@ -15,7 +15,7 @@
 		<g:message code="keyword.customer.label" default="Customer" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="customer" name="customer.id" from="${org.social.grails.user.Customer.list()}" optionKey="id" required="" value="${keywordInstance?.customer?.id}" class="many-to-one"/>
+	<g:select id="customer" name="customer.id" from="${org.social.grails.user.Customer.list()}" optionKey="id" optionValue="id" required="" value="${keywordInstance?.customer?.id}" class="many-to-one"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: keywordInstance, field: 'keywordType', 'error')} required">

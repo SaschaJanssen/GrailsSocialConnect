@@ -44,7 +44,7 @@
 					
 						<td><g:link action="show" id="${keywordInstance.id}">${fieldValue(bean: keywordInstance, field: "keyword")}</g:link></td>
 					
-						<td>${fieldValue(bean: keywordInstance, field: "customer")}</td>
+						<td>${fieldValue(bean: keywordInstance, field: "customer.id")}</td>
 					
 						<td><g:formatDate date="${keywordInstance.dateCreated}" /></td>
 					
