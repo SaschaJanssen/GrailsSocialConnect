@@ -8,8 +8,8 @@ import org.junit.Before
 import org.junit.Test
 import org.social.core.constants.KeywordTypeConst
 import org.social.core.data.CustomerNetworkKeywords
-import org.social.grails.user.Customer
-import org.social.grails.user.Keyword
+import org.social.grails.Keyword
+import org.social.grails.customer.Customer
 
 @TestFor(ZagatQuery)
 @Mock([Customer, Keyword])

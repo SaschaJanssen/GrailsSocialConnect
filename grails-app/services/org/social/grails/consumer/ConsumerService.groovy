@@ -6,9 +6,9 @@ import java.util.concurrent.TimeUnit
 
 import org.social.core.data.FilteredMessageList
 import org.social.core.network.SocialNetworkKraken
+import org.social.grails.Keyword
+import org.social.grails.customer.Customer
 import org.social.grails.network.KrakenFactoryService
-import org.social.grails.user.Customer
-import org.social.grails.user.Keyword
 
 class ConsumerService {
 

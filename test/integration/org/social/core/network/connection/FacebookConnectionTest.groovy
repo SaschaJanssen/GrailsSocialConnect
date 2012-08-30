@@ -10,8 +10,8 @@ import org.social.core.constants.KeywordTypeConst
 import org.social.core.data.CustomerNetworkKeywords
 import org.social.core.network.IntegrationSetup
 import org.social.core.query.FacebookQuery
-import org.social.grails.user.Customer
-import org.social.grails.user.Keyword
+import org.social.grails.Keyword
+import org.social.grails.customer.Customer
 
 public class FacebookConnectionTest extends IntegrationSetup {
 

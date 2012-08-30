@@ -17,8 +17,8 @@ import org.social.core.exceptions.ItemNotFoundException;
 import org.social.core.util.UtilDateTime;
 import org.social.core.util.UtilProperties;
 import org.social.core.util.UtilValidate;
-import org.social.grails.network.Message;
-import org.social.grails.user.Customer;
+import org.social.grails.Message;
+import org.social.grails.customer.Customer;
 
 public abstract class SocialCrawler {
 

@@ -12,9 +12,9 @@ import org.social.core.data.FilteredMessageList
 import org.social.core.network.SocialNetworkKraken
 import org.social.core.network.ZagatKraken
 import org.social.core.network.crawler.BaseCrawler
-import org.social.grails.network.Message
-import org.social.grails.user.Customer
-import org.social.grails.user.Keyword
+import org.social.grails.Keyword
+import org.social.grails.Message
+import org.social.grails.customer.Customer
 
 @TestFor(ZagatKraken)
 @Mock([Message, Keyword, Customer])

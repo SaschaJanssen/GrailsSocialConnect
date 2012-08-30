@@ -17,8 +17,8 @@ import org.social.core.network.TripAdvisorKraken
 import org.social.core.network.TwitterKraken
 import org.social.core.network.YelpKraken
 import org.social.core.network.ZagatKraken
-import org.social.grails.user.Customer
-import org.social.grails.user.Keyword
+import org.social.grails.Keyword
+import org.social.grails.customer.Customer
 
 /**
  * See the API for {@link grails.test.mixin.services.ServiceUnitTestMixin} for usage instructions

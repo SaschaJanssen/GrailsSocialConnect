@@ -11,8 +11,8 @@ import org.junit.Before
 import org.junit.Test
 import org.social.core.network.crawler.OpenTableSocialCrawler
 import org.social.core.network.crawler.SocialCrawler
-import org.social.grails.network.Message
-import org.social.grails.user.Customer
+import org.social.grails.Message
+import org.social.grails.customer.Customer
 
 @TestFor(OpenTableSocialCrawler)
 @Mock(Customer)

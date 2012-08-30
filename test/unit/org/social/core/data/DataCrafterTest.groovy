@@ -5,9 +5,9 @@ import grails.test.mixin.*
 
 import org.junit.Test
 import org.social.core.constants.KeywordTypeConst
-import org.social.grails.network.Message
-import org.social.grails.user.Customer
-import org.social.grails.user.Keyword
+import org.social.grails.Keyword
+import org.social.grails.Message
+import org.social.grails.customer.Customer
 
 @TestFor(DataCrafter)
 @Mock([Keyword, Customer, Message])

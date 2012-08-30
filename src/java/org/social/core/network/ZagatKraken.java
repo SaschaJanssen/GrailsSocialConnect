@@ -14,8 +14,8 @@ import org.social.core.network.crawler.SocialCrawler;
 import org.social.core.network.crawler.ZagatSocialCrawler;
 import org.social.core.query.Query;
 import org.social.core.query.ZagatQuery;
-import org.social.grails.network.Message;
-import org.social.grails.user.Customer;
+import org.social.grails.Message;
+import org.social.grails.customer.Customer;
 
 public class ZagatKraken extends SocialNetworkKraken {
 

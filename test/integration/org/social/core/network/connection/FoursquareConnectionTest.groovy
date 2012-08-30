@@ -11,8 +11,8 @@ import org.social.core.data.CustomerNetworkKeywords
 import org.social.core.network.IntegrationSetup
 import org.social.core.query.FoursquareQuery
 import org.social.core.query.Query
-import org.social.grails.user.Customer
-import org.social.grails.user.Keyword
+import org.social.grails.Keyword
+import org.social.grails.customer.Customer
 
 public class FoursquareConnectionTest extends IntegrationSetup {
 

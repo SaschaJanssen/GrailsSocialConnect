@@ -13,7 +13,7 @@ import org.social.core.filter.classifier.bayes.BayesClassifier
 import org.social.core.filter.classifier.bayes.Classifier
 import org.social.core.util.UtilLucene
 import org.social.core.util.UtilValidate
-import org.social.grails.network.Message
+import org.social.grails.Message;
 
 @TestFor(SentimentAnalyser)
 @Mock([Message])

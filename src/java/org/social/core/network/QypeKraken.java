@@ -15,8 +15,8 @@ import org.social.core.data.FilteredMessageList;
 import org.social.core.network.connection.SocialNetworkConnection;
 import org.social.core.query.QypeQuery;
 import org.social.core.util.UtilDateTime;
-import org.social.grails.network.Message;
-import org.social.grails.user.Customer;
+import org.social.grails.Message;
+import org.social.grails.customer.Customer;
 
 public class QypeKraken extends SocialNetworkKraken {
 

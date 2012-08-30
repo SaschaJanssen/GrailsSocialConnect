@@ -15,7 +15,7 @@ import org.social.core.network.connection.FoursquareConnection
 import org.social.core.network.connection.QypeConnection
 import org.social.core.network.connection.TwitterConnection
 import org.social.core.network.crawler.JsoupBaseCrwaler
-import org.social.grails.user.Customer
+import org.social.grails.customer.Customer
 
 class KrakenFactoryService {
 

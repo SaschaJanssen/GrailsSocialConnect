@@ -13,8 +13,8 @@ import org.social.core.network.crawler.BaseCrawler;
 import org.social.core.network.crawler.YelpSocialCrawler;
 import org.social.core.query.Query;
 import org.social.core.query.YelpQuery;
-import org.social.grails.network.Message;
-import org.social.grails.user.Customer;
+import org.social.grails.Message;
+import org.social.grails.customer.Customer;
 
 public class YelpKraken extends SocialNetworkKraken {
 

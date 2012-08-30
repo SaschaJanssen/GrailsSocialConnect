@@ -14,8 +14,8 @@ import org.social.core.network.connection.SocialNetworkConnection;
 import org.social.core.query.FoursquareQuery;
 import org.social.core.query.Query;
 import org.social.core.util.UtilDateTime;
-import org.social.grails.network.Message;
-import org.social.grails.user.Customer;
+import org.social.grails.Message;
+import org.social.grails.customer.Customer;
 
 public class FoursquareKraken extends SocialNetworkKraken {
 

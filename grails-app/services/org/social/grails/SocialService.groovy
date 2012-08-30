@@ -6,10 +6,8 @@ import org.social.core.filter.classifier.bayes.Classifier
 import org.social.core.util.UtilDateTime
 import org.social.core.util.UtilLucene
 import org.social.core.util.UtilProperties
-import org.social.grails.classification.LearningData
 import org.social.grails.consumer.ConsumerService
-import org.social.grails.network.Message
-import org.social.grails.user.Customer
+import org.social.grails.customer.Customer
 
 class SocialService {
 

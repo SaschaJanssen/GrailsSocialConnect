@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.social.core.constants.KeywordTypeConst;
-import org.social.grails.user.Keyword;
+import org.social.grails.Keyword;
 
 public class CustomerNetworkKeywords {
 
