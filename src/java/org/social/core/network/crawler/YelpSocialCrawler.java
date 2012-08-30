@@ -69,6 +69,6 @@ public class YelpSocialCrawler extends SocialCrawler {
 
     @Override
     protected String getPropertyFileName() {
-        return "grails-app/conf/yelp.properties";
+        return "grails-app/conf/network/yelp.properties";
     }
 }

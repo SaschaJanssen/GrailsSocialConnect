@@ -14,7 +14,7 @@ public class TripAdvisorQuery extends Query {
         super(customerNetworkKeywords);
 
         setEndpoint(customerNetworkKeywords.getPage());
-        searchUrl = UtilProperties.getPropertyValue("grails-app/conf/tripAdvisor.properties", "searchUrl");
+        searchUrl = UtilProperties.getPropertyValue("grails-app/conf/network/tripAdvisor.properties", "searchUrl");
     }
 
     @Override

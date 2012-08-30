@@ -50,6 +50,6 @@ public class ZagatSocialCrawler extends SocialCrawler {
 
     @Override
     protected String getPropertyFileName() {
-        return "grails-app/conf/zagat.properties";
+        return "grails-app/conf/network/zagat.properties";
     }
 }

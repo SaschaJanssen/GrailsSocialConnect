@@ -59,9 +59,8 @@ class SocialService {
 
         learningData.each() { data ->
             List<String> t = UtilLucene.ngramString(data.getLearningData())
-            def classifi = data.classification
-
-            classifier.learn(classifi.id, t)
+            def sentiment = data.classification.name()
+            classifier.learn(sentiment, t)
         }
     }
 

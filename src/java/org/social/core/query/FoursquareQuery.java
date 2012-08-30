@@ -19,11 +19,12 @@ public class FoursquareQuery extends Query {
     public FoursquareQuery(CustomerNetworkKeywords networkKeywords) {
         super(networkKeywords);
 
-        consumerId = UtilProperties.getPropertyValue("grails-app/conf/foursquare.properties", "client_id");
-        consumerSecret = UtilProperties.getPropertyValue("grails-app/conf/foursquare.properties", "client_secret");
-        apiValidationDate = UtilProperties.getPropertyValue("grails-app/conf/foursquare.properties",
+        consumerId = UtilProperties.getPropertyValue("grails-app/conf/network/foursquare.properties", "client_id");
+        consumerSecret = UtilProperties.getPropertyValue("grails-app/conf/network/foursquare.properties",
+                "client_secret");
+        apiValidationDate = UtilProperties.getPropertyValue("grails-app/conf/network/foursquare.properties",
                 "api_validation_date");
-        searchUrl = UtilProperties.getPropertyValue("grails-app/conf/foursquare.properties", "search_url");
+        searchUrl = UtilProperties.getPropertyValue("grails-app/conf/network/foursquare.properties", "search_url");
 
         setPage(networkKeywords.getPage());
     }

@@ -112,6 +112,6 @@ public class TripAdvisorSocialCrawler extends SocialCrawler {
 
     @Override
     protected String getPropertyFileName() {
-        return "grails-app/conf/tripAdvisor.properties";
+        return "grails-app/conf/network/tripAdvisor.properties";
     }
 }

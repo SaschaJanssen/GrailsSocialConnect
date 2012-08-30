@@ -19,8 +19,8 @@ public class QypeQuery extends Query {
     public QypeQuery(CustomerNetworkKeywords networkKeywords) {
         super(networkKeywords);
 
-        consumerKey = UtilProperties.getPropertyValue("grails-app/conf/qype.properties", "consumer_key");
-        searchUrl = UtilProperties.getPropertyValue("grails-app/conf/qype.properties", "search_url");
+        consumerKey = UtilProperties.getPropertyValue("grails-app/conf/network/qype.properties", "consumer_key");
+        searchUrl = UtilProperties.getPropertyValue("grails-app/conf/network/qype.properties", "search_url");
 
         setPage(networkKeywords.getPage());
     }

@@ -14,7 +14,7 @@ public class YelpQuery extends Query {
         super(customerNetworkKeywords);
 
         setEndpoint(customerNetworkKeywords.getPage());
-        searchUrl = UtilProperties.getPropertyValue("grails-app/conf/yelp.properties", "searchUrl");
+        searchUrl = UtilProperties.getPropertyValue("grails-app/conf/network/yelp.properties", "searchUrl");
     }
 
     @Override

@@ -1,3 +1,5 @@
+import org.apache.log4j.DailyRollingFileAppender
+
 // locations to search for config files that get merged into the main config;
 // config files can be ConfigSlurper scripts, Java properties files, or classes
 // in the classpath in ConfigSlurper format
@@ -71,19 +73,20 @@ environments {
 
 // log4j configuration
 log4j = {
-    root = {
-        all()
+    
+    appenders {
+        rollingFile name: "myFileAppender", file: "runtime/log/SocialConnect.log", maxFileSize: (1024*10), layout:pattern(conversionPattern: '%d (%t) [%24F:%-3L:%-5p]%x %m%n')
+        console name: 'myStdoutAppender', layout:pattern(conversionPattern: '%d (%t) [%24F:%-3L:%-5p]%x %m%n')
+        appender new DailyRollingFileAppender(
+            name: 'myDailyAppender',
+            datePattern: "'.'yyyy-MM-dd-a",  // See the API for all patterns.
+            fileName: "runtime/log/DailySocialConnect.log",
+            layout: pattern(conversionPattern:'%d (%t) [%24F:%-3L:%-5p]%x %m%n')
+        )
+        
     }
     
-    
-    // Example of changing the log pattern for the default console appender:
-    //
-    //appenders {
-    //    console name:'stdout', layout:pattern(conversionPattern: '%c{2} %m%n')
-    //}
-
-    
-    warn  'org.codehaus.groovy.grails.web.servlet',        // controllers
+    debug  'org.codehaus.groovy.grails.web.servlet',        // controllers
            'org.codehaus.groovy.grails.web.pages',          // GSP
            'org.codehaus.groovy.grails.web.sitemesh',       // layouts
            'org.codehaus.groovy.grails.web.mapping.filter', // URL mapping
@@ -93,9 +96,26 @@ log4j = {
            'org.codehaus.groovy.grails.orm.hibernate',      // hibernate integration
            'org.springframework',
            'org.hibernate',
-           'net.sf.ehcache.hibernate',
-           'grails.app'
-    debug  'org.social'
-           
+           'net.sf.ehcache.hibernate'
     
+   debug  'org.social',
+          'grails.test',
+          'grails.app'
+   root = {
+            debug 'myFileAppender', 'myStdoutAppender', 'myDailyAppender'
+            // warn 'myStdoutAppender', 'myFileAppender', 'myDailyAppender'
+            additivity = true
+    }
 }
+
+/*
+grails.config.locations = [
+    "classpath:network/fb.properties",
+    "classpath:network/fb.properties",
+    "classpath:network/foursquare.properties",
+    "classpath:network/openTable.properties",
+    "classpath:NetworkConfig.groovy"
+    "file:${userHome}/.grails/${appName}-config.properties",
+    "file:${userHome}/.grails/${appName}-config.groovy" 
+]
+*/
