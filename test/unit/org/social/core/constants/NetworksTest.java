@@ -50,10 +50,10 @@ public class NetworksTest {
 
     @Test
     public void test_isNetwork() throws Exception {
-        assertFalse(NetworkConst.FACEBOOK.isNetwork("TWITTER"));
-        assertTrue(NetworkConst.FACEBOOK.isNetwork("FACEBOOK"));
+        assertFalse(NetworkConst.FACEBOOK.isSameAs(NetworkConst.TWITTER));
+        assertTrue(NetworkConst.FACEBOOK.isSameAs(NetworkConst.FACEBOOK));
 
-        assertTrue(NetworkConst.TWITTER.isNetwork("TWITTER"));
-        assertFalse(NetworkConst.TWITTER.isNetwork("FACEBOOK"));
+        assertTrue(NetworkConst.TWITTER.isSameAs(NetworkConst.TWITTER));
+        assertFalse(NetworkConst.TWITTER.isSameAs(NetworkConst.FACEBOOK));
     }
 }

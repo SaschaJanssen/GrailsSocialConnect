@@ -45,33 +45,28 @@ class KrakenFactoryServiceTests {
     @Test
     public void testFactoryForAllNetworks() {
 
-        SocialNetworkKraken snk = krakenFactoryService.getInstance("FACEBOOK", new Customer())
+        SocialNetworkKraken snk = krakenFactoryService.getInstance(NetworkConst.FACEBOOK, new Customer())
         assertTrue(snk instanceof FacebookKraken)
 
-        snk = krakenFactoryService.getInstance("TWITTER", new Customer())
+        snk = krakenFactoryService.getInstance(NetworkConst.TWITTER, new Customer())
         assertTrue(snk instanceof TwitterKraken)
 
-        snk = krakenFactoryService.getInstance("YELP", new Customer())
+        snk = krakenFactoryService.getInstance(NetworkConst.YELP, new Customer())
         assertTrue(snk instanceof YelpKraken)
 
-        snk = krakenFactoryService.getInstance("OPENTABLE", new Customer())
+        snk = krakenFactoryService.getInstance(NetworkConst.OPENTABLE, new Customer())
         assertTrue(snk instanceof OpenTableKraken)
 
-        snk = krakenFactoryService.getInstance("TRIPADVISOR", new Customer())
+        snk = krakenFactoryService.getInstance(NetworkConst.TRIPADVISOR, new Customer())
         assertTrue(snk instanceof TripAdvisorKraken)
 
-        snk = krakenFactoryService.getInstance("ZAGAT", new Customer())
+        snk = krakenFactoryService.getInstance(NetworkConst.ZAGAT, new Customer())
         assertTrue(snk instanceof ZagatKraken)
 
-        snk = krakenFactoryService.getInstance("QYPE", new Customer())
+        snk = krakenFactoryService.getInstance(NetworkConst.QYPE, new Customer())
         assertTrue(snk instanceof QypeKraken)
 
-        snk = krakenFactoryService.getInstance("FOURSQUARE", new Customer())
+        snk = krakenFactoryService.getInstance(NetworkConst.FOURSQUARE, new Customer())
         assertTrue(snk instanceof FoursquareKraken)
-    }
-
-    @Test(expected = IllegalArgumentException.class)
-    public void testIllegalArgumentException() throws Exception {
-        krakenFactoryService.getInstance("FOOBAA", new Customer())
     }
 }

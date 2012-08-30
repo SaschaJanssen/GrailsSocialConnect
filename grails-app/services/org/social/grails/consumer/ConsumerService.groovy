@@ -31,7 +31,7 @@ class ConsumerService {
 
         def krakenFactory = new KrakenFactoryService()
         userNetworks.each() { network -> 
-            SocialNetworkKraken socialNetworkCon = krakenFactory.getInstance(network.id, customer)
+            SocialNetworkKraken socialNetworkCon = krakenFactory.getInstance(network, customer)
 
             Thread networkThread = new Thread(new NetworkConsumeThread(socialNetworkCon))
             executor.execute(networkThread)

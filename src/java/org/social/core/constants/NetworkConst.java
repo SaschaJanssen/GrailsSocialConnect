@@ -7,7 +7,7 @@ public enum NetworkConst {
         return name();
     }
 
-    public boolean isNetwork(String networkName) {
-        return name().equals(networkName);
+    public boolean isSameAs(NetworkConst network) {
+        return this.equals(network);
     }
 }

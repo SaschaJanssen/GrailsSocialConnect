@@ -19,24 +19,24 @@ import org.social.grails.user.Customer
 
 class KrakenFactoryService {
 
-    public SocialNetworkKraken getInstance(String network, Customer customer)
+    public SocialNetworkKraken getInstance(NetworkConst network, Customer customer)
     throws IllegalArgumentException {
 
-        if (NetworkConst.FACEBOOK.getName().equals(network)) {
+        if (NetworkConst.FACEBOOK.isSameAs(network)) {
             return new FacebookKraken(customer, new FacebookConnection())
-        } else if (NetworkConst.TWITTER.getName().equals(network)) {
+        } else if (NetworkConst.TWITTER.isSameAs(network)) {
             return new TwitterKraken(customer, new TwitterConnection())
-        } else if (NetworkConst.YELP.getName().equals(network)) {
+        } else if (NetworkConst.YELP.isSameAs(network)) {
             return new YelpKraken(customer, new JsoupBaseCrwaler())
-        } else if (NetworkConst.OPENTABLE.getName().equals(network)) {
+        } else if (NetworkConst.OPENTABLE.isSameAs(network)) {
             return new OpenTableKraken(customer, new JsoupBaseCrwaler())
-        } else if (NetworkConst.TRIPADVISOR.getName().equals(network)) {
+        } else if (NetworkConst.TRIPADVISOR.isSameAs(network)) {
             return new TripAdvisorKraken(customer, new JsoupBaseCrwaler())
-        } else if (NetworkConst.ZAGAT.getName().equals(network)) {
+        } else if (NetworkConst.ZAGAT.isSameAs(network)) {
             return new ZagatKraken(customer, new JsoupBaseCrwaler())
-        } else if (NetworkConst.QYPE.getName().equals(network)) {
+        } else if (NetworkConst.QYPE.isSameAs(network)) {
             return new QypeKraken(customer, new QypeConnection())
-        } else if (NetworkConst.FOURSQUARE.getName().equals(network)) {
+        } else if (NetworkConst.FOURSQUARE.isSameAs(network)) {
             return new FoursquareKraken(customer, new FoursquareConnection())
         }
 
