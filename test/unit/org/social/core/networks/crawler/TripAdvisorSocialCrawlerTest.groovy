@@ -71,7 +71,9 @@ public class TripAdvisorSocialCrawlerTest {
 
         assertTrue(result.size() >= 10)
 
-        assertTrue(result.get(0).getMessage().startsWith("U die Art der Pasta wählen"))
+        println(result.get(0).getMessage())
+
+        assertTrue(result.get(0).getMessage().startsWith("U die Art der Pasta"))
         assertEquals("73kamla", result.get(0).getNetworkUserName())
         assertEquals("n/a", result.get(0).getNetworkUserId())
         assertEquals("en", result.get(0).getLanguage())
