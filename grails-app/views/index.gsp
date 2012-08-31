@@ -83,12 +83,21 @@
 	<body>
 		<a href="#page-body" class="skip"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 		<div id="status" role="complementary">
-			<h1>Available Controller:</h1>
+			
+			<sec:ifLoggedIn>
+				<h1>Available Controller:</h1>
 				<ul>
 					<g:each var="c" in="${grailsApplication.controllerClasses.sort { it.fullName } }">
 						<li class="controller"><g:link controller="${c.logicalPropertyName}">${c.name}</g:link></li>
 					</g:each>
 				</ul>
+			</sec:ifLoggedIn>
+			
+			<sec:ifNotLoggedIn>
+				<h1>Please Login:</h1>
+				<g:link controller="login">Login</g:link>
+
+			</sec:ifNotLoggedIn>
 			
 		</div>
 		<div id="page-body" role="main">
