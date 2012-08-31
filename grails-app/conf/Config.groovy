@@ -75,7 +75,7 @@ environments {
 log4j = {
     
     appenders {
-        rollingFile name: "myFileAppender", file: "runtime/log/SocialConnect.log", maxFileSize: (1024*10), layout:pattern(conversionPattern: '%d (%t) [%24F:%-3L:%-5p]%x %m%n')
+        // rollingFile name: "myFileAppender", file: "runtime/log/SocialConnect.log", maxFileSize: (1024*10), layout:pattern(conversionPattern: '%d (%t) [%24F:%-3L:%-5p]%x %m%n')
         console name: 'myStdoutAppender', layout:pattern(conversionPattern: '%d (%t) [%24F:%-3L:%-5p]%x %m%n')
         appender new DailyRollingFileAppender(
             name: 'myDailyAppender',
@@ -101,8 +101,8 @@ log4j = {
     
    debug  'org.social.*'
           
-   root = {
-            debug 'myFileAppender', 'myStdoutAppender', 'myDailyAppender'
+   root {
+            debug 'myStdoutAppender', 'myDailyAppender'
             // warn 'myStdoutAppender', 'myFileAppender', 'myDailyAppender'
             additivity = true
     }
