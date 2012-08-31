@@ -1,5 +1,5 @@
 
-<%@ page import="org.social.grails.classification.LearningData" %>
+<%@ page import="org.social.grails.LearningData" %>
 <!doctype html>
 <html>
 	<head>

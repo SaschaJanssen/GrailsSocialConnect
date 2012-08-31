@@ -1,7 +1,11 @@
 package org.social.grails
 
+import grails.plugins.springsecurity.Secured
+
 import org.springframework.dao.DataIntegrityViolationException
 
+
+@Secured(['IS_AUTHENTICATED_FULLY'])
 class MessageController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]

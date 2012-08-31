@@ -1,5 +1,5 @@
 
-<%@ page import="org.social.grails.user.Contact" %>
+<%@ page import="org.social.grails.customer.Contact" %>
 <!doctype html>
 <html>
 	<head>

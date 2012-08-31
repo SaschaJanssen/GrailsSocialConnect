@@ -1,4 +1,4 @@
-<%@ page import="org.social.grails.user.Customer" %>
+<%@ page import="org.social.grails.customer.Customer" %>
 <!doctype html>
 <html>
 	<head>

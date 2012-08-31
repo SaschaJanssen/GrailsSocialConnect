@@ -1,8 +1,12 @@
 package org.social.grails.customer
 
+import grails.plugins.springsecurity.Secured
+
 import org.social.grails.Keyword
 import org.springframework.dao.DataIntegrityViolationException
 
+
+@Secured(['IS_AUTHENTICATED_FULLY'])
 class KeywordController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
