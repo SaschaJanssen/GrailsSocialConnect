@@ -33,14 +33,11 @@ class MessageControllerTests {
     }
 
     def resetParams(params) {
-        def reliability = null
-
-        def sentiment = null
 
         params.network = null
         params.customer = null
-        params.reliability = reliability
-        params.sentiment = sentiment
+        params.reliability = null
+        params.sentiment = null
         params.message = null
         params.messageReceivedDate = null
         params.networkMessageDate = null
@@ -100,11 +97,11 @@ class MessageControllerTests {
 
         params.network = null
         params.message = null
-        params.reliability = 'RELIABLE'
+        params.sentiment = 'NEGATIVE'
         model = controller.list()
         
-        assert model.messageInstanceList.size() == 2
-        assert model.messageInstanceTotal == 2
+        assert model.messageInstanceList.size() == 1
+        assert model.messageInstanceTotal == 1
     }
 
     void testCreate() {
