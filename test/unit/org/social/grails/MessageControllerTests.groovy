@@ -32,17 +32,79 @@ class MessageControllerTests {
         assert params != null
     }
 
+    def resetParams(params) {
+        def reliability = null
+
+        def sentiment = null
+
+        params.network = null
+        params.customer = null
+        params.reliability = reliability
+        params.sentiment = sentiment
+        params.message = null
+        params.messageReceivedDate = null
+        params.networkMessageDate = null
+
+        assert params != null
+    }
+
     void testIndex() {
         controller.index()
         assert "/message/list" == response.redirectedUrl
     }
 
     void testList() {
-
+        resetParams(params)
         def model = controller.list()
 
         assert model.messageInstanceList.size() == 0
         assert model.messageInstanceTotal == 0
+    }
+
+    void testFilterList() {
+        populateValidParams(params)
+        def message = new Message(params)
+
+        assert message.save() != null
+
+        def sentiment = ClassificationConst.Sentiment.NEGATIVE
+
+        params.network = NetworkConst.FACEBOOK
+        params.sentiment = sentiment
+        params.message = 'New story of the day'
+        message = new Message(params)
+
+        assert message.save() != null
+
+        resetParams(params)
+        assert Message.count() == 2
+
+        params.reliability = 'RELIABLE'
+        def model = controller.list()
+
+        assert model.messageInstanceList.size() == 2
+        assert model.messageInstanceTotal == 2
+
+        params.network = 'FACEBOOK'
+        model = controller.list()
+
+        assert model.messageInstanceList.size() == 1
+        assert model.messageInstanceTotal == 1
+
+        params.network = null
+        params.message = 'New story'
+        model = controller.list()
+        
+        assert model.messageInstanceList.size() == 1
+        assert model.messageInstanceTotal == 1
+
+        params.network = null
+        params.message = null
+        params.reliability = 'RELIABLE'
+        model = controller.list()
+        
+        assert model.messageInstanceList.size() == 2
+        assert model.messageInstanceTotal == 2
     }
 
     void testCreate() {

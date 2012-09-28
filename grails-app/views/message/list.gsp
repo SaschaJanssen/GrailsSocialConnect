@@ -15,6 +15,55 @@
 				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
 			</ul>
 		</div>
+		
+		<div id="list-filter" class="content">
+		<h1>
+			<g:message code="default.list-filter.label" default="Filter" />
+		</h1>
+
+		<g:form action="list" method="post">
+			<fieldset class="form">
+				<div class="fieldcontain">
+					<label for="message"> <g:message code="message.message.label" default="Message" />
+					</label>
+					<g:textField name="message" value="${flash.message}" />
+				</div>
+
+				<div class="fieldcontain">
+					<label for="customerId"> <g:message code="message.customer.label" default="Customer" />
+					</label>
+					<g:select name="customerId" value="${flash.customerId}" from="${org.social.grails.customer.Customer.list()}" optionKey="id"
+						optionValue="id" noSelection="['':' ']" />
+				</div>
+
+				<div class="fieldcontain">
+					<label for="network"> <g:message code="message.network.label" default="Network" />
+					</label>
+					<g:select name="network" value="${flash.network}" from="${org.social.core.constants.NetworkConst?.values()}"
+						keys="${org.social.core.constants.NetworkConst.values()*.name()}" noSelection="['':' ']" />
+				</div>
+
+				<div class="fieldcontain">
+					<label for="reliability"> <g:message code="message.reliability.label" default="Reliability" />
+					</label>
+					<g:select name="reliability" value="${flash.reliability}" from="${org.social.core.constants.ClassificationConst.Reliability?.values()}"
+						keys="${org.social.core.constants.ClassificationConst.Reliability.values()*.name()}" noSelection="['':' ']" />
+				</div>
+
+				<div class="fieldcontain">
+					<label for="sentiment"> <g:message code="message.sentiment.label" default="Sentiment" />
+					</label>
+					<g:select name="sentiment" value="${flash.sentiment}" from="${org.social.core.constants.ClassificationConst.Sentiment?.values()}"
+						keys="${org.social.core.constants.ClassificationConst.Sentiment.values()*.name()}" noSelection="['':' ']" />
+				</div>
+			</fieldset>
+
+			<div class="buttons">
+				<span class="button"><input class="save" type="submit" value="Filter" /></span>
+			</div>
+		</g:form>
+	</div>
+		
 		<div id="list-message" class="content scaffold-list" role="main">
 			<h1><g:message code="default.list.label" args="[entityName]" /></h1>
 			<g:if test="${flash.message}">

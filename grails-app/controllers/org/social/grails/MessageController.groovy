@@ -3,6 +3,7 @@ package org.social.grails
 import grails.plugins.springsecurity.Secured
 
 import org.springframework.dao.DataIntegrityViolationException
+import org.social.grails.customer.Customer
 
 
 @Secured(['IS_AUTHENTICATED_FULLY'])
@@ -15,8 +16,69 @@ class MessageController {
     }
 
     def list(Integer max) {
+        flash.message = params.message
+        flash.reliability = params.reliability
+        flash.sentiment = params.sentiment
+        flash.network = params.network
+        flash.customerId = params.customerId
+        
         params.max = Math.min(max ?: 10, 100)
-        [messageInstanceList: Message.list(params), messageInstanceTotal: Message.count()]
+        
+        def messageCriteria = Message.createCriteria()
+        def results = messageCriteria.list(params) {
+            and{
+                if (params.message) {
+                    like("message", '%' + params.message + '%')
+                }
+                
+                if(params.customerId) {
+                    eq("customer", Customer.get(params.customerId))
+                }
+                
+                if(params.network) {
+                    eq("network", org.social.core.constants.NetworkConst.valueOf(params.network))
+                }
+                
+                if(params.reliability) {
+                    eq("reliability", org.social.core.constants.ClassificationConst.Reliability.valueOf(params.reliability))
+                }
+
+                if(params.sentiment) {
+                    eq("sentiment", org.social.core.constants.ClassificationConst.Sentiment.valueOf(params.sentiment))
+                }
+            }
+        }
+        
+        messageCriteria = Message.createCriteria()
+        def resultPaginationMaxLength = messageCriteria.list {
+            and{
+                if (params.message) {
+                    like("message", '%' + params.message + '%')
+                }
+                
+                if(params.customerId) {
+                    eq("customer", Customer.get(params.customerId))
+                }
+                
+                if(params.network) {
+                    eq("network", org.social.core.constants.NetworkConst.valueOf(params.network))
+                }
+                
+                if(params.reliability) {
+                    eq("reliability", org.social.core.constants.ClassificationConst.Reliability.valueOf(params.reliability))
+                }
+
+                if(params.sentiment) {
+                    eq("sentiment", org.social.core.constants.ClassificationConst.Sentiment.valueOf(params.sentiment))
+                }
+            }
+            
+            projections {
+                rowCount()
+            }
+        }
+        
+        [messageInstanceList: results, messageInstanceTotal: resultPaginationMaxLength.first()]
     }
 
     def create() {
