@@ -21,6 +21,7 @@ class MessageController {
         flash.sentiment = params.sentiment
         flash.network = params.network
         flash.customerId = params.customerId
+        flash.networkMessageDateSince = params.networkMessageDateSince
         
         params.max = Math.min(max ?: 10, 100)
         
@@ -46,6 +47,10 @@ class MessageController {
                 if(params.sentiment) {
                     eq("sentiment", org.social.core.constants.ClassificationConst.Sentiment.valueOf(params.sentiment))
                 }
+                
+                if (params.networkMessageDateSince) {
+                    ge("networkMessageDate", params.networkMessageDateSince)
+                }
             }
         }
         
@@ -70,6 +75,10 @@ class MessageController {
 
                 if(params.sentiment) {
                     eq("sentiment", org.social.core.constants.ClassificationConst.Sentiment.valueOf(params.sentiment))
+                }
+                
+                if (params.networkMessageDateSince) {
+                    ge("networkMessageDate", params.networkMessageDateSince)
                 }
             }
             

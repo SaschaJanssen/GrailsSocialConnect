@@ -69,6 +69,7 @@ class MessageControllerTests {
         params.network = NetworkConst.FACEBOOK
         params.sentiment = sentiment
         params.message = 'New story of the day'
+        params.networkMessageDate = new Date().clearTime() - 3
         message = new Message(params)
 
         assert message.save() != null
@@ -98,6 +99,16 @@ class MessageControllerTests {
         params.network = null
         params.message = null
         params.sentiment = 'NEGATIVE'
+        model = controller.list()
+        
+        assert model.messageInstanceList.size() == 1
+        assert model.messageInstanceTotal == 1
+        
+        params.network = null
+        params.message = null
+        params.sentiment = null
+        params.networkMessageDateSince = new Date().clearTime() - 1
+        
         model = controller.list()
         
         assert model.messageInstanceList.size() == 1
