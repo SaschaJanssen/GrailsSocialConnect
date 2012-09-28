@@ -11,6 +11,6 @@ class SchedulerJob {
     }
 
     def execute() {
-        socialService.start()
+       // socialService.start()
     }
 }

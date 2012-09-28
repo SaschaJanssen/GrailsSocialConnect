@@ -24,15 +24,58 @@ class KeywordControllerTests {
         assert params != null
     }
 
+    def resetParams(params) {
+        params.customer = null
+        params.keywordType = null
+        params.network = null
+        params.keyword = null
+
+        assert params != null
+    }
+
     void testIndex() {
         controller.index()
         assert "/keyword/list" == response.redirectedUrl
     }
 
     void testList() {
-
+        resetParams(params)
         def model = controller.list()
 
+        assert model.keywordInstanceList.size() == 0
+        assert model.keywordInstanceTotal == 0
+    }
+
+    void testFilterList() {
+        populateValidParams(params)
+        def keyword = new Keyword(params)
+
+        assert keyword.save() != null
+
+        params.keyword = 'FOOBAA'
+        params.keywordType = KeywordTypeConst.QUERY
+        keyword = new Keyword(params)
+
+        assert keyword.save() != null
+
+        resetParams(params)
+        assert Keyword.count() == 2
+
+        params.network = 'TWITTER'
+        def model = controller.list()
+
+        assert model.keywordInstanceList.size() == 2
+        assert model.keywordInstanceTotal == 2
+
+        params.keyword = 'FOO'
+        model = controller.list()
+        
+        assert model.keywordInstanceList.size() == 1
+        assert model.keywordInstanceTotal == 1
+
+        params.network = 'FACEBOOK'
+        model = controller.list()
+        
         assert model.keywordInstanceList.size() == 0
         assert model.keywordInstanceTotal == 0
     }

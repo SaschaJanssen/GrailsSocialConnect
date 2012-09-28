@@ -2,9 +2,8 @@ package org.social.grails.customer
 
 import grails.plugins.springsecurity.Secured
 
-import org.social.grails.Keyword
 import org.springframework.dao.DataIntegrityViolationException
-
+import org.social.grails.Keyword
 
 @Secured(['IS_AUTHENTICATED_FULLY'])
 class KeywordController {
@@ -16,8 +15,60 @@ class KeywordController {
     }
 
     def list(Integer max) {
+        flash.keyword = params.keyword
+        flash.customerId = params.customerId
+        flash.keywordType = params.keywordType
+        flash.network = params.network
+        
         params.max = Math.min(max ?: 10, 100)
-        [keywordInstanceList: Keyword.list(params), keywordInstanceTotal: Keyword.count()]
+        
+        def keywordCriteria = Keyword.createCriteria()
+        def results = keywordCriteria.list(params) { 
+            and{
+                if (params.keyword) {
+                    like("keyword", '%' + params.keyword + '%')
+                }
+                
+                if(params.customerId) {
+                    eq("customer", Customer.get(params.customerId))
+                }
+                
+                if(params.network) {
+                    eq("network", org.social.core.constants.NetworkConst.valueOf(params.network))
+                }
+                
+                if(params.keywordType) {
+                    eq("keywordType", org.social.core.constants.KeywordTypeConst.valueOf(params.keywordType))
+                }
+            }
+        }
+        
+        keywordCriteria = Keyword.createCriteria()
+        def resultPaginationMaxLength = keywordCriteria.list { 
+            and{
+                if (params.keyword) {
+                    like("keyword", '%' + params.keyword + '%')
+                }
+                
+                if(params.customerId) {
+                    eq("customer", Customer.get(params.customerId))
+                }
+                
+                if(params.network) {
+                    eq("network", org.social.core.constants.NetworkConst.valueOf(params.network))
+                }
+                
+                if(params.keywordType) {
+                    eq("keywordType", org.social.core.constants.KeywordTypeConst.valueOf(params.keywordType))
+                }
+            }
+            
+            projections {
+                rowCount()
+            }
+        }
+        
+        [keywordInstanceList: results, keywordInstanceTotal: resultPaginationMaxLength.first()]
     }
 
     def create() {
