@@ -73,9 +73,10 @@ environments {
 
 // log4j configuration
 log4j = {
-    
+
     appenders {
         // rollingFile name: "myFileAppender", file: "runtime/log/SocialConnect.log", maxFileSize: (1024*10), layout:pattern(conversionPattern: '%d (%t) [%24F:%-3L:%-5p]%x %m%n')
+        'null' name:'stacktrace'
         console name: 'myStdoutAppender', layout:pattern(conversionPattern: '%d (%t) [%24F:%-3L:%-5p]%x %m%n')
         appender new DailyRollingFileAppender(
             name: 'myDailyAppender',
@@ -83,9 +84,9 @@ log4j = {
             fileName: "runtime/log/DailySocialConnect.log",
             layout: pattern(conversionPattern:'%d (%t) [%24F:%-3L:%-5p]%x %m%n')
         )
-        
+
     }
-    
+
     warn  'org.codehaus.groovy.grails.web.servlet',        // controllers
            'org.codehaus.groovy.grails.web.pages',          // GSP
            'org.codehaus.groovy.grails.web.sitemesh',       // layouts
@@ -98,9 +99,9 @@ log4j = {
            'org.hibernate',
            'net.sf.ehcache.hibernate',
            'grails.app'
-    
+
    debug  'org.social.*'
-          
+
    root {
             debug 'myStdoutAppender', 'myDailyAppender'
             // warn 'myStdoutAppender', 'myFileAppender', 'myDailyAppender'
@@ -116,7 +117,7 @@ grails.config.locations = [
     "classpath:network/openTable.properties",
     "classpath:NetworkConfig.groovy"
     "file:${userHome}/.grails/${appName}-config.properties",
-    "file:${userHome}/.grails/${appName}-config.groovy" 
+    "file:${userHome}/.grails/${appName}-config.groovy"
 ]
 */
 
