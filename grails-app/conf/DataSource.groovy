@@ -2,11 +2,8 @@ dataSource {
     pooled = true
     driverClassName = "com.mysql.jdbc.Driver"
     dbCreate = "update"
-    url = "jdbc:mysql://localhost:3306/socialconnect_2"
+    
     dialect = org.hibernate.dialect.MySQL5InnoDBDialect
-
-    username = "root"
-    password = "root"
 
     properties {
         maxActive = 50
@@ -26,5 +23,18 @@ hibernate {
 }
 // environment specific settings
 environments {
-
+   development {
+        dataSource {
+            url = "jdbc:mysql://localhost:3306/socialconnect_2"
+            username = "root"
+            password = "root"
+        }
+    }
+    test {
+        dataSource {
+            url = "jdbc:mysql://localhost:3306/socialconnect_2"
+            username = "root"
+            password = "rootsc2012"
+        }
+    }
 }
